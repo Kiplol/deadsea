@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour {
 	public bool collided = false;
 	private bool fired = false;
 	public bool fromPlayer = false;
+	public int damage = 3;
+	public CharacterScript shooter;
 	
 	// Use this for initialization
 	void Start () {
@@ -36,19 +38,33 @@ public class Bullet : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log(fromPlayer);
 		if(fired)
 		{
-			if(other.tag == "Bullet")
+			CharacterScript hitYou = other.GetComponent(typeof(CharacterScript)) as CharacterScript;
+			if(hitYou == shooter)
 			{
-				//Nothing
+				//Do nothing
+//				Debug.Log("Bullet hit its shooter.");
 			}
-			else if(fromPlayer && other.tag == "Player")
+			else if(other.tag == "Bullet")
 			{
-				//Nothing
+				//Do nothing
+//				Debug.Log("Bullet hit another bullet.");
 			}
 			else
 			{
+				//Alright, let's actually do some damage
+				collided = true;
+				if(hitYou != null)
+				{
+					GameObject damageSource = null;
+					if(shooter)
+					{
+						damageSource = shooter.gameObject;
+						shooter.OnShotCollisionSuccess(other.gameObject);
+					}
+					hitYou.TakeDamage(damage, damageSource);
+				}
 				ReturnToAmmoStore();
 			}
 		}
@@ -62,7 +78,7 @@ public class Bullet : MonoBehaviour {
 	public void Fire()
 	{
 		fired = true;
-		rigidbody2D.AddForce(Vector2.up * 5 * speed);
+		rigidbody2D.AddForce(Vector2.up * 5 * speed * (fromPlayer ? 1 : -1));
 	}
 
 	public bool ReturnToAmmoStore()

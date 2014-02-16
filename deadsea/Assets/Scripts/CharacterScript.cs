@@ -7,6 +7,10 @@ public class CharacterScript : MonoBehaviour {
 	public AmmoStore ammoStore;
 	public int pointsForDestroying;
 	public SpriteAnimationScript animator;
+	public int framesPerShot;
+	protected int framesSinceShot = 0;
+	public float shootSpeed = 1.0f;
+	public bool invincible;
 	
 	// Use this for initialization
 	void Start () {
@@ -30,21 +34,38 @@ public class CharacterScript : MonoBehaviour {
 
 	public int TakeDamage(int damage, GameObject damageSourceObject)
 	{
-		health = Mathf.Max(health - damage, 0);
-		if(health == 0)
+		if(!invincible)
 		{
-			OnDeathBy(damageSourceObject);
+			health = Mathf.Max(health - damage, 0);
+			if(health == 0)
+			{
+				OnDeathBy(damageSourceObject);
+			}
 		}
 		return health;
 	}
 
-	public virtual void Shoot ()
+	public virtual Bullet Shoot ()
 	{
-		Bullet bullet = ammoStore.getBullet();
-		bullet.gameObject.transform.position = transform.position;
-		bullet.fromPlayer = false;
-		bullet.shooter = this;
-		bullet.Fire();
+		Vector2 dir = transform.rotation * Vector2.up * -1 * shootSpeed;
+		if(this.tag == "Player")
+		{
+			dir *= -1;
+		}
+		return Shoot(dir);
+	}
+
+	public virtual Bullet Shoot (Vector2 dir)
+	{
+		if(ammoStore)
+		{
+			Bullet bullet = ammoStore.getBullet();
+			bullet.gameObject.transform.position = transform.position;
+			bullet.shooter = this;
+			bullet.Fire(dir);
+			return bullet;
+		}
+		return null;
 	}
 	
 

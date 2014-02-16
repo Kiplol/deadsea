@@ -2,12 +2,10 @@
 using System.Collections;
 
 public class Bullet : MonoBehaviour {
-
-	public float speed = 5.0f;
+	
 	public AmmoStore ammoStore = null;
 	public bool collided = false;
 	private bool fired = false;
-	public bool fromPlayer = false;
 	public int damage = 3;
 	public CharacterScript shooter;
 	
@@ -70,15 +68,21 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
+	void onBecomeInvisible()
+	{
+		ReturnToAmmoStore();
+	}
+
 	public void setAmmoStore (AmmoStore amSt)
 	{
 		ammoStore = amSt;
 	}
+	
 
-	public void Fire()
+	public void Fire(Vector2 dir)
 	{
 		fired = true;
-		rigidbody2D.AddForce(Vector2.up * 5 * speed * (fromPlayer ? 1 : -1));
+		rigidbody2D.AddForce(dir);
 	}
 
 	public bool ReturnToAmmoStore()

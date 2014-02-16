@@ -8,16 +8,17 @@ public class PlayerShip : CharacterScript {
 	public int charges;
 	public float multiplier;
 	public int progressToNextCharge;
-	public bool invincible;
 	public int score = 0;
 
 	private System.Random rnd;
 	private int turretIdx;
 	public int maxTurretIdx;
+	protected int maxTurretsPossible = 8;
 
 	void Awake ()
 	{
 		rnd = new System.Random();
+		ammoStore = GetComponent(typeof(AmmoStore)) as AmmoStore;
 	}
 
 	// Use this for initialization
@@ -28,9 +29,13 @@ public class PlayerShip : CharacterScript {
 	
 	// Update is called once per frame
 	void Update () {
+		framesSinceShot = (framesSinceShot + 1) % framesPerShot;
 		if (Input.GetMouseButton(0))
 		{
-			Shoot();
+			if(framesSinceShot == 0)
+			{
+				Shoot();
+			}
 		}
 	}
 
@@ -41,7 +46,7 @@ public class PlayerShip : CharacterScript {
 		charges = 3;
 		multiplier = 1f;
 		turretIdx = 0;
-		maxTurretIdx = 1;
+		setMaxTurrets(1);
 		StartCoroutine(BecomeInvincibleForGivenSeconds(5));
 	}
 
@@ -51,29 +56,42 @@ public class PlayerShip : CharacterScript {
 		invincible = false;
 	}
 	
-	public override void Shoot ()
+	public override Bullet Shoot ()
 	{
-		Bullet bullet = ammoStore.getBullet();
+		Bullet bullet = base.Shoot();
 		bullet.gameObject.transform.position = posForTurretIndex(nextTurretIndex());
-		bullet.fromPlayer = true;
-		bullet.shooter = this;
-		bullet.Fire();
+		return bullet;
 	}
 
 	private int nextTurretIndex()
 	{
-		turretIdx = rnd.Next(0, maxTurretIdx);
+		int middleTurretIdx = maxTurretIdx / 2;
+		if(turretIdx != middleTurretIdx)
+		{
+			turretIdx = middleTurretIdx;
+		}
+		else
+		{
+			turretIdx = rnd.Next(0, maxTurretIdx);
+		}
+//		turretIdx = (turretIdx + 1) % maxTurretIdx;
 		return turretIdx;
 	}
 
 	private Vector3 posForTurretIndex(int turretIndex)
 	{
-		float spaceX = 0.4f + ((1.0f / maxTurretIdx) * 0.5f);
+		float spaceBetweenX = 0.2f * (1 + (1 / maxTurretIdx));
 		float spaceY = 0.2f;
-		float subtractionAmt = (spaceX * (maxTurretIdx - 1)) * 0.5f;
-		float retX = (turretIdx * spaceX) - subtractionAmt;
+		float subtractionAmt = (spaceBetweenX * (maxTurretIdx - 1)) * 0.5f;
+		float retX = (turretIdx * spaceBetweenX) - subtractionAmt;
 		float retY = Math.Abs(retX) * spaceY;
 		return new Vector3(transform.position.x + retX, transform.position.y - retY, transform.position.z);
+	}
+
+	private void setMaxTurrets(int nTurrets)
+	{
+		maxTurretIdx = Math.Min(nTurrets, maxTurretsPossible);
+		framesPerShot = 10 / Math.Max((maxTurretIdx / 2), 1);
 	}
 
 	public override void OnShotCollisionSuccess(GameObject thingThatGotShot)
@@ -94,5 +112,6 @@ public class PlayerShip : CharacterScript {
 		base.OnCharacterDestroySuccess(destroyedCharacter);
 		int scoreToAdd = (int)(destroyedCharacter.pointsForDestroying * multiplier);
 		score += scoreToAdd;
+		setMaxTurrets(maxTurretIdx + 1);
 	}
 }

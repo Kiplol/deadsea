@@ -1,4 +1,4 @@
-﻿	using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class AmmoStore : MonoBehaviour {
@@ -6,12 +6,10 @@ public class AmmoStore : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public ArrayList bullets;
 
-	void Start () {
+	void Awake () {
+		Debug.Log("AmmoStore Awake");
 		bullets = new ArrayList();
-		for (int i = 0; i < 5; i++)
-		{
-			bullets.Add(makeBullet());
-		}
+		Debug.Log("bullets = " + bullets);
 	}
 	
 	// Update is called once per frame
@@ -21,6 +19,11 @@ public class AmmoStore : MonoBehaviour {
 
 	public Bullet getBullet()
 	{
+		Debug.Log("bullets = " + bullets);
+		if(bullets == null)
+		{
+			bullets = new ArrayList();
+		}
 		if(bullets.Count > 0)
 		{
 			Bullet retBullet = bullets[0] as Bullet;

@@ -18,7 +18,6 @@ public class PlayerShip : CharacterScript {
 	void Awake ()
 	{
 		rnd = new System.Random();
-		ammoStore = GetComponent(typeof(AmmoStore)) as AmmoStore;
 	}
 
 	// Use this for initialization

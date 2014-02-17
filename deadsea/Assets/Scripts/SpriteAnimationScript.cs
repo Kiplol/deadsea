@@ -4,9 +4,10 @@ using System.Collections;
 public class SpriteAnimationScript : MonoBehaviour {
 
 	public Sprite[] sprites;
-	private Sprite[] explosionSprites;
+	private static Sprite[] explosionSprites;
+	int index = 0;
 
-	public float framesPerSecond;
+	public int framesPerSecond;
 	private SpriteRenderer spriteRenderer;
 	// Use this for initialization
 	void Start () {
@@ -15,13 +16,24 @@ public class SpriteAnimationScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		int index = (int)(Time.timeSinceLevelLoad * framesPerSecond);
+		index = (int)(Time.timeSinceLevelLoad * framesPerSecond);
 		index = index % sprites.Length;
 		spriteRenderer.sprite = sprites[index];
 	}
 
 	public static Sprite[] ExplosionSprites()
 	{
-		return Resources.LoadAll("Sprites/explosion.hasgraphics.png") as Sprite[]; 
+		if(explosionSprites == null)
+		{
+			Object[] objects = Resources.LoadAll("Explosion", typeof(Sprite));
+			int nLen = objects.Length;
+			explosionSprites = new Sprite[nLen];
+			for(int i = 0; i < nLen; i++)
+			{
+				Sprite castSprite = objects[i] as Sprite;
+				explosionSprites[i] = castSprite;
+			}
+		}
+		return explosionSprites;
 	}
 }

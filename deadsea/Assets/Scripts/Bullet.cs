@@ -82,6 +82,7 @@ public class Bullet : MonoBehaviour {
 	public void Fire(Vector2 dir)
 	{
 		fired = true;
+		renderer.enabled = true;
 		rigidbody2D.AddForce(dir);
 	}
 
@@ -89,11 +90,11 @@ public class Bullet : MonoBehaviour {
 	{
 		collided = false;
 		fired = false;
+		renderer.enabled = false;
 		rigidbody2D.velocity = Vector2.zero;
 		if(ammoStore)
 		{
 			ammoStore.bullets.Add(this);
-			transform.position = ammoStore.transform.position;
 			return true;
 		}
 		else

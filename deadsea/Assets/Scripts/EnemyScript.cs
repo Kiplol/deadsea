@@ -22,7 +22,7 @@ public class EnemyScript : CharacterScript {
 	void FixedUpdate ()
 	{
 		GameObject player = GameObject.FindGameObjectWithTag("Player");
-		if(player)
+		if(player && rotationFollowSpeed > 0)
 		{
 			Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position, transform.TransformDirection(Vector3.forward));
 			Quaternion lol = new Quaternion(0, 0, rotation.z, rotation.w);
@@ -33,20 +33,26 @@ public class EnemyScript : CharacterScript {
 	public override void OnDeathBy (GameObject killer)
 	{
 		base.OnDeathBy (killer);
-		Destroy(this.gameObject);
+//		Destroy(this.gameObject);
 //		animator.sprites = SpriteAnimationScript.ExplosionSprites();
 	}
 
 	IEnumerator FlyIn()
 	{
-		float fYStart = 6.3f;
+		//Set starting point
+		Vector3 startPos = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0));
+		startPos = new Vector3(transform.position.x, startPos.y, transform.position.z);
+		float fYStart = startPos.y;
+		transform.position = startPos;
+
+		//Set end point
 		float fYEnd = 1.4f;
-		transform.position = new Vector3(transform.position.x, fYStart, 0.0f);
-		int nFrames = 30;
+		transform.position = startPos;
+		int nFrames = 40;
 		for(int i = 0; i< nFrames; i++)
 		{
 			float t = (i * 1.0f) / (nFrames * 1.0f);
-			float currentY = fYStart + (Mathf.Pow(t, 0.1f) * (fYEnd - fYStart));
+			float currentY = fYStart + (Mathf.Sqrt(t) * (fYEnd - fYStart));
 			transform.position = new Vector3(transform.position.x, currentY, 0.0f);
 			yield return new WaitForSeconds(Time.deltaTime);
 		}

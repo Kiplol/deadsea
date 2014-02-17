@@ -68,6 +68,16 @@ public class CharacterScript : MonoBehaviour {
 		return null;
 	}
 	
+	IEnumerator ExplodeAndDie()
+	{
+		animator.sprites = SpriteAnimationScript.ExplosionSprites();
+		int nLen = animator.sprites.Length;
+		for(int i = 0; i < nLen; i++)
+		{
+			yield return i;
+		}
+		Destroy(this.gameObject);
+	}
 
 	public virtual void OnDeathBy(GameObject killer)
 	{
@@ -78,7 +88,9 @@ public class CharacterScript : MonoBehaviour {
 			{
 				killerChar.OnCharacterDestroySuccess(this);
 			}
+			StartCoroutine(ExplodeAndDie());
 		}
+
 	}
 
 	public virtual void OnShotCollisionSuccess(GameObject thingThatGotShot)

@@ -28,21 +28,14 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		if (Input.GetMouseButton(0))
 		{
-			currentVector.x = Input.mousePosition.x;
-			currentVector.y = Input.mousePosition.y;
-			deltaVector = deltaForNewVector(currentVector);
-			transform.position = new Vector3(transform.position.x + deltaVector.x, transform.position.y + deltaVector.y, transform.position.z);
-			lastVector.x = currentVector.x;
-			lastVector.y = currentVector.y;
+			this.currentVector.x = Input.mousePosition.x;
+			this.currentVector.y = Input.mousePosition.y;
+			this.deltaVector = deltaForNewVector(currentVector);
+			this.transform.position = new Vector3(transform.position.x + deltaVector.x, transform.position.y + deltaVector.y, transform.position.z);
+			this.lastVector.x = this.currentVector.x;
+			this.lastVector.y = this.currentVector.y;
 		}
-//		int fingerCount = 0;
-//		foreach (Touch touch in Input.touches) {
-//			if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
-//				fingerCount++;
-//			
-//		}
-//		if (fingerCount > 0)
-//			print("User has " + fingerCount + " finger(s) touching the screen");
+//		Debug.Log (Camera.main.WorldToScreenPoint(this.transform.position));
 	}
 
 	Vector3 deltaForNewVector(Vector3 newVector)

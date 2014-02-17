@@ -4,9 +4,10 @@ using System.Collections;
 public class EnemyScript : CharacterScript {
 
 	public float rotationFollowSpeed;
-	// Use this for initialization
+
 	void Start () {
 		StartCoroutine(FlyIn());
+
 	}
 	
 	// Update is called once per frame
@@ -38,7 +39,7 @@ public class EnemyScript : CharacterScript {
 
 	IEnumerator FlyIn()
 	{
-		float fYStart = 3.3f;
+		float fYStart = 6.3f;
 		float fYEnd = 1.4f;
 		transform.position = new Vector3(transform.position.x, fYStart, 0.0f);
 		int nFrames = 30;
@@ -49,5 +50,6 @@ public class EnemyScript : CharacterScript {
 			transform.position = new Vector3(transform.position.x, currentY, 0.0f);
 			yield return new WaitForSeconds(Time.deltaTime);
 		}
+		Shoot();
 	}
 }

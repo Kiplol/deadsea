@@ -4,26 +4,19 @@ using System.Collections;
 public class AmmoStore : MonoBehaviour {
 
 	public GameObject bulletPrefab;
-	public ArrayList bullets;
+	public ArrayList bullets = new ArrayList();
 
 	void Awake () {
 		Debug.Log("AmmoStore Awake");
-		bullets = new ArrayList();
-		Debug.Log("bullets = " + bullets);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	void Start ()
+	{
+
 	}
 
 	public Bullet getBullet()
 	{
-		Debug.Log("bullets = " + bullets);
-		if(bullets == null)
-		{
-			bullets = new ArrayList();
-		}
 		if(bullets.Count > 0)
 		{
 			Bullet retBullet = bullets[0] as Bullet;

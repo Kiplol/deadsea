@@ -19,7 +19,7 @@ public class CharacterScript : MonoBehaviour {
 
 	void Awake ()
 	{
-		Animator animator = GetComponent<Animator>(); 
+		animator = GetComponent<Animator>(); 
 	}
 	
 	// Update is called once per frame

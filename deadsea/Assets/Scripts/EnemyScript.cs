@@ -33,8 +33,15 @@ public class EnemyScript : CharacterScript {
 	public override void OnDeathBy (GameObject killer)
 	{
 		base.OnDeathBy (killer);
-//		Destroy(this.gameObject);
-//		animator.sprites = SpriteAnimationScript.ExplosionSprites();
+		if(killer)
+		{
+			CharacterScript killerChar = killer.GetComponent(typeof(PlayerShip)) as CharacterScript;
+			if(killerChar)
+			{
+				killerChar.OnCharacterDestroySuccess(this);
+			}
+			StartCoroutine(ExplodeAndDie());
+		}
 	}
 
 	IEnumerator FlyIn()

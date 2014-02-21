@@ -36,6 +36,9 @@ public class PlayerMovementScript : MonoBehaviour {
 			this.lastVector.y = this.currentVector.y;
 		}
 //		Debug.Log (Camera.main.WorldToScreenPoint(this.transform.position));
+
+		Animator animator = GetComponent<Animator>();
+		animator.SetFloat("vx", deltaVector.x);
 	}
 
 	Vector3 deltaForNewVector(Vector3 newVector)

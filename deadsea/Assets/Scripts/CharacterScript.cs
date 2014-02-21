@@ -6,11 +6,11 @@ public class CharacterScript : MonoBehaviour {
 	public int health;
 	public AmmoStore ammoStore;
 	public int pointsForDestroying;
-	public SpriteAnimationScript animator;
 	public int framesPerShot;
 	protected int framesSinceShot = 0;
 	public float shootSpeed = 1.0f;
 	public bool invincible;
+	protected Animator animator;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class CharacterScript : MonoBehaviour {
 
 	void Awake ()
 	{
-		animator = this.GetComponent(typeof(SpriteAnimationScript)) as SpriteAnimationScript;
+		Animator animator = GetComponent<Animator>(); 
 	}
 	
 	// Update is called once per frame
@@ -68,29 +68,20 @@ public class CharacterScript : MonoBehaviour {
 		return null;
 	}
 	
-	IEnumerator ExplodeAndDie()
+	public IEnumerator ExplodeAndDie()
 	{
-		animator.sprites = SpriteAnimationScript.ExplosionSprites();
-		int nLen = animator.sprites.Length;
-		for(int i = 0; i < nLen; i++)
-		{
-			yield return i;
-		}
+//		animator.sprites = SpriteAnimationScript.ExplosionSprites();
+//		int nLen = animator.sprites.Length;
+//		for(int i = 0; i < nLen; i++)
+//		{
+//			yield return i;
+//		}
 		Destroy(this.gameObject);
+		yield return null;
 	}
 
 	public virtual void OnDeathBy(GameObject killer)
 	{
-		if(killer)
-		{
-			CharacterScript killerChar = killer.GetComponent(typeof(PlayerShip)) as CharacterScript;
-			if(killerChar)
-			{
-				killerChar.OnCharacterDestroySuccess(this);
-			}
-			StartCoroutine(ExplodeAndDie());
-		}
-
 	}
 
 	public virtual void OnShotCollisionSuccess(GameObject thingThatGotShot)

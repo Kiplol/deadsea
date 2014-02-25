@@ -15,14 +15,14 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayerCharacter sharedCharacter];
         [self addChild:_player.spriteNode];
     }
     return self;
 }
 
-
+#pragma mark - Touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -62,8 +62,14 @@
     [_player stopFiring];
 }
 
+#pragma mark - Updates
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+-(void)didSimulatePhysics
+{
+    [[OceanPhysicsController sharedController] updateObjectsWithPhysics];
 }
 
 @end

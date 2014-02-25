@@ -20,13 +20,30 @@
     if((self = [super init]))
     {
         self.speedVector = speedVector;
+        _bFired = NO;
     }
     return self;
+}
+
+-(void)fire
+{
+    _bFired = YES;
+    [[OceanPhysicsController sharedController] addPhysicsObject:self];
+}
+-(void)removeFromPlay
+{
+    [[OceanPhysicsController sharedController] removePhysicsObject:self];
+    _bFired = NO;
 }
 
 #pragma mark - DSOceanPhysicsDelegate
 -(CGPoint)vectorForUpdate
 {
     return self.speedVector;
+}
+
+-(void)applyUpdateVector:(CGPoint)updateVector
+{
+    self.position = CGPointMake(self.position.x + updateVector.x, self.position.y + updateVector.y);
 }
 @end

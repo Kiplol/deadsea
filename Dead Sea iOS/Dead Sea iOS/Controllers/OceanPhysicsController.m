@@ -9,6 +9,7 @@
 #import "OceanPhysicsController.h"
 
 @implementation OceanPhysicsController
+@synthesize physicsObjects = _arrPhysicsObjects;
 
 +(OceanPhysicsController*)sharedController
 {
@@ -19,16 +20,49 @@
     });
     return sharedInstance;
 }
+-(id)init
+{
+    if((self = [super init]))
+    {
+        _currentDirection = CGPointZero;
+        _arrPhysicsObjects = [NSMutableArray arrayWithCapacity:10];
+        _toAdd = [NSMutableArray arrayWithCapacity:10];
+        _toRemove = [NSMutableArray arrayWithCapacity:10];
+    }
+    return self;
+}
 -(void)addPhysicsObject:(NSObject<DSOceanPhysicsDelegate>*)physicsObject
 {
-    
+    [_toAdd addObject:physicsObject];
 }
--(void)clearPhysicsObjects
+-(void)removePhysicsObject:(NSObject<DSOceanPhysicsDelegate>*)physicsObject
 {
-    
+    [_toRemove addObject:physicsObject];
+}
+-(void)removeAllPhysicsObjects
+{
+    [_toRemove addObjectsFromArray:_arrPhysicsObjects];
 }
 -(void)applyCurrentDirection:(CGPoint)dir forDuration:(double)duration
 {
-    
+    _currentDirection = dir;
+    double delayInSeconds = duration;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        _currentDirection = CGPointZero;
+    });
+}
+-(void)updateObjectsWithPhysics
+{
+    [_arrPhysicsObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSObject<DSOceanPhysicsDelegate>* physicsObject = (NSObject<DSOceanPhysicsDelegate>*)obj;
+        CGPoint updateVector = [physicsObject vectorForUpdate];
+        CGPoint updateVectorPlusCurrent = CGPointMake(updateVector.x + _currentDirection.x, updateVector.y + _currentDirection.y);
+        [physicsObject applyUpdateVector:updateVectorPlusCurrent];
+    }];
+    [_arrPhysicsObjects removeObjectsInArray:_toRemove];
+    [_arrPhysicsObjects addObjectsFromArray:_toAdd];
+    [_toAdd removeAllObjects];
+    [_toRemove removeAllObjects];
 }
 @end

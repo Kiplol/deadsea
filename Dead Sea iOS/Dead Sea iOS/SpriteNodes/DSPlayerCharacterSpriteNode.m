@@ -45,7 +45,7 @@
 {
     [super fillAtlasDictionary];
     //Hover
-    SKTextureAtlas * hoverAtlas = [SKTextureAtlas atlasNamed:@"Hover"];
+    SKTextureAtlas * hoverAtlas = [SKTextureAtlas atlasNamed:@"PlayerShipHover"];
     [_dicAtlases setObject:hoverAtlas forKey:ATLAS_KEY_HOVER];
 }
 

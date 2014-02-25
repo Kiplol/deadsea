@@ -29,12 +29,4 @@
     }
     return self;
 }
--(void)startFiring
-{
-    _bFiring = YES;
-}
--(void)stopFiring
-{
-    _bFiring = NO;
-}
 @end

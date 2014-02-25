@@ -9,11 +9,8 @@
 #import "DSCharacter.h"
 
 @interface DSPlayerCharacter : DSCharacter {
-    BOOL _bFiring;
+
 }
 
 +(DSPlayerCharacter*)sharedCharacter;
-
--(void)startFiring;
--(void)stopFiring;
 @end

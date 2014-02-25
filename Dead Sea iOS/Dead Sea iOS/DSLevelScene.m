@@ -51,7 +51,8 @@
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
     CGPoint deltaVector = CGPointMake(point.x - _lastTouchPoint.x, point.y - _lastTouchPoint.y);
-    [DSPlayerCharacter sharedCharacter].spriteNode.position = CGPointMake([DSPlayerCharacter sharedCharacter].spriteNode.position.x + deltaVector.x, [DSPlayerCharacter sharedCharacter].spriteNode.position.y + deltaVector.y);
+    CGPoint currentPos = _player.spriteNode.position;
+    _player.spriteNode.position = CGPointMake(currentPos.x + deltaVector.x, currentPos.y + deltaVector.y);
     _lastTouchPoint = point;
 }
 

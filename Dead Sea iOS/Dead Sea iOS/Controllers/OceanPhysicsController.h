@@ -27,5 +27,5 @@
 -(void)addPhysicsObject:(NSObject<DSOceanPhysicsDelegate>*)physicsObject;
 -(void)removePhysicsObject:(NSObject<DSOceanPhysicsDelegate>*)physicsObject;
 -(void)removeAllPhysicsObjects;
--(void)applyCurrentDirection:(CGPoint)dir forDuration:(double)duration;
+-(void)applyCurrentDirection:(CGPoint)dir forDuration:(double)durationInSec;
 @end

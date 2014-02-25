@@ -1,23 +1,15 @@
 //
-//  DSCharacter.m
+//  DSCharacterSpriteNode.m
 //  Dead Sea iOS
 //
-//  Created by Elliott Kipper on 2/24/14.
+//  Created by Kip on 2/25/14.
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import "DSCharacter.h"
+#import "DSCharacterSpriteNode.h"
 
-@implementation DSCharacter
+@implementation DSCharacterSpriteNode
 
--(id)init
-{
-    if((self = [super init]))
-    {
-        self.fireRate = 3;
-    }
-    return self;
-}
 -(void)fire
 {
     NSLog(@"Pew");

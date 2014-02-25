@@ -8,6 +8,7 @@
 
 #import "DSLevelScene.h"
 #import "DSPlayerCharacter.h"
+#import "OceanPhysicsController.h"
 
 @implementation DSLevelScene
 
@@ -42,7 +43,7 @@
     [super touchesBegan:touches withEvent:event];
     UITouch * touch = [touches anyObject];
     _lastTouchPoint = [touch locationInNode:self];
-    [_player startFiring];
+    [_player.spriteNode startFiring];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -59,7 +60,7 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    [_player stopFiring];
+    [_player.spriteNode stopFiring];
 }
 
 #pragma mark - Updates

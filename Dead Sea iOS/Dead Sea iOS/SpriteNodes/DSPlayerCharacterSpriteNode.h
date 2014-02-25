@@ -7,9 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "DSSpriteNode.h"
+#import "DSCharacterSpriteNode.h"
 
-@interface DSPlayerCharacterSpriteNode : DSSpriteNode {
+@interface DSPlayerCharacterSpriteNode : DSCharacterSpriteNode {
     
 }
 

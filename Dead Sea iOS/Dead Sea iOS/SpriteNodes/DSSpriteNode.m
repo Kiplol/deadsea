@@ -9,6 +9,16 @@
 #import "DSSpriteNode.h"
 
 @implementation DSSpriteNode
+-(id)init
+{
+    if((self = [super init]))
+    {
+        [self fillAtlasDictionary];
+        self.texture = [self initialTexture];
+        self.size = self.texture.size;
+    }
+    return self;
+}
 
 -(void)fillAtlasDictionary
 {

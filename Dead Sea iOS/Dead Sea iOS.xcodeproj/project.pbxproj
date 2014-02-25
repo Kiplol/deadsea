@@ -28,8 +28,8 @@
 		377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575A718BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m */; };
 		377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 377575AC18BD10B700F503F6 /* LightshotDefault.atlas */; };
 		377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 377575AD18BD10B700F503F6 /* LightshotFiring.atlas */; };
+		377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */; };
 		3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */; };
-		37BDE93018BC6A8C005C5807 /* DSCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE92F18BC6A8C005C5807 /* DSCharacter.m */; };
 		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
 		37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */; };
 		37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */; };
@@ -76,9 +76,9 @@
 		377575A718BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLightshotBulletSpriteNode.m; path = SpriteNodes/Bullets/DSLightshotBulletSpriteNode.m; sourceTree = "<group>"; };
 		377575AC18BD10B700F503F6 /* LightshotDefault.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = LightshotDefault.atlas; sourceTree = "<group>"; };
 		377575AD18BD10B700F503F6 /* LightshotFiring.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = LightshotFiring.atlas; sourceTree = "<group>"; };
+		377575B018BD1ACE00F503F6 /* DSCharacterSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSCharacterSpriteNode.h; path = SpriteNodes/DSCharacterSpriteNode.h; sourceTree = "<group>"; };
+		377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSCharacterSpriteNode.m; path = SpriteNodes/DSCharacterSpriteNode.m; sourceTree = "<group>"; };
 		3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerShipHover.atlas; sourceTree = "<group>"; };
-		37BDE92E18BC6A8C005C5807 /* DSCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCharacter.h; sourceTree = "<group>"; };
-		37BDE92F18BC6A8C005C5807 /* DSCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCharacter.m; sourceTree = "<group>"; };
 		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
 		37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSpriteNode.m; path = SpriteNodes/DSSpriteNode.m; sourceTree = "<group>"; };
 		37BDE93418BC6C0C005C5807 /* DSDestroyerDestroyableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSDestroyerDestroyableDelegate.h; path = Protocols/DSDestroyerDestroyableDelegate.h; sourceTree = "<group>"; };
@@ -157,8 +157,6 @@
 				372D321518BC4DA0003E9068 /* DSViewController.m */,
 				372D321718BC4DA0003E9068 /* DSLevelScene.h */,
 				372D321818BC4DA0003E9068 /* DSLevelScene.m */,
-				37BDE92E18BC6A8C005C5807 /* DSCharacter.h */,
-				37BDE92F18BC6A8C005C5807 /* DSCharacter.m */,
 				37BDE93518BC6C61005C5807 /* DSPlayerCharacter.h */,
 				37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */,
 				37BDE94018BC70B5005C5807 /* Controllers */,
@@ -205,6 +203,8 @@
 			children = (
 				37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */,
 				37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */,
+				377575B018BD1ACE00F503F6 /* DSCharacterSpriteNode.h */,
+				377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */,
 				372D323A18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.h */,
 				372D323B18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m */,
 				377575A918BD0FF100F503F6 /* Bullets */,
@@ -391,10 +391,10 @@
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
-				37BDE93018BC6A8C005C5807 /* DSCharacter.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
 				377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */,
 				37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */,
+				377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

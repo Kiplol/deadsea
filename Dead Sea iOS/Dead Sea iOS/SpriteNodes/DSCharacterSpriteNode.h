@@ -1,19 +1,17 @@
 //
-//  DSCharacter.h
+//  DSCharacterSpriteNode.h
 //  Dead Sea iOS
 //
-//  Created by Elliott Kipper on 2/24/14.
+//  Created by Kip on 2/25/14.
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "DSSpriteNode.h"
-#import "DSBulletSpriteNode.h"
 
-@interface DSCharacter : NSObject {
+@interface DSCharacterSpriteNode : DSSpriteNode {
+    int _health;
     BOOL _bFiring;
 }
-
 @property (nonatomic, readwrite) int health;
 @property (nonatomic, retain) DSSpriteNode * spriteNode;
 /*!
@@ -24,5 +22,4 @@
 -(void)fire;
 -(void)startFiring;
 -(void)stopFiring;
-
 @end

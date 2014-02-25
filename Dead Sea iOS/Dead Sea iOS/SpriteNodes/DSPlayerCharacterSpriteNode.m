@@ -19,9 +19,7 @@
 {
     if((self = [super init]))
     {
-        [self fillAtlasDictionary];
-        self.texture = [self initialTexture];
-        self.size = self.texture.size;
+        self.fireRate = 5;
     }
     return self;
 }

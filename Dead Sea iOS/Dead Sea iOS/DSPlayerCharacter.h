@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import "DSCharacter.h"
+#import "DSPlayerCharacterSpriteNode.h"
 
-@interface DSPlayerCharacter : DSCharacter {
+@interface DSPlayerCharacter : NSObject {
 
 }
 
+@property (nonatomic, retain) DSPlayerCharacterSpriteNode * spriteNode;
 +(DSPlayerCharacter*)sharedCharacter;
 @end

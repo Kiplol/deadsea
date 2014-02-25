@@ -9,6 +9,7 @@
 #import "DSLevelScene.h"
 #import "DSPlayerCharacter.h"
 #import "OceanPhysicsController.h"
+#import "DSBulletSpriteNode.h"
 
 @implementation DSLevelScene
 
@@ -66,6 +67,13 @@
 #pragma mark - Updates
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    [self enumerateChildNodesWithName:NAME_BULLET usingBlock:^(SKNode *node, BOOL *stop) {
+        if(CGRectContainsPoint(self.view.bounds, node.position) == NO)
+        {
+            DSBulletSpriteNode * bullet = (DSBulletSpriteNode*)node;
+            [bullet removeFromPlay];
+        }
+    }];
 }
 
 -(void)didSimulatePhysics

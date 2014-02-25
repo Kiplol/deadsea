@@ -9,14 +9,17 @@
 #import "DSSpriteNode.h"
 #import "OceanPhysicsController.h"
 
+#define NAME_BULLET @"bullet"
 #define ATLAS_KEY_FIRING @"atlasKeyBulletFiring"
 #define ATLAS_KEY_DEFAULT @"atlasKetBulletDefault"
 
+@class DSCharacterSpriteNode;
 @interface DSBulletSpriteNode : DSSpriteNode <DSOceanPhysicsDelegate> {
     BOOL _bFired;
 }
 
 @property (nonatomic, readwrite) CGPoint speedVector;
+@property (nonatomic, assign) DSCharacterSpriteNode * shooter;
 
 -(id)initWithSpeedVector:(CGPoint)speedVector;
 -(void)fire;

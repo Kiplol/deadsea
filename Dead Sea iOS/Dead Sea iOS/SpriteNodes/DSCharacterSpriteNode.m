@@ -7,12 +7,27 @@
 //
 
 #import "DSCharacterSpriteNode.h"
+#import "DSBulletSpriteNode.h"
 
 @implementation DSCharacterSpriteNode
-
+-(id)init
+{
+    if((self = [super init]))
+    {
+        self.fireRate = 5;
+    }
+    return self;
+}
 -(void)fire
 {
-    NSLog(@"Pew");
+    //Fire now
+    DSBulletSpriteNode * bullet = [self nextBullet];
+    bullet.position = self.position;
+    bullet.shooter = self;
+    [self.scene addChild:bullet];
+    [bullet fire];
+    
+    //Do it again
     if(_bFiring && self.fireRate > 0)
     {
         double delayInSeconds = 1.0/self.fireRate;
@@ -34,5 +49,11 @@
 -(void)stopFiring
 {
     _bFiring = NO;
+}
+
+-(DSBulletSpriteNode*)nextBullet
+{
+    NSLog(@"Must override %s", __PRETTY_FUNCTION__);
+    return nil;
 }
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "DSSpriteNode.h"
+#import "BulletFactory.h"
 
+@class DSBulletSpriteNode;
 @interface DSCharacterSpriteNode : DSSpriteNode {
     int _health;
     BOOL _bFiring;
@@ -22,4 +24,10 @@
 -(void)fire;
 -(void)startFiring;
 -(void)stopFiring;
+
+/*!
+ * @brief returns the next DSBulletSpriteNode which will have fire called immediately
+ * @return DSBulletSpriteNode about to be fired
+ */
+-(DSBulletSpriteNode*)nextBullet;
 @end

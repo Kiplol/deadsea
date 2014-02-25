@@ -7,6 +7,7 @@
 //
 
 #import "DSPlayerCharacterSpriteNode.h"
+#import "DSLightshotBulletSpriteNode.h"
 
 #define ATLAS_KEY_HOVER @"atlasKeyHover"
 
@@ -19,7 +20,7 @@
 {
     if((self = [super init]))
     {
-        self.fireRate = 5;
+        self.fireRate = 10;
     }
     return self;
 }
@@ -38,6 +39,11 @@
     
 }
 
+#pragma mark - DSCharacterSpriteNode
+-(DSBulletSpriteNode*)nextBullet
+{
+    return [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];
+}
 #pragma mark - DSSpriteNode
 -(void)fillAtlasDictionary
 {

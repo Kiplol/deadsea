@@ -7,6 +7,7 @@
 //
 
 #import "DSBulletSpriteNode.h"
+#import "BulletFactory.h"
 
 @implementation DSBulletSpriteNode
 
@@ -20,6 +21,7 @@
     if((self = [super init]))
     {
         self.speedVector = speedVector;
+        self.name = NAME_BULLET;
         _bFired = NO;
     }
     return self;
@@ -32,8 +34,12 @@
 }
 -(void)removeFromPlay
 {
+    [self.scene removeChildrenInArray:@[self]];
+    self.shooter = nil;
+    [self removeFromParent];
     [[OceanPhysicsController sharedController] removePhysicsObject:self];
     _bFired = NO;
+    [[BulletFactory sharedFactory] returnBulletForReuse:self];
 }
 
 #pragma mark - DSOceanPhysicsDelegate

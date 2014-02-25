@@ -7,7 +7,7 @@
 //
 
 #import "DSViewController.h"
-#import "DSMyScene.h"
+#import "DSLevelScene.h"
 
 @implementation DSViewController
 
@@ -21,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [DSMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [DSLevelScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

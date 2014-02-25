@@ -6,21 +6,18 @@
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import "DSMyScene.h"
-#import "DSPlayerCharacterSpriteNode.h"
+#import "DSLevelScene.h"
+#import "DSPlayerCharacter.h"
 
-@implementation DSMyScene
+@implementation DSLevelScene
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-//        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        _sPlayerShip = [DSPlayerCharacterSpriteNode init];
-        [self addChild:_sPlayerShip];
+        _player = [DSPlayerCharacter sharedCharacter];
+        [self addChild:_player.spriteNode];
     }
     return self;
 }
@@ -42,18 +39,26 @@
 //        
 //        [self addChild:sprite];
 //    }
-    
+    [super touchesBegan:touches withEvent:event];
     UITouch * touch = [touches anyObject];
     _lastTouchPoint = [touch locationInNode:self];
+    [_player startFiring];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesMoved:touches withEvent:event];
     UITouch * touch = [touches anyObject];
     CGPoint point = [touch locationInNode:self];
     CGPoint deltaVector = CGPointMake(point.x - _lastTouchPoint.x, point.y - _lastTouchPoint.y);
-    _sPlayerShip.position = CGPointMake(_sPlayerShip.position.x + deltaVector.x, _sPlayerShip.position.y + deltaVector.y);
+    [DSPlayerCharacter sharedCharacter].spriteNode.position = CGPointMake([DSPlayerCharacter sharedCharacter].spriteNode.position.x + deltaVector.x, [DSPlayerCharacter sharedCharacter].spriteNode.position.y + deltaVector.y);
     _lastTouchPoint = point;
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
+    [_player stopFiring];
 }
 
 -(void)update:(CFTimeInterval)currentTime {

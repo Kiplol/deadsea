@@ -17,8 +17,7 @@
 		372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372D320E18BC4DA0003E9068 /* Main_iPhone.storyboard */; };
 		372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372D321118BC4DA0003E9068 /* Main_iPad.storyboard */; };
 		372D321618BC4DA0003E9068 /* DSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 372D321518BC4DA0003E9068 /* DSViewController.m */; };
-		372D321918BC4DA0003E9068 /* DSMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 372D321818BC4DA0003E9068 /* DSMyScene.m */; };
-		372D321B18BC4DA0003E9068 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 372D321A18BC4DA0003E9068 /* Spaceship.png */; };
+		372D321918BC4DA0003E9068 /* DSLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 372D321818BC4DA0003E9068 /* DSLevelScene.m */; };
 		372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372D321C18BC4DA0003E9068 /* Images.xcassets */; };
 		372D322418BC4DA0003E9068 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D322318BC4DA0003E9068 /* XCTest.framework */; };
 		372D322518BC4DA0003E9068 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D31FA18BC4DA0003E9068 /* Foundation.framework */; };
@@ -27,6 +26,11 @@
 		372D323018BC4DA0003E9068 /* Dead_Sea_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 372D322F18BC4DA0003E9068 /* Dead_Sea_iOSTests.m */; };
 		372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 372D323B18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m */; };
 		3776B1C718BC666F00DF5A68 /* Hover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* Hover.atlas */; };
+		37BDE93018BC6A8C005C5807 /* DSCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE92F18BC6A8C005C5807 /* DSCharacter.m */; };
+		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
+		37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */; };
+		37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */; };
+		37BDE93E18BC706D005C5807 /* OceanPhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,9 +59,8 @@
 		372D321218BC4DA0003E9068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		372D321418BC4DA0003E9068 /* DSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSViewController.h; sourceTree = "<group>"; };
 		372D321518BC4DA0003E9068 /* DSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSViewController.m; sourceTree = "<group>"; };
-		372D321718BC4DA0003E9068 /* DSMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSMyScene.h; sourceTree = "<group>"; };
-		372D321818BC4DA0003E9068 /* DSMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSMyScene.m; sourceTree = "<group>"; };
-		372D321A18BC4DA0003E9068 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		372D321718BC4DA0003E9068 /* DSLevelScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLevelScene.h; sourceTree = "<group>"; };
+		372D321818BC4DA0003E9068 /* DSLevelScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLevelScene.m; sourceTree = "<group>"; };
 		372D321C18BC4DA0003E9068 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		372D322218BC4DA0003E9068 /* Dead Sea iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dead Sea iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		372D322318BC4DA0003E9068 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -67,6 +70,17 @@
 		372D323A18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSPlayerCharacterSpriteNode.h; path = SpriteNodes/DSPlayerCharacterSpriteNode.h; sourceTree = "<group>"; };
 		372D323B18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSPlayerCharacterSpriteNode.m; path = SpriteNodes/DSPlayerCharacterSpriteNode.m; sourceTree = "<group>"; };
 		3776B1C618BC666F00DF5A68 /* Hover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Hover.atlas; sourceTree = "<group>"; };
+		37BDE92E18BC6A8C005C5807 /* DSCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCharacter.h; sourceTree = "<group>"; };
+		37BDE92F18BC6A8C005C5807 /* DSCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCharacter.m; sourceTree = "<group>"; };
+		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
+		37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSpriteNode.m; path = SpriteNodes/DSSpriteNode.m; sourceTree = "<group>"; };
+		37BDE93418BC6C0C005C5807 /* DSDestroyerDestroyableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSDestroyerDestroyableDelegate.h; path = Protocols/DSDestroyerDestroyableDelegate.h; sourceTree = "<group>"; };
+		37BDE93518BC6C61005C5807 /* DSPlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPlayerCharacter.h; sourceTree = "<group>"; };
+		37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPlayerCharacter.m; sourceTree = "<group>"; };
+		37BDE93818BC6E8A005C5807 /* DSBulletSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletSpriteNode.h; path = SpriteNodes/DSBulletSpriteNode.h; sourceTree = "<group>"; };
+		37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletSpriteNode.m; path = SpriteNodes/DSBulletSpriteNode.m; sourceTree = "<group>"; };
+		37BDE93C18BC706D005C5807 /* OceanPhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OceanPhysicsController.h; path = Controllers/OceanPhysicsController.h; sourceTree = "<group>"; };
+		37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OceanPhysicsController.m; path = Controllers/OceanPhysicsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,9 +148,14 @@
 				372D321118BC4DA0003E9068 /* Main_iPad.storyboard */,
 				372D321418BC4DA0003E9068 /* DSViewController.h */,
 				372D321518BC4DA0003E9068 /* DSViewController.m */,
-				372D321718BC4DA0003E9068 /* DSMyScene.h */,
-				372D321818BC4DA0003E9068 /* DSMyScene.m */,
-				372D321A18BC4DA0003E9068 /* Spaceship.png */,
+				372D321718BC4DA0003E9068 /* DSLevelScene.h */,
+				372D321818BC4DA0003E9068 /* DSLevelScene.m */,
+				37BDE92E18BC6A8C005C5807 /* DSCharacter.h */,
+				37BDE92F18BC6A8C005C5807 /* DSCharacter.m */,
+				37BDE93518BC6C61005C5807 /* DSPlayerCharacter.h */,
+				37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */,
+				37BDE94018BC70B5005C5807 /* Controllers */,
+				37BDE93F18BC709E005C5807 /* Protocols */,
 				3776B1C318BC666F00DF5A68 /* Resources */,
 				372D323918BC58BF003E9068 /* SpriteNodes */,
 				372D321C18BC4DA0003E9068 /* Images.xcassets */,
@@ -177,8 +196,12 @@
 		372D323918BC58BF003E9068 /* SpriteNodes */ = {
 			isa = PBXGroup;
 			children = (
+				37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */,
+				37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */,
 				372D323A18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.h */,
 				372D323B18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m */,
+				37BDE93818BC6E8A005C5807 /* DSBulletSpriteNode.h */,
+				37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */,
 			);
 			name = SpriteNodes;
 			sourceTree = "<group>";
@@ -205,6 +228,23 @@
 				3776B1C618BC666F00DF5A68 /* Hover.atlas */,
 			);
 			path = PlayerShip;
+			sourceTree = "<group>";
+		};
+		37BDE93F18BC709E005C5807 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE93418BC6C0C005C5807 /* DSDestroyerDestroyableDelegate.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		37BDE94018BC70B5005C5807 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE93C18BC706D005C5807 /* OceanPhysicsController.h */,
+				37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +325,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3776B1C718BC666F00DF5A68 /* Hover.atlas in Resources */,
-				372D321B18BC4DA0003E9068 /* Spaceship.png in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
 				372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
@@ -308,11 +347,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */,
 				372D320918BC4DA0003E9068 /* main.m in Sources */,
-				372D321918BC4DA0003E9068 /* DSMyScene.m in Sources */,
+				37BDE93E18BC706D005C5807 /* OceanPhysicsController.m in Sources */,
+				372D321918BC4DA0003E9068 /* DSLevelScene.m in Sources */,
+				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
+				37BDE93018BC6A8C005C5807 /* DSCharacter.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
+				37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

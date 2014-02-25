@@ -7,9 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "DSSpriteNode.h"
 
-@interface DSPlayerCharacterSpriteNode : SKSpriteNode {
-    NSMutableDictionary * _dicAtlases;
+@interface DSPlayerCharacterSpriteNode : DSSpriteNode {
+    
 }
 
 -(void)leanLeft;

@@ -11,8 +11,7 @@
 #define ATLAS_KEY_HOVER @"atlasKeyHover"
 
 @interface DSPlayerCharacterSpriteNode (private)
--(void)fillAtlasDictionary;
--(SKTexture*)initialTexture;
+
 @end
 
 @implementation DSPlayerCharacterSpriteNode
@@ -22,6 +21,7 @@
     {
         [self fillAtlasDictionary];
         self.texture = [self initialTexture];
+        self.size = self.texture.size;
     }
     return self;
 }
@@ -40,13 +40,10 @@
     
 }
 
-#pragma mark - private
+#pragma mark - DSSpriteNode
 -(void)fillAtlasDictionary
 {
-    if(!_dicAtlases)
-    {
-        _dicAtlases = [[NSMutableDictionary alloc] initWithCapacity:3];
-    }
+    [super fillAtlasDictionary];
     //Hover
     SKTextureAtlas * hoverAtlas = [SKTextureAtlas atlasNamed:@"Hover"];
     [_dicAtlases setObject:hoverAtlas forKey:ATLAS_KEY_HOVER];

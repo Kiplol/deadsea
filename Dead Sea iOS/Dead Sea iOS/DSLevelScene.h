@@ -8,11 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@class DSPlayerCharacterSpriteNode;
-@interface DSMyScene : SKScene {
-    DSPlayerCharacterSpriteNode * _sPlayerShip;
-    
+@class DSPlayerCharacter;
+@interface DSLevelScene : SKScene {
     CGPoint _lastTouchPoint;
+    DSPlayerCharacter * _player;
 }
 
 @end

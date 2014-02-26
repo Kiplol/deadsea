@@ -32,9 +32,15 @@
 		377575B518BD237000F503F6 /* BulletFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575B418BD237000F503F6 /* BulletFactory.m */; };
 		3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */; };
 		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
-		37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */; };
+		37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayer.m */; };
 		37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */; };
 		37BDE93E18BC706D005C5807 /* OceanPhysicsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */; };
+		37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE94318BDA2DE005C5807 /* SmallEnemyHover.atlas */; };
+		37BDE94718BDA46C005C5807 /* DSEnemySpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE94618BDA46C005C5807 /* DSEnemySpriteNode.m */; };
+		37BDE94B18BDA685005C5807 /* DSSmallEnemySpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE94A18BDA685005C5807 /* DSSmallEnemySpriteNode.m */; };
+		37BDE94E18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE94D18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m */; };
+		37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95018BDB124005C5807 /* BallshotDefault.atlas */; };
+		37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95118BDB124005C5807 /* BallshotFiring.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,12 +91,21 @@
 		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
 		37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSpriteNode.m; path = SpriteNodes/DSSpriteNode.m; sourceTree = "<group>"; };
 		37BDE93418BC6C0C005C5807 /* DSDestroyerDestroyableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSDestroyerDestroyableDelegate.h; path = Protocols/DSDestroyerDestroyableDelegate.h; sourceTree = "<group>"; };
-		37BDE93518BC6C61005C5807 /* DSPlayerCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPlayerCharacter.h; sourceTree = "<group>"; };
-		37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPlayerCharacter.m; sourceTree = "<group>"; };
+		37BDE93518BC6C61005C5807 /* DSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSPlayer.h; sourceTree = "<group>"; };
+		37BDE93618BC6C61005C5807 /* DSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSPlayer.m; sourceTree = "<group>"; };
 		37BDE93818BC6E8A005C5807 /* DSBulletSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletSpriteNode.h; path = SpriteNodes/DSBulletSpriteNode.h; sourceTree = "<group>"; };
 		37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletSpriteNode.m; path = SpriteNodes/DSBulletSpriteNode.m; sourceTree = "<group>"; };
 		37BDE93C18BC706D005C5807 /* OceanPhysicsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OceanPhysicsController.h; path = Controllers/OceanPhysicsController.h; sourceTree = "<group>"; };
 		37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OceanPhysicsController.m; path = Controllers/OceanPhysicsController.m; sourceTree = "<group>"; };
+		37BDE94318BDA2DE005C5807 /* SmallEnemyHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallEnemyHover.atlas; sourceTree = "<group>"; };
+		37BDE94518BDA46C005C5807 /* DSEnemySpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSEnemySpriteNode.h; path = SpriteNodes/Enemies/DSEnemySpriteNode.h; sourceTree = "<group>"; };
+		37BDE94618BDA46C005C5807 /* DSEnemySpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSEnemySpriteNode.m; path = SpriteNodes/Enemies/DSEnemySpriteNode.m; sourceTree = "<group>"; };
+		37BDE94918BDA685005C5807 /* DSSmallEnemySpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSmallEnemySpriteNode.h; path = SpriteNodes/Enemies/DSSmallEnemySpriteNode.h; sourceTree = "<group>"; };
+		37BDE94A18BDA685005C5807 /* DSSmallEnemySpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSmallEnemySpriteNode.m; path = SpriteNodes/Enemies/DSSmallEnemySpriteNode.m; sourceTree = "<group>"; };
+		37BDE94C18BDAF18005C5807 /* DSBallshotBulletSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBallshotBulletSpriteNode.h; path = SpriteNodes/Bullets/DSBallshotBulletSpriteNode.h; sourceTree = "<group>"; };
+		37BDE94D18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBallshotBulletSpriteNode.m; path = SpriteNodes/Bullets/DSBallshotBulletSpriteNode.m; sourceTree = "<group>"; };
+		37BDE95018BDB124005C5807 /* BallshotDefault.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BallshotDefault.atlas; sourceTree = "<group>"; };
+		37BDE95118BDB124005C5807 /* BallshotFiring.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BallshotFiring.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,8 +175,8 @@
 				372D321518BC4DA0003E9068 /* DSViewController.m */,
 				372D321718BC4DA0003E9068 /* DSLevelScene.h */,
 				372D321818BC4DA0003E9068 /* DSLevelScene.m */,
-				37BDE93518BC6C61005C5807 /* DSPlayerCharacter.h */,
-				37BDE93618BC6C61005C5807 /* DSPlayerCharacter.m */,
+				37BDE93518BC6C61005C5807 /* DSPlayer.h */,
+				37BDE93618BC6C61005C5807 /* DSPlayer.m */,
 				377575B618BD237400F503F6 /* Factories */,
 				37BDE94018BC70B5005C5807 /* Controllers */,
 				37BDE93F18BC709E005C5807 /* Protocols */,
@@ -211,6 +226,7 @@
 				377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */,
 				372D323A18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.h */,
 				372D323B18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m */,
+				37BDE94818BDA476005C5807 /* Enemies */,
 				377575A918BD0FF100F503F6 /* Bullets */,
 			);
 			name = SpriteNodes;
@@ -223,6 +239,8 @@
 				37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */,
 				377575A618BD0FE000F503F6 /* DSLightshotBulletSpriteNode.h */,
 				377575A718BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m */,
+				37BDE94C18BDAF18005C5807 /* DSBallshotBulletSpriteNode.h */,
+				37BDE94D18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m */,
 			);
 			name = Bullets;
 			sourceTree = "<group>";
@@ -230,6 +248,7 @@
 		377575AA18BD10B700F503F6 /* Bullets */ = {
 			isa = PBXGroup;
 			children = (
+				37BDE94F18BDB124005C5807 /* Ballshot */,
 				377575AB18BD10B700F503F6 /* Lightshot */,
 			);
 			path = Bullets;
@@ -264,6 +283,7 @@
 		3776B1C418BC666F00DF5A68 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				37BDE94118BDA2DE005C5807 /* Enemies */,
 				377575AA18BD10B700F503F6 /* Bullets */,
 				3776B1C518BC666F00DF5A68 /* PlayerShip */,
 			);
@@ -293,6 +313,42 @@
 				37BDE93D18BC706D005C5807 /* OceanPhysicsController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		37BDE94118BDA2DE005C5807 /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE94218BDA2DE005C5807 /* SmallEnemy */,
+			);
+			path = Enemies;
+			sourceTree = "<group>";
+		};
+		37BDE94218BDA2DE005C5807 /* SmallEnemy */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE94318BDA2DE005C5807 /* SmallEnemyHover.atlas */,
+			);
+			path = SmallEnemy;
+			sourceTree = "<group>";
+		};
+		37BDE94818BDA476005C5807 /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE94518BDA46C005C5807 /* DSEnemySpriteNode.h */,
+				37BDE94618BDA46C005C5807 /* DSEnemySpriteNode.m */,
+				37BDE94918BDA685005C5807 /* DSSmallEnemySpriteNode.h */,
+				37BDE94A18BDA685005C5807 /* DSSmallEnemySpriteNode.m */,
+			);
+			name = Enemies;
+			sourceTree = "<group>";
+		};
+		37BDE94F18BDB124005C5807 /* Ballshot */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE95018BDB124005C5807 /* BallshotDefault.atlas */,
+				37BDE95118BDB124005C5807 /* BallshotFiring.atlas */,
+			);
+			path = Ballshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,9 +428,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
 				377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */,
+				37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */,
+				37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */,
 				372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
 				377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */,
@@ -401,14 +460,17 @@
 				37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */,
 				372D320918BC4DA0003E9068 /* main.m in Sources */,
 				37BDE93E18BC706D005C5807 /* OceanPhysicsController.m in Sources */,
+				37BDE94718BDA46C005C5807 /* DSEnemySpriteNode.m in Sources */,
 				372D321918BC4DA0003E9068 /* DSLevelScene.m in Sources */,
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
 				377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */,
-				37BDE93718BC6C61005C5807 /* DSPlayerCharacter.m in Sources */,
+				37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */,
+				37BDE94B18BDA685005C5807 /* DSSmallEnemySpriteNode.m in Sources */,
 				377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */,
+				37BDE94E18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

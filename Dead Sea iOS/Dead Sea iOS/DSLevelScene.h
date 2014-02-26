@@ -7,12 +7,15 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "DSCharacterSpriteNode.h"
 
-@class DSPlayerCharacter;
+@class DSPlayer;
 @interface DSLevelScene : SKScene <SKPhysicsContactDelegate> {
     CGPoint _lastTouchPoint;
-    DSPlayerCharacter * _player;
+    DSPlayer * _player;
     SKLabelNode * _comboLabel;
+    
+    DSCharacterSpriteNode * _testChar;
 }
 
 @end

@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import "DSPlayerCharacter.h"
+#import "DSPlayer.h"
 #import "DSPlayerCharacterSpriteNode.h"
 
-@implementation DSPlayerCharacter
-+(DSPlayerCharacter*)sharedCharacter
+@implementation DSPlayer
++(DSPlayer*)sharedPlayer
 {
     static dispatch_once_t once;
     static id sharedInstance;
     dispatch_once(&once, ^{
-        sharedInstance = [[DSPlayerCharacter alloc] init];
+        sharedInstance = [[DSPlayer alloc] init];
     });
     return sharedInstance;
 }

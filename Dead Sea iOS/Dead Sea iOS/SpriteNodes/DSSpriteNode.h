@@ -21,4 +21,5 @@ typedef enum {
 
 -(void)fillAtlasDictionary;
 -(SKTexture*)initialTexture;
+-(void)faceTowardsPoint:(CGPoint)point maximumRotation:(double)angleInRadians duration:(double)dur completion:(void (^)())completion;
 @end

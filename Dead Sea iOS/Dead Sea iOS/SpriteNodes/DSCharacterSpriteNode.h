@@ -10,6 +10,8 @@
 #import "BulletFactory.h"
 #import "DSDestroyerDestroyableDelegate.h"
 
+#define ATLAS_KEY_HOVER @"atlasKeyHover"
+
 @class DSBulletSpriteNode;
 @interface DSCharacterSpriteNode : DSSpriteNode <DSDestroyableDelegate>{
     int _health;

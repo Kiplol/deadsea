@@ -10,6 +10,7 @@
 #import "DSBulletSpriteNode.h"
 
 typedef enum {factoryBulletTypeLightshot = 0,
+                factoryBulletTypeBallshot,
                 factoryBulletTypeUnknown} factoryBulletType;
 
 @interface BulletFactory : NSObject {

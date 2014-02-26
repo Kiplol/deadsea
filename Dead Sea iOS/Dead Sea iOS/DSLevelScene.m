@@ -7,9 +7,10 @@
 //
 
 #import "DSLevelScene.h"
-#import "DSPlayerCharacter.h"
+#import "DSPlayer.h"
 #import "OceanPhysicsController.h"
 #import "DSBulletSpriteNode.h"
+#import "DSSmallEnemySpriteNode.h"
 
 @interface DSLevelScene (private)
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
@@ -24,7 +25,7 @@
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
-        _player = [DSPlayerCharacter sharedCharacter];
+        _player = [DSPlayer sharedPlayer];
         [self addChild:_player.spriteNode];
         
         //Combo Label
@@ -34,12 +35,10 @@
         [self addChild:_comboLabel];
         
         //TEST
-        
-        DSSpriteNode * testChar = [[DSPlayerCharacterSpriteNode alloc] init];
-        [self addChild:testChar];
-        testChar.position = CGPointMake(size.width * 0.5f, size.height * 0.5f);
-        testChar.physicsBody.categoryBitMask = DSColliderTypeEnemy;
-        testChar.physicsBody.contactTestBitMask = DSColliderTypeNone;
+        _testChar = [[DSSmallEnemySpriteNode alloc] init];
+        [self addChild:_testChar];
+        _testChar.position = CGPointMake(size.width * 0.5f, size.height * 0.5f);
+        [_testChar startFiring];
     }
     return self;
 }
@@ -97,8 +96,8 @@
     }];
     
     //Combo
-    [[DSPlayerCharacter sharedCharacter].spriteNode countDownComboAtTime:currentTime];
-    _comboLabel.text = [NSString stringWithFormat:@"%f", [DSPlayerCharacter sharedCharacter].spriteNode.comboCountDown];
+    [[DSPlayer sharedPlayer].spriteNode countDownComboAtTime:currentTime];
+    _comboLabel.text = [NSString stringWithFormat:@"%f", [DSPlayer sharedPlayer].spriteNode.comboCountDown];
 }
 
 -(void)didSimulatePhysics

@@ -8,6 +8,7 @@
 
 #import "BulletFactory.h"
 #import "DSLightshotBulletSpriteNode.h"
+#import "DSBallshotBulletSpriteNode.h"
 
 @interface BulletFactory (private)
 -(DSBulletSpriteNode*)createBulletOfType:(factoryBulletType)bulletType;
@@ -64,6 +65,13 @@
         {
             DSLightshotBulletSpriteNode * lightshot = [[DSLightshotBulletSpriteNode alloc] init];
             bullet = lightshot;
+        }
+            break;
+            
+        case factoryBulletTypeBallshot:
+        {
+            DSBallshotBulletSpriteNode * ballshot = [[DSBallshotBulletSpriteNode alloc] init];
+            bullet = ballshot;
         }
             break;
             

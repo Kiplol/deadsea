@@ -9,8 +9,6 @@
 #import "DSPlayerCharacterSpriteNode.h"
 #import "DSLightshotBulletSpriteNode.h"
 
-#define ATLAS_KEY_HOVER @"atlasKeyHover"
-
 #define MAX_COMBO_TIME 1.2
 
 @interface DSPlayerCharacterSpriteNode (private)
@@ -57,6 +55,22 @@
 }
 
 #pragma mark - DSCharacterSpriteNode
+-(void)fire
+{
+    [super fire];
+    //Do it again
+    if(_bFiring && self.fireRate > 0)
+    {
+        double delayInSeconds = 1.0/self.fireRate;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            if(_bFiring && self.fireRate > 0)
+            {
+                [self fire];
+            }
+        });
+    }
+}
 -(DSBulletSpriteNode*)nextBullet
 {
     DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];

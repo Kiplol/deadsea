@@ -25,22 +25,13 @@
 {
     //Fire now
     DSBulletSpriteNode * bullet = [self nextBullet];
-    bullet.position = self.position;
-    bullet.shooter = self;
-    [self.scene addChild:bullet];
-    [bullet fire];
     
-    //Do it again
-    if(_bFiring && self.fireRate > 0)
+    if(bullet)
     {
-        double delayInSeconds = 1.0/self.fireRate;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            if(_bFiring && self.fireRate > 0)
-            {
-                [self fire];
-            }
-        });
+        bullet.position = self.position;
+        bullet.shooter = self;
+        [self.scene addChild:bullet];
+        [bullet fire];
     }
 }
 

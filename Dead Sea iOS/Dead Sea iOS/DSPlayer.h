@@ -9,10 +9,10 @@
 #import "DSPlayerCharacterSpriteNode.h"
 #import "DSDestroyerDestroyableDelegate.h"
 
-@interface DSPlayerCharacter : NSObject{
+@interface DSPlayer : NSObject{
 
 }
 @property (nonatomic, retain) DSPlayerCharacterSpriteNode * spriteNode;
 
-+(DSPlayerCharacter*)sharedCharacter;
++(DSPlayer*)sharedPlayer;
 @end

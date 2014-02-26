@@ -9,13 +9,17 @@
 #import "DSCharacterSpriteNode.h"
 #import "DSBulletSpriteNode.h"
 
+@interface DSCharacterSpriteNode (private)
+-(CGFloat)radiusForPhysicsBody;
+@end
+
 @implementation DSCharacterSpriteNode
 -(id)init
 {
     if((self = [super init]))
     {
         self.fireRate = 5;
-        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:[self radiusForPhysicsBody]];
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
     }
@@ -49,5 +53,11 @@
 {
     NSLog(@"Must override %s", __PRETTY_FUNCTION__);
     return nil;
+}
+
+#pragma mark - private
+-(CGFloat)radiusForPhysicsBody
+{
+    return (self.size.width * 0.5f);
 }
 @end

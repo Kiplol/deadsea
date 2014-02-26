@@ -11,6 +11,7 @@
 #import "OceanPhysicsController.h"
 #import "DSBulletSpriteNode.h"
 #import "DSSmallEnemySpriteNode.h"
+#import "YMCPhysicsDebugger.h"
 
 @interface DSLevelScene (private)
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
@@ -21,6 +22,7 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        [YMCPhysicsDebugger init];
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         
@@ -39,6 +41,7 @@
         [self addChild:_testChar];
         _testChar.position = CGPointMake(size.width * 0.5f, size.height * 0.5f);
         [_testChar startFiring];
+        [self drawPhysicsBodies];
     }
     return self;
 }

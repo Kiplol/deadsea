@@ -30,6 +30,11 @@
 		377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 377575AD18BD10B700F503F6 /* LightshotFiring.atlas */; };
 		377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */; };
 		377575B518BD237000F503F6 /* BulletFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575B418BD237000F503F6 /* BulletFactory.m */; };
+		377575EF18BE66C200F503F6 /* YMCPhysicsDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575E618BE66C200F503F6 /* YMCPhysicsDebugger.m */; };
+		377575F018BE66C200F503F6 /* YMCPhysicsDebugProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575E818BE66C200F503F6 /* YMCPhysicsDebugProperties.m */; };
+		377575F118BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EA18BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m */; };
+		377575F218BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EC18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m */; };
+		377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EE18BE66C200F503F6 /* YMCSwizzler.m */; };
 		3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */; };
 		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
 		37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayer.m */; };
@@ -87,6 +92,16 @@
 		377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSCharacterSpriteNode.m; path = SpriteNodes/DSCharacterSpriteNode.m; sourceTree = "<group>"; };
 		377575B318BD237000F503F6 /* BulletFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulletFactory.h; path = Factories/BulletFactory.h; sourceTree = "<group>"; };
 		377575B418BD237000F503F6 /* BulletFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulletFactory.m; path = Factories/BulletFactory.m; sourceTree = "<group>"; };
+		377575E518BE66C200F503F6 /* YMCPhysicsDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCPhysicsDebugger.h; sourceTree = "<group>"; };
+		377575E618BE66C200F503F6 /* YMCPhysicsDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCPhysicsDebugger.m; sourceTree = "<group>"; };
+		377575E718BE66C200F503F6 /* YMCPhysicsDebugProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCPhysicsDebugProperties.h; sourceTree = "<group>"; };
+		377575E818BE66C200F503F6 /* YMCPhysicsDebugProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCPhysicsDebugProperties.m; sourceTree = "<group>"; };
+		377575E918BE66C200F503F6 /* YMCSKNode+PhysicsDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMCSKNode+PhysicsDebug.h"; sourceTree = "<group>"; };
+		377575EA18BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMCSKNode+PhysicsDebug.m"; sourceTree = "<group>"; };
+		377575EB18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YMCSKPhysicsBody+Swizzle.h"; sourceTree = "<group>"; };
+		377575EC18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YMCSKPhysicsBody+Swizzle.m"; sourceTree = "<group>"; };
+		377575ED18BE66C200F503F6 /* YMCSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCSwizzler.h; sourceTree = "<group>"; };
+		377575EE18BE66C200F503F6 /* YMCSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCSwizzler.m; sourceTree = "<group>"; };
 		3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerShipHover.atlas; sourceTree = "<group>"; };
 		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
 		37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSpriteNode.m; path = SpriteNodes/DSSpriteNode.m; sourceTree = "<group>"; };
@@ -167,6 +182,7 @@
 		372D320218BC4DA0003E9068 /* Dead Sea iOS */ = {
 			isa = PBXGroup;
 			children = (
+				377575E418BE66C200F503F6 /* YMCPhysicsDebugger */,
 				372D320B18BC4DA0003E9068 /* DSAppDelegate.h */,
 				372D320C18BC4DA0003E9068 /* DSAppDelegate.m */,
 				372D320E18BC4DA0003E9068 /* Main_iPhone.storyboard */,
@@ -270,6 +286,23 @@
 				377575B418BD237000F503F6 /* BulletFactory.m */,
 			);
 			name = Factories;
+			sourceTree = "<group>";
+		};
+		377575E418BE66C200F503F6 /* YMCPhysicsDebugger */ = {
+			isa = PBXGroup;
+			children = (
+				377575E518BE66C200F503F6 /* YMCPhysicsDebugger.h */,
+				377575E618BE66C200F503F6 /* YMCPhysicsDebugger.m */,
+				377575E718BE66C200F503F6 /* YMCPhysicsDebugProperties.h */,
+				377575E818BE66C200F503F6 /* YMCPhysicsDebugProperties.m */,
+				377575E918BE66C200F503F6 /* YMCSKNode+PhysicsDebug.h */,
+				377575EA18BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m */,
+				377575EB18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.h */,
+				377575EC18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m */,
+				377575ED18BE66C200F503F6 /* YMCSwizzler.h */,
+				377575EE18BE66C200F503F6 /* YMCSwizzler.m */,
+			);
+			path = YMCPhysicsDebugger;
 			sourceTree = "<group>";
 		};
 		3776B1C318BC666F00DF5A68 /* Resources */ = {
@@ -456,6 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				377575EF18BE66C200F503F6 /* YMCPhysicsDebugger.m in Sources */,
 				377575B518BD237000F503F6 /* BulletFactory.m in Sources */,
 				37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */,
 				372D320918BC4DA0003E9068 /* main.m in Sources */,
@@ -466,11 +500,15 @@
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
+				377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */,
 				377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */,
 				37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */,
 				37BDE94B18BDA685005C5807 /* DSSmallEnemySpriteNode.m in Sources */,
+				377575F018BE66C200F503F6 /* YMCPhysicsDebugProperties.m in Sources */,
 				377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */,
 				37BDE94E18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m in Sources */,
+				377575F118BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m in Sources */,
+				377575F218BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

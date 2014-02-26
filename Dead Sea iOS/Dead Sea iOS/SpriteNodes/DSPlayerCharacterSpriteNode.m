@@ -103,4 +103,10 @@
 {
     
 }
+
+#pragma mark - private
+-(CGFloat)radiusForPhysicsBody
+{
+    return 2.0f;
+}
 @end

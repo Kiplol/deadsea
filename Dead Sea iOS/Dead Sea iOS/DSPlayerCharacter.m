@@ -10,7 +10,6 @@
 #import "DSPlayerCharacterSpriteNode.h"
 
 @implementation DSPlayerCharacter
-
 +(DSPlayerCharacter*)sharedCharacter
 {
     static dispatch_once_t once;

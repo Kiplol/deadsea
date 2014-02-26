@@ -8,6 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+typedef enum {
+    DSColliderTypeNone = 0,
+    DSColliderTypePlayer = 1,
+    DSColliderTypePlayerProjectile = 1 << 1,
+    DSColliderTypeEnemy = 1 << 2,
+    DSColliderTypeEnemyProjectile = 1 << 3
+} DSColliderType;
+
 @interface DSSpriteNode : SKSpriteNode {
     NSMutableDictionary * _dicAtlases;
 }

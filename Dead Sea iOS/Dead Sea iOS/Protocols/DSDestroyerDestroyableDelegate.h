@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+@class DSCharacterSpriteNode;
 @protocol DSDestroyerDelegate <NSObject>
-
+@optional
+-(void)didDamageCharacter:(DSCharacterSpriteNode*)character;
+-(void)didDestroyCharacter:(DSCharacterSpriteNode*)character;
 @end
 
 @protocol DSDestroyableDelegate <NSObject>
-
+@optional
+-(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character;
+-(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character;
 @end

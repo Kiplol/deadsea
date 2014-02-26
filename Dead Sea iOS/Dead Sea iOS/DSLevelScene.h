@@ -9,9 +9,10 @@
 #import <SpriteKit/SpriteKit.h>
 
 @class DSPlayerCharacter;
-@interface DSLevelScene : SKScene {
+@interface DSLevelScene : SKScene <SKPhysicsContactDelegate> {
     CGPoint _lastTouchPoint;
     DSPlayerCharacter * _player;
+    SKLabelNode * _comboLabel;
 }
 
 @end

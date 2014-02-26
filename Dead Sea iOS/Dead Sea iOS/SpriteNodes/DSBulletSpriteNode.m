@@ -23,6 +23,9 @@
         self.speedVector = speedVector;
         self.name = NAME_BULLET;
         _bFired = NO;
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        self.physicsBody.collisionBitMask = DSColliderTypeNone;
+        self.physicsBody.affectedByGravity = NO;
     }
     return self;
 }

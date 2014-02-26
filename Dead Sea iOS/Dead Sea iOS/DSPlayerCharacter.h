@@ -7,11 +7,12 @@
 //
 
 #import "DSPlayerCharacterSpriteNode.h"
+#import "DSDestroyerDestroyableDelegate.h"
 
-@interface DSPlayerCharacter : NSObject {
+@interface DSPlayerCharacter : NSObject{
 
 }
-
 @property (nonatomic, retain) DSPlayerCharacterSpriteNode * spriteNode;
+
 +(DSPlayerCharacter*)sharedCharacter;
 @end

@@ -15,6 +15,9 @@
     if((self = [super init]))
     {
         self.fireRate = 5;
+        self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+        self.physicsBody.affectedByGravity = NO;
+        self.physicsBody.collisionBitMask = DSColliderTypeNone;
     }
     return self;
 }

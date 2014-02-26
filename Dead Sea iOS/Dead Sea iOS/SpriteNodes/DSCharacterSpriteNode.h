@@ -10,7 +10,7 @@
 #import "BulletFactory.h"
 
 @class DSBulletSpriteNode;
-@interface DSCharacterSpriteNode : DSSpriteNode {
+@interface DSCharacterSpriteNode : DSSpriteNode{
     int _health;
     BOOL _bFiring;
 }

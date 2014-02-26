@@ -10,10 +10,14 @@
 #import "DSCharacterSpriteNode.h"
 
 @interface DSPlayerCharacterSpriteNode : DSCharacterSpriteNode {
-    
+    double _comboCountDown;
+    double _comboStartTime;
 }
+@property (nonatomic, readwrite) double comboCountDown;
 
 -(void)leanLeft;
 -(void)leanRight;
 -(void)leanForDelta:(CGPoint)deltaVector;
+-(void)rechargeCombo;
+
 @end

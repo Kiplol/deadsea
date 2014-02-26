@@ -9,15 +9,15 @@
 #import <SpriteKit/SpriteKit.h>
 #import "DSCharacterSpriteNode.h"
 
-@interface DSPlayerCharacterSpriteNode : DSCharacterSpriteNode {
-    double _comboCountDown;
-    double _comboStartTime;
+@interface DSPlayerCharacterSpriteNode : DSCharacterSpriteNode <DSDestroyerDelegate> {
+    CFTimeInterval _comboCountDown;
+    CFTimeInterval _comboStartTime;
 }
-@property (nonatomic, readwrite) double comboCountDown;
+@property (nonatomic, readonly) CFTimeInterval comboCountDown;
 
 -(void)leanLeft;
 -(void)leanRight;
 -(void)leanForDelta:(CGPoint)deltaVector;
 -(void)rechargeCombo;
-
+-(void)countDownComboAtTime:(CFTimeInterval)currentTime;
 @end

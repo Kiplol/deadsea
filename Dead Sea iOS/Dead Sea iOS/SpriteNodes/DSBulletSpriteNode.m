@@ -26,6 +26,7 @@
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
         self.physicsBody.affectedByGravity = NO;
+        self.physicsBody.categoryBitMask = DSColliderTypeProjectile;
     }
     return self;
 }

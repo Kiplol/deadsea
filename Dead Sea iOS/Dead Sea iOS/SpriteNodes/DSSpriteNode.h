@@ -11,9 +11,8 @@
 typedef enum {
     DSColliderTypeNone = 0,
     DSColliderTypePlayer = 1,
-    DSColliderTypePlayerProjectile = 1 << 1,
-    DSColliderTypeEnemy = 1 << 2,
-    DSColliderTypeEnemyProjectile = 1 << 3
+    DSColliderTypeEnemy = 1 << 1,
+    DSColliderTypeProjectile = 1 << 2
 } DSColliderType;
 
 @interface DSSpriteNode : SKSpriteNode {

@@ -8,9 +8,10 @@
 
 #import "DSSpriteNode.h"
 #import "BulletFactory.h"
+#import "DSDestroyerDestroyableDelegate.h"
 
 @class DSBulletSpriteNode;
-@interface DSCharacterSpriteNode : DSSpriteNode{
+@interface DSCharacterSpriteNode : DSSpriteNode <DSDestroyableDelegate>{
     int _health;
     BOOL _bFiring;
 }

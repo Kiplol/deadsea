@@ -11,6 +11,8 @@
 
 #define ATLAS_KEY_HOVER @"atlasKeyHover"
 
+#define MAX_COMBO_TIME 1.2
+
 @interface DSPlayerCharacterSpriteNode (private)
 
 @end
@@ -24,17 +26,22 @@
         self.fireRate = 10;
         _comboStartTime = 0;
         self.physicsBody.categoryBitMask = DSColliderTypePlayer;
-        self.physicsBody.contactTestBitMask = DSColliderTypeEnemyProjectile;
     }
     return self;
 }
 
 -(void)rechargeCombo
 {
-    _comboStartTime = [[NSDate date] timeIntervalSince1970];
-    _comboCountDown = 1.0f;
+    _comboStartTime = CACurrentMediaTime();
+    _comboCountDown = MAX_COMBO_TIME;
 }
 
+-(void)countDownComboAtTime:(CFTimeInterval)currentTime
+{
+    CFTimeInterval comboDeltaTime = currentTime - _comboStartTime;
+    _comboCountDown = (MAX_COMBO_TIME - comboDeltaTime) / MAX_COMBO_TIME;
+    _comboCountDown = MAX(_comboCountDown, 0);
+}
 #pragma mark - Animation Methods
 -(void)leanLeft
 {
@@ -53,8 +60,8 @@
 -(DSBulletSpriteNode*)nextBullet
 {
     DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];
-    bullet.physicsBody.categoryBitMask = DSColliderTypePlayerProjectile;
     bullet.physicsBody.contactTestBitMask = DSColliderTypeEnemy;
+    bullet.speedVector = CGPointMake(0.0f, 10.0f);
     return bullet;
 }
 #pragma mark - DSSpriteNode
@@ -71,5 +78,15 @@
     SKTextureAtlas * initialAtlas = [_dicAtlases objectForKey:ATLAS_KEY_HOVER];
     SKTexture * initialTexture = [initialAtlas textureNamed:@"PlayerShipHover_0"];
     return initialTexture;
+}
+
+#pragma mark - DSDestroyerDelegate
+-(void)didDamageCharacter:(DSCharacterSpriteNode*)character
+{
+    [self rechargeCombo];
+}
+-(void)didDestroyCharacter:(DSCharacterSpriteNode*)character
+{
+    
 }
 @end

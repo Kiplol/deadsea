@@ -13,6 +13,7 @@
 
 @interface DSLevelScene (private)
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
+-(CGRect)rectOfPlay;
 @end
 @implementation DSLevelScene
 
@@ -38,7 +39,7 @@
         [self addChild:testChar];
         testChar.position = CGPointMake(size.width * 0.5f, size.height * 0.5f);
         testChar.physicsBody.categoryBitMask = DSColliderTypeEnemy;
-        testChar.physicsBody.contactTestBitMask = DSColliderTypePlayerProjectile;
+        testChar.physicsBody.contactTestBitMask = DSColliderTypeNone;
     }
     return self;
 }
@@ -74,7 +75,7 @@
     CGPoint deltaVector = CGPointMake(point.x - _lastTouchPoint.x, point.y - _lastTouchPoint.y);
     CGPoint currentPos = _player.spriteNode.position;
     CGPoint newPos = CGPointMake(currentPos.x + deltaVector.x, currentPos.y + deltaVector.y);
-    _player.spriteNode.position = [self nearestPoint:newPos inRect:self.view.frame];
+    _player.spriteNode.position = [self nearestPoint:newPos inRect:[self rectOfPlay]];
     _lastTouchPoint = point;
 }
 
@@ -94,6 +95,10 @@
             [bullet removeFromPlay];
         }
     }];
+    
+    //Combo
+    [[DSPlayerCharacter sharedCharacter].spriteNode countDownComboAtTime:currentTime];
+    _comboLabel.text = [NSString stringWithFormat:@"%f", [DSPlayerCharacter sharedCharacter].spriteNode.comboCountDown];
 }
 
 -(void)didSimulatePhysics
@@ -101,7 +106,53 @@
     [[OceanPhysicsController sharedController] updateObjectsWithPhysics];
 }
 
+#pragma mark - SKPhysicsContactDelegate
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    DSBulletSpriteNode * bullet = nil;
+    DSCharacterSpriteNode * character = nil;
+    //Find the bullet
+    if(contact.bodyA.categoryBitMask & DSColliderTypeProjectile)
+    {
+        bullet = (DSBulletSpriteNode*)contact.bodyA.node;
+    }
+    else if (contact.bodyB.categoryBitMask & DSColliderTypeProjectile)
+    {
+        bullet = (DSBulletSpriteNode*)contact.bodyB.node;
+    }
+    //Find the character
+    if(contact.bodyA.categoryBitMask & (DSColliderTypePlayer | DSColliderTypeEnemy))
+    {
+        character = (DSCharacterSpriteNode*)contact.bodyA.node;
+    }
+    else if (contact.bodyB.categoryBitMask & (DSColliderTypePlayer | DSColliderTypeEnemy))
+    {
+        character = (DSCharacterSpriteNode*)contact.bodyB.node;
+    }
+    if(bullet.shooter)
+    {
+        if([bullet.shooter conformsToProtocol:@protocol(DSDestroyerDelegate)])
+        {
+            DSCharacterSpriteNode<DSDestroyerDelegate>* shooter = (DSCharacterSpriteNode<DSDestroyerDelegate>*)bullet.shooter;
+            if([shooter respondsToSelector:@selector(didDamageCharacter:)])
+            {
+                [shooter didDamageCharacter:character];
+            }
+        }
+    }
+    [bullet removeFromPlay];
+}
+
 #pragma mark - private
+-(CGRect)rectOfPlay
+{
+    CGFloat padding = 10.0f;
+    CGRect playRect = self.view.frame;
+    playRect.origin = CGPointMake(padding, padding);
+    playRect.size.width -= (2 * padding);
+    playRect.size.height -= (2* padding);
+    return playRect;
+}
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect
 {
     if(CGRectContainsPoint(rect, point))
@@ -142,10 +193,5 @@
         }
         return nearestPoint;
     }
-}
-
--(void)didBeginContact:(SKPhysicsContact *)contact
-{
-    
 }
 @end

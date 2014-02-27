@@ -22,7 +22,9 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+#if DEBUG
         [YMCPhysicsDebugger init];
+#endif
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         
@@ -41,7 +43,9 @@
         [self addChild:_testChar];
         _testChar.position = CGPointMake(size.width * 0.5f, size.height * 0.5f);
         [_testChar startFiring];
+#if DEBUG
         [self drawPhysicsBodies];
+#endif
     }
     return self;
 }

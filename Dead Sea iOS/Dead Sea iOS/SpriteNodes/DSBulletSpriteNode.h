@@ -11,7 +11,6 @@
 
 #define NAME_BULLET @"bullet"
 #define ATLAS_KEY_FIRING @"atlasKeyBulletFiring"
-#define ATLAS_KEY_DEFAULT @"atlasKetBulletDefault"
 
 @class DSCharacterSpriteNode;
 @interface DSBulletSpriteNode : DSSpriteNode <DSOceanPhysicsDelegate> {

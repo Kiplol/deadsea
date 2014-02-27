@@ -9,9 +9,5 @@
 #import "DSCharacterSpriteNode.h"
 
 @interface DSEnemySpriteNode : DSCharacterSpriteNode {
-    int _shotsThisBurst;
 }
-
-@property (nonatomic, readwrite) int shotsPerBurst;
-@property (nonatomic, readwrite) double timeBetweenBursts;
 @end

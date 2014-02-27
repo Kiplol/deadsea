@@ -17,10 +17,10 @@
     BOOL _bFired;
 }
 
-@property (nonatomic, readwrite) CGPoint speedVector;
+@property (nonatomic, readwrite) CGVector speedVector;
 @property (nonatomic, assign) DSCharacterSpriteNode * shooter;
 
--(id)initWithSpeedVector:(CGPoint)speedVector;
+-(id)initWithSpeedVector:(CGVector)speedVector;
 -(void)fire;
 -(void)removeFromPlay;
 @end

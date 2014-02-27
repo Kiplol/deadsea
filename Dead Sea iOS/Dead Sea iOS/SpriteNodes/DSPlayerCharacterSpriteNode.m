@@ -17,6 +17,7 @@
 
 @implementation DSPlayerCharacterSpriteNode
 @synthesize comboCountDown = _comboCountDown;
+@synthesize combo = _combo;
 -(id)init
 {
     if((self = [super init]))
@@ -28,10 +29,10 @@
     return self;
 }
 
--(void)rechargeCombo
+#pragma mark - Combo
+-(void)rechargeComboCountdown
 {
     _comboStartTime = CACurrentMediaTime();
-    _comboCountDown = MAX_COMBO_TIME;
 }
 
 -(void)countDownComboAtTime:(CFTimeInterval)currentTime
@@ -39,6 +40,17 @@
     CFTimeInterval comboDeltaTime = currentTime - _comboStartTime;
     _comboCountDown = (MAX_COMBO_TIME - comboDeltaTime) / MAX_COMBO_TIME;
     _comboCountDown = MAX(_comboCountDown, 0);
+    if(_comboCountDown <= 0)
+    {
+        [self expireCombo];
+    }
+}
+
+-(int)expireCombo
+{
+    int lastCombo = _combo;
+    _combo = 0;
+    return lastCombo;
 }
 #pragma mark - Animation Methods
 -(void)leanLeft
@@ -63,7 +75,7 @@
 {
     DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];
     bullet.physicsBody.contactTestBitMask = DSColliderTypeEnemy;
-    bullet.speedVector = CGPointMake(0.0f, 10.0f);
+    bullet.speedVector = CGVectorMake(0.0f, 30.0f);
     return bullet;
 }
 #pragma mark - DSSpriteNode
@@ -85,16 +97,28 @@
 #pragma mark - DSDestroyerDelegate
 -(void)didDamageCharacter:(DSCharacterSpriteNode*)character
 {
-    [self rechargeCombo];
+    [self rechargeComboCountdown];
+    _combo++;
 }
 -(void)didDestroyCharacter:(DSCharacterSpriteNode*)character
 {
     
 }
 
+#pragma mark - DSDestroyableDelegate
+-(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
+{
+    [super didTakeDamagefromCharacter:character];
+    [self expireCombo];
+}
+-(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
+{
+    [super didGetDestroyedByCharacter:character];
+}
 #pragma mark - private
 -(CGFloat)radiusForPhysicsBody
 {
     return 2.0f;
 }
+
 @end

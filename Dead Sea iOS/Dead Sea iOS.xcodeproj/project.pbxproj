@@ -432,6 +432,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Supernovacaine Interactive";
 				TargetAttributes = {
+					372D31F618BC4DA0003E9068 = {
+						DevelopmentTeam = WEMRB8F83Q;
+					};
 					372D322118BC4DA0003E9068 = {
 						TestTargetID = 372D31F618BC4DA0003E9068;
 					};
@@ -645,10 +648,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dead Sea iOS/Dead Sea iOS-Prefix.pch";
 				INFOPLIST_FILE = "Dead Sea iOS/Dead Sea iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -659,10 +665,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Dead Sea iOS/Dead Sea iOS-Prefix.pch";
 				INFOPLIST_FILE = "Dead Sea iOS/Dead Sea iOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

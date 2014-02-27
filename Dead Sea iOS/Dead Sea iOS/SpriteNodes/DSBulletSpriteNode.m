@@ -13,10 +13,10 @@
 
 -(id)init
 {
-    return [self initWithSpeedVector:CGPointMake(0, 10)];
+    return [self initWithSpeedVector:CGVectorMake(0.0f, 30.0f)];
 }
 
--(id)initWithSpeedVector:(CGPoint)speedVector
+-(id)initWithSpeedVector:(CGVector)speedVector
 {
     if((self = [super init]))
     {
@@ -27,6 +27,8 @@
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.categoryBitMask = DSColliderTypeProjectile;
+        self.physicsBody.friction = 0;
+        self.physicsBody.linearDamping = 0;
     }
     return self;
 }
@@ -35,6 +37,7 @@
 {
     _bFired = YES;
     [[OceanPhysicsController sharedController] addPhysicsObject:self];
+    [self.physicsBody applyImpulse:CGVectorMake(self.speedVector.dx, self.speedVector.dy)];
 }
 -(void)removeFromPlay
 {
@@ -47,13 +50,4 @@
 }
 
 #pragma mark - DSOceanPhysicsDelegate
--(CGPoint)vectorForUpdate
-{
-    return self.speedVector;
-}
-
--(void)applyUpdateVector:(CGPoint)updateVector
-{
-    self.position = CGPointMake(self.position.x + updateVector.x, self.position.y + updateVector.y);
-}
 @end

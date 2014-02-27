@@ -68,7 +68,15 @@
     NSLog(@"Must override %s", __PRETTY_FUNCTION__);
     return nil;
 }
-
+#pragma mark - DSDestroyableDelegate
+-(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
+{
+    //Empty
+}
+-(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
+{
+    //Empty
+}
 #pragma mark - private
 -(CGFloat)radiusForPhysicsBody
 {

@@ -55,10 +55,10 @@
 -(void)updateObjectsWithPhysics
 {
     [_arrPhysicsObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSObject<DSOceanPhysicsDelegate>* physicsObject = (NSObject<DSOceanPhysicsDelegate>*)obj;
-        CGPoint updateVector = [physicsObject vectorForUpdate];
-        CGPoint updateVectorPlusCurrent = CGPointMake(updateVector.x + _currentDirection.x, updateVector.y + _currentDirection.y);
-        [physicsObject applyUpdateVector:updateVectorPlusCurrent];
+//        NSObject<DSOceanPhysicsDelegate>* physicsObject = (NSObject<DSOceanPhysicsDelegate>*)obj;
+//        CGVector updateVector = [physicsObject vectorForUpdate];
+//        CGVector updateVectorPlusCurrent = CGVectorMake(updateVector.dx + _currentDirection.x, updateVector.dy + _currentDirection.y);
+//        [physicsObject applyUpdateVector:updateVectorPlusCurrent];
     }];
     [_arrPhysicsObjects removeObjectsInArray:_toRemove];
     [_arrPhysicsObjects addObjectsFromArray:_toAdd];

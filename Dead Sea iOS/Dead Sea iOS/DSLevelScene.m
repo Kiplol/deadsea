@@ -14,6 +14,7 @@
 #import "YMCPhysicsDebugger.h"
 
 @interface DSLevelScene (private)
+-(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
 @end
@@ -34,8 +35,8 @@
         
         //Combo Label
         _comboLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-        _comboLabel.text = NSLocalizedString(@"Combo", nil);
         _comboLabel.position = CGPointMake((_comboLabel.frame.size.width * 0.5f) + 10.0f, self.frame.size.height - (_comboLabel.frame.size.height) - 100.0f);
+        _comboLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         [self addChild:_comboLabel];
         
         //TEST
@@ -104,7 +105,9 @@
     
     //Combo
     [[DSPlayer sharedPlayer].spriteNode countDownComboAtTime:currentTime];
-    _comboLabel.text = [NSString stringWithFormat:@"%f", [DSPlayer sharedPlayer].spriteNode.comboCountDown];
+    int combo = [DSPlayer sharedPlayer].spriteNode.combo;
+    NSString * text = ((combo > 1) ? [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo] : @"");
+    _comboLabel.text = text;
 }
 
 -(void)didSimulatePhysics
@@ -135,21 +138,50 @@
     {
         character = (DSCharacterSpriteNode*)contact.bodyB.node;
     }
-    if(bullet.shooter)
+    if(bullet && character)
     {
-        if([bullet.shooter conformsToProtocol:@protocol(DSDestroyerDelegate)])
-        {
-            DSCharacterSpriteNode<DSDestroyerDelegate>* shooter = (DSCharacterSpriteNode<DSDestroyerDelegate>*)bullet.shooter;
-            if([shooter respondsToSelector:@selector(didDamageCharacter:)])
-            {
-                [shooter didDamageCharacter:character];
-            }
-        }
+        [self bullet:bullet collidedWithCharacter:character];
     }
+
     [bullet removeFromPlay];
 }
 
 #pragma mark - private
+-(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character
+{
+    //shooter
+    character.health--;
+    BOOL didDestroy = (character.health <= 0);
+    DSCharacterSpriteNode<DSDestroyerDelegate>* shooter = nil;
+    if(bullet.shooter)
+    {
+        shooter = (DSCharacterSpriteNode*)bullet.shooter;
+        if([bullet.shooter conformsToProtocol:@protocol(DSDestroyerDelegate)])
+        {
+            shooter = (DSCharacterSpriteNode<DSDestroyerDelegate>*)bullet.shooter;
+            if([shooter respondsToSelector:@selector(didDamageCharacter:)])
+            {
+                [shooter didDamageCharacter:character];
+            }
+            if(didDestroy && [shooter respondsToSelector:@selector(didDestroyCharacter:)])
+            {
+                [shooter didDestroyCharacter:character];
+            }
+        }
+    }
+    //shootee
+    if([character conformsToProtocol:@protocol(DSDestroyableDelegate)])
+    {
+        if([character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
+        {
+            [character didTakeDamagefromCharacter:shooter];
+        }
+        if(didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
+        {
+            [character didGetDestroyedByCharacter:shooter];
+        }
+    }
+}
 -(CGRect)rectOfPlay
 {
     CGFloat padding = 10.0f;

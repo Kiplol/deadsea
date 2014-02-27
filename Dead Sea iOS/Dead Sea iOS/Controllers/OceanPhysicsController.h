@@ -10,8 +10,8 @@
 
 @protocol DSOceanPhysicsDelegate <NSObject>
 @required
--(CGPoint)vectorForUpdate;
--(void)applyUpdateVector:(CGPoint)updateVector;
+//-(CGVector)vectorForUpdate;
+//-(void)applyUpdateVector:(CGVector)updateVector;
 @end
 
 @interface OceanPhysicsController : NSObject {

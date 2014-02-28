@@ -19,4 +19,5 @@
     SKSpriteNode * _comboCountdownBar;
 }
 
+-(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
 @end

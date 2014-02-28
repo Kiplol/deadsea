@@ -113,17 +113,29 @@
         }
     }];
     
-    //Combo
-    [[DSPlayer sharedPlayer].spriteNode countDownComboAtTime:currentTime];
-    int combo = [DSPlayer sharedPlayer].spriteNode.combo;
-    NSString * text = ((combo > 1) ? [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo] : @"");
-    _comboLabel.text = text;
-    _comboCountdownBar.size = CGSizeMake([DSPlayer sharedPlayer].spriteNode.comboCountDown * 100.0f, _comboCountdownBar.size.height);
+    [self updateComboDisplayForCurrenTime:currentTime];
 }
 
 -(void)didSimulatePhysics
 {
     [[OceanPhysicsController sharedController] updateObjectsWithPhysics];
+}
+
+-(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
+{
+    [[DSPlayer sharedPlayer].spriteNode countDownComboAtTime:currentTime];
+    int combo = [DSPlayer sharedPlayer].spriteNode.combo;
+    if(combo > 1)
+    {
+        _comboLabel.text = [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo];
+        _comboCountdownBar.size = CGSizeMake([DSPlayer sharedPlayer].spriteNode.comboCountDown * 100.0f, _comboCountdownBar.size.height);
+    }
+    else
+    {
+        _comboLabel.text = @"";
+        _comboCountdownBar.size = CGSizeMake(0, _comboCountdownBar.size.height);
+    }
+
 }
 
 #pragma mark - SKPhysicsContactDelegate

@@ -9,6 +9,16 @@
 #import "DSSmallEnemySpriteNode.h"
 
 @implementation DSSmallEnemySpriteNode
+-(id)init
+{
+    if((self = [super init]))
+    {
+        self.fireRate = 3;
+        self.shotsPerBurst = 3;
+        self.timeBetweenBursts = 1;
+    }
+    return self;
+}
 -(void)fillAtlasDictionary
 {
     [super fillAtlasDictionary];

@@ -11,7 +11,6 @@
 
 @class DSPlayer;
 @interface DSLevelScene : SKScene <SKPhysicsContactDelegate> {
-    CGPoint _lastTouchPoint;
     DSPlayer * _player;
     SKLabelNode * _comboLabel;
     

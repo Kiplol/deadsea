@@ -33,13 +33,4 @@ typedef enum {
  * @note It is recommended that you override this method in any subclasses.
  */
 -(SKTexture*)initialTexture;
-
-/*!
- * @brief Given a point, turn towards it over a given duration.
- * @param point Point to face towards
- * @param angleInRadians The maximum angle (in radians) to rotate by
- * @param duration The time span in seconds over which the rotation takes place
- * @param completeion Block to be called upon completion
- */
--(void)faceTowardsPoint:(CGPoint)point maximumRotation:(double)angleInRadians duration:(double)dur completion:(void (^)())completion;
 @end

@@ -15,6 +15,7 @@
     int _health;
     BOOL _bFiring;
     int _shotsThisBurst;
+    BOOL _angularFollowPlayer;
 }
 @property (nonatomic, readwrite) int health;
 @property (nonatomic, retain) DSSpriteNode * spriteNode;
@@ -37,4 +38,7 @@
  * @return DSBulletSpriteNode about to be fired
  */
 -(DSBulletSpriteNode*)nextBullet;
+
+-(void)startAngularFollowPlayer;
+-(void)stopAngularFollowPlayer;
 @end

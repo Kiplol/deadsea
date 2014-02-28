@@ -36,7 +36,7 @@
     CGFloat denom = MAX(fabs(vx), fabs(vy));
     CGFloat unitVx = vx / denom;
     CGFloat unitVy = vy / denom;
-    bullet.speedVector = CGVectorMake(unitVx * 10.0f, unitVy * 10.0f);
+    bullet.speedVector = CGVectorMake(unitVx, unitVy);
     return bullet;
 }
 @end

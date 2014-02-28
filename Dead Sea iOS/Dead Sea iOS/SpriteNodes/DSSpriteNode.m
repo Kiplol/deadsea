@@ -33,17 +33,4 @@
     NSLog(@"Must override %s", __PRETTY_FUNCTION__);
     return nil;
 }
-
--(void)faceTowardsPoint:(CGPoint)point maximumRotation:(double)angleInRadians duration:(double)dur completion:(void (^)())completion
-{
-    CGFloat dx = self.position.x - point.x;
-    CGFloat dy = self.position.y - point.y;
-    double angleToTurn = atan2(dy,dx) + M_PI_2; //We're adding M_PI_2 because we want up to be the normal direction
-    [self runAction:[SKAction rotateToAngle:angleToTurn duration:dur] completion:^{
-        if(completion)
-        {
-            completion();
-        }
-    }];
-}
 @end

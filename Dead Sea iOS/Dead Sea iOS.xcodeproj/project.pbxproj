@@ -46,6 +46,7 @@
 		37BDE94E18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE94D18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m */; };
 		37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95018BDB124005C5807 /* BallshotDefault.atlas */; };
 		37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95118BDB124005C5807 /* BallshotFiring.atlas */; };
+		37BDE95618C043FC005C5807 /* SKAction+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95518C043FC005C5807 /* SKAction+Utilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		37BDE94D18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBallshotBulletSpriteNode.m; path = SpriteNodes/Bullets/DSBallshotBulletSpriteNode.m; sourceTree = "<group>"; };
 		37BDE95018BDB124005C5807 /* BallshotDefault.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BallshotDefault.atlas; sourceTree = "<group>"; };
 		37BDE95118BDB124005C5807 /* BallshotFiring.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BallshotFiring.atlas; sourceTree = "<group>"; };
+		37BDE95418C043FC005C5807 /* SKAction+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+Utilities.h"; sourceTree = "<group>"; };
+		37BDE95518C043FC005C5807 /* SKAction+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+Utilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +188,8 @@
 				377575E418BE66C200F503F6 /* YMCPhysicsDebugger */,
 				372D320B18BC4DA0003E9068 /* DSAppDelegate.h */,
 				372D320C18BC4DA0003E9068 /* DSAppDelegate.m */,
+				37BDE95418C043FC005C5807 /* SKAction+Utilities.h */,
+				37BDE95518C043FC005C5807 /* SKAction+Utilities.m */,
 				372D320E18BC4DA0003E9068 /* Main_iPhone.storyboard */,
 				372D321118BC4DA0003E9068 /* Main_iPad.storyboard */,
 				372D321418BC4DA0003E9068 /* DSViewController.h */,
@@ -499,6 +504,7 @@
 				37BDE93E18BC706D005C5807 /* OceanPhysicsController.m in Sources */,
 				37BDE94718BDA46C005C5807 /* DSEnemySpriteNode.m in Sources */,
 				372D321918BC4DA0003E9068 /* DSLevelScene.m in Sources */,
+				37BDE95618C043FC005C5807 /* SKAction+Utilities.m in Sources */,
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,

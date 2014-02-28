@@ -8,9 +8,11 @@
 
 #import "DSCharacterSpriteNode.h"
 #import "DSBulletSpriteNode.h"
+#import "DSPlayer.h"
 
 @interface DSCharacterSpriteNode (private)
 -(CGFloat)radiusForPhysicsBody;
+-(void)followPlayerAngular;
 @end
 
 @implementation DSCharacterSpriteNode
@@ -43,11 +45,20 @@
     if(_bFiring && self.fireRate > 0)
     {
         double delayInSeconds = 1.0/self.fireRate;
+        if(_shotsThisBurst >= self.shotsPerBurst)
+        {
+            delayInSeconds += self.timeBetweenBursts;
+            _shotsThisBurst = 0;
+        }
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             if(_bFiring && self.fireRate > 0)
             {
                 [self fire];
+            }
+            else
+            {
+                _shotsThisBurst = 0;
             }
         });
     }
@@ -61,12 +72,19 @@
 -(void)stopFiring
 {
     _bFiring = NO;
+    _shotsThisBurst = 0;
 }
 
 -(DSBulletSpriteNode*)nextBullet
 {
     NSLog(@"Must override %s", __PRETTY_FUNCTION__);
     return nil;
+}
+
+-(void)startAngularFollowPlayer
+{
+    _angularFollowPlayer = YES;
+    [self followPlayerAngular];
 }
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
@@ -78,6 +96,23 @@
     //Empty
 }
 #pragma mark - private
+-(void)followPlayerAngular
+{
+    SKAction * fart = [SKAction rotateTowardsPoint:[DSPlayer sharedPlayer].spriteNode.position
+                                         fromPoint:self.position
+                                          duration:1.0
+                                        completion:^{
+                                            if(_angularFollowPlayer)
+                                            {
+                                                [self followPlayerAngular];
+                                            }
+                                        }];
+    [self runAction:fart];
+}
+-(void)stopAngularFollowPlayer
+{
+    _angularFollowPlayer = NO;
+}
 -(CGFloat)radiusForPhysicsBody
 {
     return (self.size.width * 0.5f);

@@ -17,6 +17,7 @@
     
     DSCharacterSpriteNode * _testChar;
     UIPanGestureRecognizer * _playerMovementRecognizer;
+    SKSpriteNode * _comboCountdownBar;
 }
 
 @end

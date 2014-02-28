@@ -41,6 +41,12 @@
         _comboLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         [self addChild:_comboLabel];
         
+        //Combo Countdown Bar
+        _comboCountdownBar = [[SKSpriteNode alloc] initWithTexture:nil color:[UIColor yellowColor] size:CGSizeMake(1, 20)];
+        _comboCountdownBar.position = CGPointMake(_comboLabel.position.x, CGRectGetMaxY(_comboLabel.frame) - 20);
+        _comboCountdownBar.anchorPoint = CGPointZero;
+        [self addChild:_comboCountdownBar];
+        
         //TEST
         _testChar = [[DSSmallEnemySpriteNode alloc] init];
         [self addChild:_testChar];
@@ -160,6 +166,7 @@
     int combo = [DSPlayer sharedPlayer].spriteNode.combo;
     NSString * text = ((combo > 1) ? [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo] : @"");
     _comboLabel.text = text;
+    _comboCountdownBar.size = CGSizeMake([DSPlayer sharedPlayer].spriteNode.comboCountDown * 100.0f, _comboCountdownBar.size.height);
 }
 
 -(void)didSimulatePhysics

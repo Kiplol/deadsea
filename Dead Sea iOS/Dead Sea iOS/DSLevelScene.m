@@ -14,6 +14,7 @@
 #import "YMCPhysicsDebugger.h"
 
 @interface DSLevelScene (private)
+-(void)playerSwipe:(UIPanGestureRecognizer*)recognizer;
 -(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
@@ -28,10 +29,11 @@
 #endif
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-        
+        [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
         [self addChild:_player.spriteNode];
+        
         
         //Combo Label
         _comboLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
@@ -51,6 +53,19 @@
     return self;
 }
 
+-(void)didMoveToView:(SKView *)view
+{
+    [super didMoveToView:view];
+    //Player movement
+    _playerMovementRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(playerSwipe:)];
+    _playerMovementRecognizer.maximumNumberOfTouches = 1;
+    [[self view] addGestureRecognizer:_playerMovementRecognizer];
+    
+    //Ocean current
+    UIPanGestureRecognizer * gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    gestureRecognizer.minimumNumberOfTouches = 2;
+    [[self view] addGestureRecognizer:gestureRecognizer];
+}
 #pragma mark - Touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
@@ -69,29 +84,66 @@
 //        [self addChild:sprite];
 //    }
     [super touchesBegan:touches withEvent:event];
-    UITouch * touch = [touches anyObject];
-    _lastTouchPoint = [touch locationInNode:self];
-    [_player.spriteNode startFiring];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
-    UITouch * touch = [touches anyObject];
-    CGPoint point = [touch locationInNode:self];
-    CGPoint deltaVector = CGPointMake(point.x - _lastTouchPoint.x, point.y - _lastTouchPoint.y);
-    CGPoint currentPos = _player.spriteNode.position;
-    CGPoint newPos = CGPointMake(currentPos.x + deltaVector.x, currentPos.y + deltaVector.y);
-    _player.spriteNode.position = [self nearestPoint:newPos inRect:[self rectOfPlay]];
-    _lastTouchPoint = point;
+
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    [_player.spriteNode stopFiring];
 }
 
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+}
+
+#pragma mark - Gesture Recognizers
+-(void)playerSwipe:(UIPanGestureRecognizer*)recognizer
+{
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            _lastTouchPoint = [recognizer locationInView:[self view]];
+            [_player.spriteNode startFiring];
+        }
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+        {
+            [_player.spriteNode stopFiring];
+        }
+            break;
+            
+        default:
+        {
+            CGPoint point = [recognizer locationInView:[self view]];
+            CGPoint deltaVector = CGPointMake(point.x - _lastTouchPoint.x, point.y - _lastTouchPoint.y);
+            CGPoint currentPos = _player.spriteNode.position;
+            CGPoint newPos = CGPointMake(currentPos.x + deltaVector.x, currentPos.y - deltaVector.y);
+            _player.spriteNode.position = [self nearestPoint:newPos inRect:[self rectOfPlay]];
+            _lastTouchPoint = point;
+        }
+            break;
+    }
+}
+-(void)didSwipe:(UIPanGestureRecognizer*)recognizer
+{
+    if(recognizer.state == UIGestureRecognizerStateBegan)
+    {
+    }
+    else if(recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint vel = [recognizer translationInView:[self view]];
+        CGFloat scale = 0.05f;
+        CGVector newDir = CGVectorMake(vel.x * scale, (0 - vel.y) * scale);
+        [[OceanPhysicsController sharedController] applyCurrentDirection:newDir forDuration:2.0f];
+    }
+}
 #pragma mark - Updates
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */

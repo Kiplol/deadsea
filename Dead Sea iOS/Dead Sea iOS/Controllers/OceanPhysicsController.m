@@ -7,6 +7,7 @@
 //
 
 #import "OceanPhysicsController.h"
+#import <SpriteKit/SpriteKit.h>
 
 @implementation OceanPhysicsController
 @synthesize physicsObjects = _arrPhysicsObjects;
@@ -24,7 +25,7 @@
 {
     if((self = [super init]))
     {
-        _currentDirection = CGPointZero;
+        _currentDirection = CGVectorMake(0.0f, 0.0f);
         _arrPhysicsObjects = [NSMutableArray arrayWithCapacity:10];
         _toAdd = [NSMutableArray arrayWithCapacity:10];
         _toRemove = [NSMutableArray arrayWithCapacity:10];
@@ -43,13 +44,15 @@
 {
     [_toRemove addObjectsFromArray:_arrPhysicsObjects];
 }
--(void)applyCurrentDirection:(CGPoint)dir forDuration:(double)durationInSec
+-(void)applyCurrentDirection:(CGVector)dir forDuration:(double)durationInSec
 {
     _currentDirection = dir;
+    self.physicsWorld.gravity = CGVectorMake(_currentDirection.dx, _currentDirection.dy);
     double delayInSeconds = durationInSec;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        _currentDirection = CGPointZero;
+        _currentDirection = CGVectorMake(0.0f, 0.0f);
+        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
     });
 }
 -(void)updateObjectsWithPhysics

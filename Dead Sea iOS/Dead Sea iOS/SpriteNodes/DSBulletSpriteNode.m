@@ -25,7 +25,7 @@
         _bFired = NO;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
-        self.physicsBody.affectedByGravity = NO;
+//        self.physicsBody.affectedByGravity = NO;
         self.physicsBody.categoryBitMask = DSColliderTypeProjectile;
         self.physicsBody.friction = 0;
         self.physicsBody.linearDamping = 0;

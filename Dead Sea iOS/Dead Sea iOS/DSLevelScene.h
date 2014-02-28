@@ -16,6 +16,7 @@
     SKLabelNode * _comboLabel;
     
     DSCharacterSpriteNode * _testChar;
+    UIPanGestureRecognizer * _playerMovementRecognizer;
 }
 
 @end

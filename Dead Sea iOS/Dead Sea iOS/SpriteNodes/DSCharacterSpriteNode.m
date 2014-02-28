@@ -66,8 +66,11 @@
 
 -(void)startFiring
 {
-    _bFiring = YES;
-    [self fire];
+    if(!_bFiring)
+    {
+        _bFiring = YES;
+        [self fire];
+    }
 }
 -(void)stopFiring
 {

@@ -15,7 +15,7 @@
     SKLabelNode * _comboLabel;
     
     DSCharacterSpriteNode * _testChar;
-    UIPanGestureRecognizer * _playerMovementRecognizer;
+    UIPanGestureRecognizer * _oceanCurrentRecognizer;
     SKSpriteNode * _comboCountdownBar;
 }
 

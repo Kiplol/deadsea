@@ -29,7 +29,7 @@
 #endif
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-        
+        [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
         [self addChild:_player.spriteNode];
@@ -59,29 +59,22 @@
     return self;
 }
 
+-(void)didMoveToView:(SKView *)view
+{
+    //Ocean current
+    _oceanCurrentRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    _oceanCurrentRecognizer.minimumNumberOfTouches = 2;
+    _oceanCurrentRecognizer.cancelsTouchesInView = YES;
+    [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
+}
+
 #pragma mark - Touches
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-//    for (UITouch *touch in touches) {
-//        CGPoint location = [touch locationInNode:self];
-//        
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        
-//        sprite.position = location;
-//        
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-//        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-//        
-//        [self addChild:sprite];
-//    }
-    if(touches.count > 1)
-    {
-        
-    }
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [super touchesBegan:touches withEvent:event];
     [_player.spriteNode startFiring];
+//    _oceanCurrentRecognizer.enabled = NO;
+//    _oceanCurrentRecognizer.enabled = YES;
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -100,6 +93,26 @@
 {
     [super touchesEnded:touches withEvent:event];
     [_player.spriteNode stopFiring];
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesCancelled:touches withEvent:event];
+    [_player.spriteNode stopFiring];
+}
+
+-(void)didSwipe:(UIPanGestureRecognizer*)recognizer
+{
+    if(recognizer.state == UIGestureRecognizerStateBegan)
+    {
+    }
+    else if(recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        CGPoint vel = [recognizer translationInView:[self view]];
+        CGFloat scale = 0.05f;
+        CGVector newDir = CGVectorMake(vel.x * scale, (0 - vel.y) * scale);
+        [[OceanPhysicsController sharedController] applyCurrentDirection:newDir forDuration:2.0f];
+    }
 }
 
 #pragma mark - Updates

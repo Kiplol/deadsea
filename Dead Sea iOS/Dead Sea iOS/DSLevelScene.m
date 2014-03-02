@@ -52,6 +52,8 @@
         _testChar1 = [[DSSmallEnemySpriteNode alloc] init];
         [self addChild:_testChar1];
         _testChar2 = [[DSSmallEnemySpriteNode alloc] init];
+        _testChar1.fireRate = 1.5;
+        _testChar1.shotsPerBurst = 0;
         [self addChild:_testChar2];
 #if DEBUG
         [self drawPhysicsBodies];
@@ -83,7 +85,7 @@
              overDuration:1.8
                completion:^{
                    [_testChar1 startFiring];
-                   [_testChar1 startAngularFollowPlayerWithRestTimeEvery:1.0];
+                   [_testChar1 startAngularFollowPlayerWithRestTimeEvery:0.9];
                }];
     [_testChar2 startAngularFollowPlayer];
     [_testChar2 flyInFrom:CGPointMake(0.0f, self.size.height)
@@ -91,7 +93,7 @@
              overDuration:1.5
                completion:^{
                    [_testChar2 startFiring];
-                   [_testChar2 startAngularFollowPlayerWithRestTimeEvery:1.0];
+                   [_testChar2 startAngularFollowPlayerWithRestTimeEvery:0.7];
                }];
 }
 
@@ -135,8 +137,13 @@
     }
     else if(recognizer.state == UIGestureRecognizerStateEnded)
     {
+//        CGFloat scale = 1.0f;
+//        CGPoint vel = [recognizer translationInView:[self view]];
+//        CGFloat maxEdge = fmaxf(fabsf(vel.x), fabsf(vel.y));
+//        CGVector unitVector = CGVectorMake((vel.x / maxEdge) * scale, - (vel.y / maxEdge) * scale);
+//        [[OceanPhysicsController sharedController] applyCurrentDirection:unitVector forDuration:2.0f];
         CGPoint vel = [recognizer translationInView:[self view]];
-        CGFloat scale = 0.05f;
+        CGFloat scale = 0.02f;
         CGVector newDir = CGVectorMake(vel.x * scale, (0 - vel.y) * scale);
         [[OceanPhysicsController sharedController] applyCurrentDirection:newDir forDuration:2.0f];
     }

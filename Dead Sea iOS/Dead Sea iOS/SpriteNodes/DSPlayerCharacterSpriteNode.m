@@ -25,6 +25,17 @@
         self.fireRate = 10;
         _comboStartTime = 0;
         self.physicsBody.categoryBitMask = DSColliderTypePlayer;
+        
+        SKTextureAtlas * defaultAtlas = [_dicAtlases objectForKey:@"atlasKeyDefault"];
+        NSArray * names = defaultAtlas.textureNames;
+        NSMutableArray * textures = [NSMutableArray arrayWithCapacity:names.count];
+        for(int i = 0; i < names.count; i++)
+        {
+            SKTexture * texture = [defaultAtlas textureNamed:[names objectAtIndex:i]];
+            [textures addObject:texture];
+        }
+        SKAction * animAction = [SKAction repeatActionForever:[SKAction animateWithTextures:textures timePerFrame:1.0/15.0 resize:NO restore:NO]];
+        [self runAction:animAction];
     }
     return self;
 }

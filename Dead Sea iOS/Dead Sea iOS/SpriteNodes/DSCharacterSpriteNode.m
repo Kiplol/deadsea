@@ -45,7 +45,7 @@
     if(_bFiring && self.fireRate > 0)
     {
         double delayInSeconds = 1.0/self.fireRate;
-        if(_shotsThisBurst >= self.shotsPerBurst)
+        if(_shotsThisBurst >= self.shotsPerBurst && (self.shotsPerBurst > 0))
         {
             delayInSeconds += self.timeBetweenBursts;
             _shotsThisBurst = 0;

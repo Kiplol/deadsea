@@ -23,7 +23,7 @@
 /*!
  * @brief Number of shots fired per second
  */
-@property (nonatomic, readwrite) int fireRate;
+@property (nonatomic, readwrite) double fireRate;
 /*!
  * @brief Number of shots that make up one burst
  */

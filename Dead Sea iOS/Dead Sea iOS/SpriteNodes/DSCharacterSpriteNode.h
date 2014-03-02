@@ -16,14 +16,21 @@
     BOOL _bFiring;
     int _shotsThisBurst;
     BOOL _angularFollowPlayer;
+    double _angularFollowRestTime;
 }
 @property (nonatomic, readwrite) int health;
 @property (nonatomic, retain) DSSpriteNode * spriteNode;
 /*!
- * @brief Number of times this can fire per second
+ * @brief Number of shots fired per second
  */
 @property (nonatomic, readwrite) int fireRate;
+/*!
+ * @brief Number of shots that make up one burst
+ */
 @property (nonatomic, readwrite) int shotsPerBurst;
+/*!
+ * @brief Seconds between each burst of shots
+ */
 @property (nonatomic, readwrite) double timeBetweenBursts;
 
 /*!
@@ -39,6 +46,19 @@
  */
 -(DSBulletSpriteNode*)nextBullet;
 
+/*!
+ * @brief Begin rotating to face the player
+ */
 -(void)startAngularFollowPlayer;
+/*!
+ * @brief Begin rotating to face the player, but stop rotating every given number of seconds for a rest
+ * @param seconds Number of seconds to rotate before taking a rest
+ */
+-(void)startAngularFollowPlayerWithRestTimeEvery:(double)seconds;
+/*!
+ * @Stop rotating to face the player
+ */
 -(void)stopAngularFollowPlayer;
+
+-(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion;
 @end

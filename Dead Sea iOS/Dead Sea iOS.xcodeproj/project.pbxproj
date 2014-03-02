@@ -47,6 +47,14 @@
 		37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95018BDB124005C5807 /* BallshotDefault.atlas */; };
 		37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BDE95118BDB124005C5807 /* BallshotFiring.atlas */; };
 		37BDE95618C043FC005C5807 /* SKAction+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95518C043FC005C5807 /* SKAction+Utilities.m */; };
+		37BDE96918C2BD62005C5807 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95918C2BD62005C5807 /* SKAction+SKTExtras.m */; };
+		37BDE96A18C2BD62005C5807 /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95B18C2BD62005C5807 /* SKAction+SKTSpecialEffects.m */; };
+		37BDE96B18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95D18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m */; };
+		37BDE96C18C2BD62005C5807 /* SKNode+SKTDebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE95F18C2BD62005C5807 /* SKNode+SKTDebugDraw.m */; };
+		37BDE96D18C2BD62005C5807 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96118C2BD62005C5807 /* SKNode+SKTExtras.m */; };
+		37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96318C2BD62005C5807 /* SKTAudio.m */; };
+		37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96518C2BD62005C5807 /* SKTEffects.m */; };
+		37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +132,23 @@
 		37BDE95118BDB124005C5807 /* BallshotFiring.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BallshotFiring.atlas; sourceTree = "<group>"; };
 		37BDE95418C043FC005C5807 /* SKAction+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+Utilities.h"; sourceTree = "<group>"; };
 		37BDE95518C043FC005C5807 /* SKAction+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+Utilities.m"; sourceTree = "<group>"; };
+		37BDE95818C2BD62005C5807 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		37BDE95918C2BD62005C5807 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		37BDE95A18C2BD62005C5807 /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
+		37BDE95B18C2BD62005C5807 /* SKAction+SKTSpecialEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTSpecialEffects.m"; sourceTree = "<group>"; };
+		37BDE95C18C2BD62005C5807 /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		37BDE95D18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		37BDE95E18C2BD62005C5807 /* SKNode+SKTDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTDebugDraw.h"; sourceTree = "<group>"; };
+		37BDE95F18C2BD62005C5807 /* SKNode+SKTDebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTDebugDraw.m"; sourceTree = "<group>"; };
+		37BDE96018C2BD62005C5807 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		37BDE96118C2BD62005C5807 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		37BDE96218C2BD62005C5807 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		37BDE96318C2BD62005C5807 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
+		37BDE96418C2BD62005C5807 /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTEffects.h; sourceTree = "<group>"; };
+		37BDE96518C2BD62005C5807 /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTEffects.m; sourceTree = "<group>"; };
+		37BDE96618C2BD62005C5807 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
+		37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
+		37BDE96818C2BD62005C5807 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,7 +210,7 @@
 		372D320218BC4DA0003E9068 /* Dead Sea iOS */ = {
 			isa = PBXGroup;
 			children = (
-				377575E418BE66C200F503F6 /* YMCPhysicsDebugger */,
+				37BDE97118C2BD6A005C5807 /* 3rd Party */,
 				372D320B18BC4DA0003E9068 /* DSAppDelegate.h */,
 				372D320C18BC4DA0003E9068 /* DSAppDelegate.m */,
 				37BDE95418C043FC005C5807 /* SKAction+Utilities.h */,
@@ -389,6 +414,39 @@
 			path = Ballshot;
 			sourceTree = "<group>";
 		};
+		37BDE95718C2BD62005C5807 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				37BDE95818C2BD62005C5807 /* SKAction+SKTExtras.h */,
+				37BDE95918C2BD62005C5807 /* SKAction+SKTExtras.m */,
+				37BDE95A18C2BD62005C5807 /* SKAction+SKTSpecialEffects.h */,
+				37BDE95B18C2BD62005C5807 /* SKAction+SKTSpecialEffects.m */,
+				37BDE95C18C2BD62005C5807 /* SKEmitterNode+SKTExtras.h */,
+				37BDE95D18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m */,
+				37BDE95E18C2BD62005C5807 /* SKNode+SKTDebugDraw.h */,
+				37BDE95F18C2BD62005C5807 /* SKNode+SKTDebugDraw.m */,
+				37BDE96018C2BD62005C5807 /* SKNode+SKTExtras.h */,
+				37BDE96118C2BD62005C5807 /* SKNode+SKTExtras.m */,
+				37BDE96218C2BD62005C5807 /* SKTAudio.h */,
+				37BDE96318C2BD62005C5807 /* SKTAudio.m */,
+				37BDE96418C2BD62005C5807 /* SKTEffects.h */,
+				37BDE96518C2BD62005C5807 /* SKTEffects.m */,
+				37BDE96618C2BD62005C5807 /* SKTTimingFunctions.h */,
+				37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */,
+				37BDE96818C2BD62005C5807 /* SKTUtils.h */,
+			);
+			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		37BDE97118C2BD6A005C5807 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				377575E418BE66C200F503F6 /* YMCPhysicsDebugger */,
+				37BDE95718C2BD62005C5807 /* SKTUtils */,
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,14 +564,22 @@
 				372D321918BC4DA0003E9068 /* DSLevelScene.m in Sources */,
 				37BDE95618C043FC005C5807 /* SKAction+Utilities.m in Sources */,
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
+				37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */,
+				37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
+				37BDE96C18C2BD62005C5807 /* SKNode+SKTDebugDraw.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
+				37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */,
 				377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */,
+				37BDE96918C2BD62005C5807 /* SKAction+SKTExtras.m in Sources */,
+				37BDE96B18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m in Sources */,
 				377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */,
 				37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */,
 				37BDE94B18BDA685005C5807 /* DSSmallEnemySpriteNode.m in Sources */,
+				37BDE96A18C2BD62005C5807 /* SKAction+SKTSpecialEffects.m in Sources */,
 				377575F018BE66C200F503F6 /* YMCPhysicsDebugProperties.m in Sources */,
+				37BDE96D18C2BD62005C5807 /* SKNode+SKTExtras.m in Sources */,
 				377575B218BD1ACE00F503F6 /* DSCharacterSpriteNode.m in Sources */,
 				37BDE94E18BDAF18005C5807 /* DSBallshotBulletSpriteNode.m in Sources */,
 				377575F118BE66C200F503F6 /* YMCSKNode+PhysicsDebug.m in Sources */,

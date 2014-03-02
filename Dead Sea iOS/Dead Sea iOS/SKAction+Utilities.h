@@ -17,4 +17,6 @@
  * @param completeion Block to be called upon completion
  */
 +(id)rotateTowardsPoint:(CGPoint)destPoint fromPoint:(CGPoint)sourcePoint duration:(double)dur completion:(void (^)())completion;
+
++(id)rotateTowardsPoint:(CGPoint)destPoint fromPoint:(CGPoint)sourcePoint duration:(double)dur waitTime:(double)waitTime completion:(void (^)())completion;
 @end

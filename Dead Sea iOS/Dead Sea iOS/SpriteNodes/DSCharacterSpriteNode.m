@@ -86,8 +86,27 @@
 
 -(void)startAngularFollowPlayer
 {
+    [self startAngularFollowPlayerWithRestTimeEvery:0.0];
+}
+
+-(void)startAngularFollowPlayerWithRestTimeEvery:(double)seconds
+{
     _angularFollowPlayer = YES;
+    _angularFollowRestTime = seconds;
     [self followPlayerAngular];
+}
+-(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion
+{
+    self.position = fromPoint;
+    SKAction * flyInAction = [SKAction moveTo:toPoint duration:dur];
+    flyInAction.timingMode = SKActionTimingEaseOut;
+    SKAction * sequence = [SKAction sequence:@[flyInAction]];
+    [self runAction:sequence completion:^{
+        if(completion)
+        {
+            completion();
+        }
+    }];
 }
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
@@ -103,7 +122,8 @@
 {
     SKAction * fart = [SKAction rotateTowardsPoint:[DSPlayer sharedPlayer].spriteNode.position
                                          fromPoint:self.position
-                                          duration:1.0
+                                          duration:0.2
+                                          waitTime:_angularFollowRestTime
                                         completion:^{
                                             if(_angularFollowPlayer)
                                             {

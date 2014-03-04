@@ -56,9 +56,18 @@
  */
 -(void)startAngularFollowPlayerWithRestTimeEvery:(double)seconds;
 /*!
- * @Stop rotating to face the player
+ * @brief Stop rotating to face the player
  */
 -(void)stopAngularFollowPlayer;
 
+/*!
+ * @brief Translate from one point to another and ease out over a given duration
+ * @param fromPoint Point to fly from
+ * @param toPoint Point to fly to
+ * @param dur Duration of movement in seconds
+ * @param completion Block to be run upon completion
+ */
 -(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion;
+
+-(void)damageAnimation;
 @end

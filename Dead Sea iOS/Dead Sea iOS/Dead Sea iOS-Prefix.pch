@@ -16,3 +16,6 @@
 #endif
 
 #import "SKAction+Utilities.h"
+#import "SKTEffects.h"
+#import "SKTUtils.h"
+#import "SKAction+SKTSpecialEffects.h"

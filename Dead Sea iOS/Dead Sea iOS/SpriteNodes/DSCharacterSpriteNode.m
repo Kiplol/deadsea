@@ -97,9 +97,9 @@
 }
 -(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion
 {
-    self.position = fromPoint;
-    SKAction * flyInAction = [SKAction moveTo:toPoint duration:dur];
-    flyInAction.timingMode = SKActionTimingEaseOut;
+    SKTMoveEffect * moveEffect = [SKTMoveEffect effectWithNode:self duration:dur startPosition:fromPoint endPosition:toPoint];
+    moveEffect.timingFunction = SKTTimingFunctionBackEaseOut;
+    SKAction * flyInAction = [SKAction actionWithEffect:moveEffect];
     SKAction * sequence = [SKAction sequence:@[flyInAction]];
     [self runAction:sequence completion:^{
         if(completion)
@@ -108,10 +108,14 @@
         }
     }];
 }
+-(void)damageAnimation
+{
+    //Empty
+}
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
 {
-    //Empty
+    [self damageAnimation];
 }
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
@@ -140,4 +144,5 @@
 {
     return (self.size.width * 0.5f);
 }
+
 @end

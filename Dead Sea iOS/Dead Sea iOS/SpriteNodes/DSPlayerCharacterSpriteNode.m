@@ -89,6 +89,12 @@
     bullet.speedVector = CGVectorMake(0.0f, 30.0f);
     return bullet;
 }
+
+-(void)damageAnimation
+{
+    [super damageAnimation];
+    [self runAction:[SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:2]];
+}
 #pragma mark - DSSpriteNode
 -(void)fillAtlasDictionary
 {

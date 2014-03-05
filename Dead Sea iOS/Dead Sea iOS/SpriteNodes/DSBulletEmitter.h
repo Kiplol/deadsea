@@ -22,14 +22,14 @@
  * @brief Fire a bullet with the instance's parameters for bulletType and colliderType
  * @param shooter The bullet's shooter
  */
--(void)fireFrom:(DSCharacterSpriteNode*)shooter;
+-(void)emitFromShooter:(DSCharacterSpriteNode*)shooter;
 
 /*!
  * @brief Fire a bullet at a given speed with the instance's parameters for bulletType and colliderType
  * @param shooter The bullet's shooter
  * @param speed The speed at which to fire the bullet
  */
--(void)fireFrom:(DSCharacterSpriteNode*)shooter WithSpeed:(double)speed;
+-(void)emitFromShooter:(DSCharacterSpriteNode*)shooter WithSpeed:(double)speed;
 
 /*!
  * @brief Fire a given bullet.  Only the bullet's position and angle will be mutated.
@@ -37,5 +37,5 @@
  * @param shooter The bullet's shooter
  * @param speed The speed at which to fire the bullet
  */
--(void)fireBullet:(DSBulletSpriteNode*)bullet from:(DSCharacterSpriteNode*)shooter withSpeed:(double)speed;
+-(void)emitBullet:(DSBulletSpriteNode*)bullet fromShooter:(DSCharacterSpriteNode*)shooter withSpeed:(double)speed;
 @end

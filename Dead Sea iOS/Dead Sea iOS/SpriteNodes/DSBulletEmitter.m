@@ -8,7 +8,7 @@
 
 #import "DSBulletEmitter.h"
 #import "BulletFactory.h"
-#import "SKSpriteNode+Utilities.h"
+#import "SKNode+Utilities.h"
 @implementation DSBulletEmitter
 
 #if DEBUG
@@ -21,21 +21,21 @@
     return self;
 }
 #endif
--(void)fireFrom:(DSCharacterSpriteNode*)shooter
+-(void)emitFromShooter:(DSCharacterSpriteNode*)shooter
 {
-    [self fireFrom:shooter WithSpeed:self.bulletSpeed];
+    [self emitFromShooter:shooter WithSpeed:self.bulletSpeed];
 }
 
--(void)fireFrom:(DSCharacterSpriteNode*)shooter WithSpeed:(double)speed
+-(void)emitFromShooter:(DSCharacterSpriteNode*)shooter WithSpeed:(double)speed
 {
     DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:self.bulletType];
     [self.scene addChild:bullet];
     CGPoint scenePosition = [self.scene convertPoint:self.position fromNode:self.parent];
     bullet.position = scenePosition;
-    [self fireBullet:bullet from:shooter withSpeed:speed];
+    [self emitBullet:bullet fromShooter:shooter withSpeed:speed];
 }
 
--(void)fireBullet:(DSBulletSpriteNode *)bullet from:(DSCharacterSpriteNode *)shooter withSpeed:(double)speed
+-(void)emitBullet:(DSBulletSpriteNode *)bullet fromShooter:(DSCharacterSpriteNode *)shooter withSpeed:(double)speed
 {
     bullet.shooter = shooter;
     CGFloat absoluteRotation = [self absoluteZRotation];

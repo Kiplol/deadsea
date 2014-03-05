@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
 //
 
-#import "SKSpriteNode+Utilities.h"
+#import "SKNode+Utilities.h"
 
-@implementation SKSpriteNode (Utilities)
+@implementation SKNode (Utilities)
 -(double)absoluteZRotation
 {
     double total = 0;
@@ -17,6 +17,7 @@
         total += curNode.zRotation;
         curNode = curNode.parent;
     }
+    total = fmod(total, M_PI * 2);
     return total;
 }
 @end

@@ -9,6 +9,7 @@
 #import "DSCharacterSpriteNode.h"
 #import "DSBulletSpriteNode.h"
 #import "DSPlayer.h"
+#import "SKNode+Utilities.h"
 
 @interface DSCharacterSpriteNode (private)
 -(CGFloat)radiusForPhysicsBody;
@@ -32,7 +33,7 @@
 -(void)fire
 {
     //Fire now
-    [_bulletEmitter fireFrom:self];
+    [_bulletEmitter emitFromShooter:self];
     _shotsThisBurst++;
     
     //Do it again
@@ -117,9 +118,18 @@
 #pragma mark - private
 -(void)followPlayerAngular
 {
-    CGPoint diffPoint = CGPointSubtract(self.position, [DSPlayer sharedPlayer].spriteNode.position);
-    double angle = CGPointToAngle(diffPoint);
-    SKAction * shit = [SKAction rotateToAngle:angle duration:0.2];
+    CGPoint myAbsolutePoint = [self.scene convertPoint:self.position fromNode:self.parent];
+    CGPoint playAbsolutePoint = [self.scene convertPoint:[DSPlayer sharedPlayer].spriteNode.position fromNode:[DSPlayer sharedPlayer].spriteNode.parent];
+    CGPoint diffPoint = CGPointSubtract(myAbsolutePoint, playAbsolutePoint);
+    double angle = CGPointToAngle(diffPoint) + M_PI_2;
+    angle = fmod(angle, M_PI * 2);
+    if(self.parent != [DSPlayer sharedPlayer].spriteNode.parent)
+    {
+        double parentRotation =  fmod([self.parent absoluteZRotation], M_PI * 2);
+        angle -= parentRotation;
+        NSLog(@"%f", angle);
+    }
+    SKAction * shit = [SKAction rotateToAngle:angle duration:0.2 shortestUnitArc:YES];
     [self runAction:shit completion:^{
         if(_angularFollowPlayer)
         {

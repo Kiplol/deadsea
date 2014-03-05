@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface SKSpriteNode (Utilities)
+@interface SKNode (Utilities)
 
 -(double)absoluteZRotation;
 @end

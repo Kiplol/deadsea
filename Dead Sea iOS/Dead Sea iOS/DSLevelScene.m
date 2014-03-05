@@ -49,11 +49,11 @@
         //TEST
         _testChar0 = [[DSSmallEnemySpriteNode alloc] init];
         [self addChild:_testChar0];
-        _testChar1 = [[DSSmallEnemySpriteNode alloc] init];
-        [self addChild:_testChar1];
+//        _testChar1 = [[DSSmallEnemySpriteNode alloc] init];
+//        [self addChild:_testChar1];
         _testChar2 = [[DSSmallEnemySpriteNode alloc] init];
-        _testChar1.fireRate = 1.5;
-        _testChar1.shotsPerBurst = 0;
+//        _testChar1.fireRate = 1.5;
+//        _testChar1.shotsPerBurst = 0;
         [_testChar0 addChild:_testChar2];
 #if DEBUG
         [self drawPhysicsBodies];
@@ -71,7 +71,7 @@
     [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
     
     //TEST
-//    [_testChar0 startAngularFollowPlayer];
+    [_testChar0 startAngularFollowPlayer];
     [_testChar0 flyInFrom:CGPointMake(0.0f, self.size.height)
                       to:CGPointMake(CGRectGetMidX([self rectOfPlay]), CGRectGetMidY([self rectOfPlay]))
             overDuration:1.6

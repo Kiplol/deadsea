@@ -19,4 +19,4 @@
 #import "SKTEffects.h"
 #import "SKTUtils.h"
 #import "SKAction+SKTSpecialEffects.h"
-#import "SKNode+Utilities.h";
+#import "SKNode+Utilities.h"

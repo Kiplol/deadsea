@@ -9,5 +9,12 @@
 #import "DSCharacterSpriteNode.h"
 
 @interface DSEnemySpriteNode : DSCharacterSpriteNode {
+    SKLabelNode * _pointsLabel;
+    int _pointsForDestroying;
 }
+
+@property (nonatomic, readonly) int pointsForDestroying;
+
+-(void)flashPointsLabel;
+-(void)flashPointsLabelInScene:(SKScene*)scene;
 @end

@@ -16,8 +16,8 @@
     int _health;
     BOOL _bFiring;
     int _shotsThisBurst;
-    BOOL _angularFollowPlayer;
-    double _angularFollowRestTime;
+    BOOL _rotateTowardsPlayer;
+    double _rotateTowardsPlayerRestTime;
     DSBulletEmitter * _bulletEmitter;
 }
 @property (nonatomic, readwrite) int health;
@@ -46,16 +46,16 @@
 /*!
  * @brief Begin rotating to face the player
  */
--(void)startAngularFollowPlayer;
+-(void)startRotatingTowardsPlayer;
 /*!
  * @brief Begin rotating to face the player, but stop rotating every given number of seconds for a rest
  * @param seconds Number of seconds to rotate before taking a rest
  */
--(void)startAngularFollowPlayerWithRestTimeEvery:(double)seconds;
+-(void)startRotatingTowardsPlayerWithRestTimeEvery:(double)seconds;
 /*!
  * @brief Stop rotating to face the player
  */
--(void)stopAngularFollowPlayer;
+-(void)stopRotatingTowardsPlayer;
 
 /*!
  * @brief Translate from one point to another and ease out over a given duration

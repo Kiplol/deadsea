@@ -16,6 +16,7 @@
         self.fireRate = 3;
         self.shotsPerBurst = 3;
         self.timeBetweenBursts = 1;
+        _pointsForDestroying = 20;
     }
     return self;
 }

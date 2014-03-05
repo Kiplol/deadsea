@@ -13,7 +13,7 @@
 
 @interface DSCharacterSpriteNode (private)
 -(CGFloat)radiusForPhysicsBody;
--(void)followPlayerAngular;
+-(void)rotateTowardsPlayer;
 @end
 
 @implementation DSCharacterSpriteNode
@@ -73,17 +73,21 @@
     _shotsThisBurst = 0;
 }
 
--(void)startAngularFollowPlayer
+-(void)startRotatingTowardsPlayer
 {
-    [self startAngularFollowPlayerWithRestTimeEvery:0.0];
+    [self startRotatingTowardsPlayerWithRestTimeEvery:0.0];
+}
+-(void)startRotatingTowardsPlayerWithRestTimeEvery:(double)seconds
+{
+    _rotateTowardsPlayer = YES;
+    _rotateTowardsPlayerRestTime = seconds;
+    [self rotateTowardsPlayer];
+}
+-(void)stopRotatingTowardsPlayer
+{
+    _rotateTowardsPlayer = NO;
 }
 
--(void)startAngularFollowPlayerWithRestTimeEvery:(double)seconds
-{
-    _angularFollowPlayer = YES;
-    _angularFollowRestTime = seconds;
-    [self followPlayerAngular];
-}
 -(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion
 {
     SKTMoveEffect * moveEffect = [SKTMoveEffect effectWithNode:self duration:dur startPosition:fromPoint endPosition:toPoint];
@@ -116,7 +120,7 @@
     //Empty
 }
 #pragma mark - private
--(void)followPlayerAngular
+-(void)rotateTowardsPlayer
 {
     CGPoint myAbsolutePoint = [self.scene convertPoint:self.position fromNode:self.parent];
     CGPoint playAbsolutePoint = [self.scene convertPoint:[DSPlayer sharedPlayer].spriteNode.position fromNode:[DSPlayer sharedPlayer].spriteNode.parent];
@@ -130,27 +134,11 @@
     }
     SKAction * shit = [SKAction rotateToAngle:angle duration:0.2 shortestUnitArc:YES];
     [self runAction:shit completion:^{
-        if(_angularFollowPlayer)
+        if(_rotateTowardsPlayer)
         {
-            [self followPlayerAngular];
+            [self rotateTowardsPlayer];
         }
     }];
-    
-//    SKAction * fart = [SKAction rotateTowardsPoint:[DSPlayer sharedPlayer].spriteNode.position
-//                                         fromPoint:self.position
-//                                          duration:0.2
-//                                          waitTime:_angularFollowRestTime
-//                                        completion:^{
-//                                            if(_angularFollowPlayer)
-//                                            {
-//                                                [self followPlayerAngular];
-//                                            }
-//                                        }];
-//    [self runAction:fart];
-}
--(void)stopAngularFollowPlayer
-{
-    _angularFollowPlayer = NO;
 }
 -(CGFloat)radiusForPhysicsBody
 {

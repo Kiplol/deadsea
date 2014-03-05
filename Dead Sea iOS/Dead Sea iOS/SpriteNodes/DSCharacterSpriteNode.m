@@ -127,7 +127,6 @@
     {
         double parentRotation =  fmod([self.parent absoluteZRotation], M_PI * 2);
         angle -= parentRotation;
-        NSLog(@"%f", angle);
     }
     SKAction * shit = [SKAction rotateToAngle:angle duration:0.2 shortestUnitArc:YES];
     [self runAction:shit completion:^{

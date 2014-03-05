@@ -15,6 +15,7 @@
     {
         _bulletEmitter.zRotation = M_PI_2;
         _bulletEmitter.bulletType = factoryBulletTypeBallshot;
+        _bulletEmitter.colliderType = DSColliderTypePlayer;
         _bulletEmitter.bulletSpeed = 1.0;
         self.fireRate = 2;
         self.physicsBody.categoryBitMask = DSColliderTypeEnemy;

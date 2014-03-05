@@ -8,23 +8,40 @@
 
 #import "DSBulletEmitter.h"
 #import "BulletFactory.h"
+#import "SKSpriteNode+Utilities.h"
 @implementation DSBulletEmitter
 
--(void)fire
+#if DEBUG
+-(id)init
 {
-    [self fireWithSpeed:self.speed];
+    if((self = [super initWithColor:[UIColor whiteColor] size:CGSizeMake(5, 5)]))
+    {
+        
+    }
+    return self;
+}
+#endif
+-(void)fireFrom:(DSCharacterSpriteNode*)shooter
+{
+    [self fireFrom:shooter WithSpeed:self.bulletSpeed];
 }
 
--(void)fireWithSpeed:(double)speed
+-(void)fireFrom:(DSCharacterSpriteNode*)shooter WithSpeed:(double)speed
 {
-    
+    DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:self.bulletType];
+    [self.scene addChild:bullet];
+    CGPoint scenePosition = [self.scene convertPoint:self.position fromNode:self.parent];
+    bullet.position = scenePosition;
+    [self fireBullet:bullet from:shooter withSpeed:speed];
 }
 
--(void)fireBullet:(DSBulletSpriteNode*)bullet withSpeed:(double)speed
+-(void)fireBullet:(DSBulletSpriteNode *)bullet from:(DSCharacterSpriteNode *)shooter withSpeed:(double)speed
 {
-    CGPoint pointVector = CGPointMultiplyScalar(CGPointForAngle(self.zRotation), speed);
+    bullet.shooter = shooter;
+    CGFloat absoluteRotation = [self absoluteZRotation];
+    CGPoint pointVector = CGPointMultiplyScalar(CGPointForAngle(absoluteRotation), speed);
     bullet.speedVector = CGVectorFromCGPoint(pointVector);
-    bullet.physicsBody.collisionBitMask = self.colliderType;
+    bullet.physicsBody.contactTestBitMask = self.colliderType;
     [bullet fire];
 }
 @end

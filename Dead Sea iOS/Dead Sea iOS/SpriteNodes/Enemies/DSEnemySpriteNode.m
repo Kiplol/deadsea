@@ -13,6 +13,9 @@
 {
     if((self = [super init]))
     {
+        _bulletEmitter.zRotation = M_PI_2;
+        _bulletEmitter.bulletType = factoryBulletTypeBallshot;
+        _bulletEmitter.bulletSpeed = 1.0;
         self.fireRate = 2;
         self.physicsBody.categoryBitMask = DSColliderTypeEnemy;
         self.zRotation = M_PI;
@@ -20,23 +23,5 @@
         _shotsThisBurst = 0;
     }
     return self;
-}
-
--(void)fire
-{
-    [super fire];
-}
-
--(DSBulletSpriteNode*)nextBullet
-{
-    DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeBallshot];
-    bullet.physicsBody.contactTestBitMask = DSColliderTypePlayer;
-    CGFloat vx =  0 - sinf(self.zRotation);
-    CGFloat vy = cosf(self.zRotation);
-    CGFloat denom = MAX(fabs(vx), fabs(vy));
-    CGFloat unitVx = vx / denom;
-    CGFloat unitVy = vy / denom;
-    bullet.speedVector = CGVectorMake(unitVx, unitVy);
-    return bullet;
 }
 @end

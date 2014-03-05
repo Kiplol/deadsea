@@ -20,6 +20,8 @@
 {
     if((self = [super init]))
     {
+        _bulletEmitter = [[DSBulletEmitter alloc] init];
+        [self addChild:_bulletEmitter];
         self.fireRate = 5;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:[self radiusForPhysicsBody]];
         self.physicsBody.affectedByGravity = NO;
@@ -30,16 +32,8 @@
 -(void)fire
 {
     //Fire now
-    DSBulletSpriteNode * bullet = [self nextBullet];
-    
-    if(bullet)
-    {
-        bullet.position = self.position;
-        bullet.shooter = self;
-        [self.scene addChild:bullet];
-        [bullet fire];
-        _shotsThisBurst++;
-    }
+    [_bulletEmitter fireFrom:self];
+    _shotsThisBurst++;
     
     //Do it again
     if(_bFiring && self.fireRate > 0)
@@ -76,12 +70,6 @@
 {
     _bFiring = NO;
     _shotsThisBurst = 0;
-}
-
--(DSBulletSpriteNode*)nextBullet
-{
-    NSLog(@"Must override %s", __PRETTY_FUNCTION__);
-    return nil;
 }
 
 -(void)startAngularFollowPlayer

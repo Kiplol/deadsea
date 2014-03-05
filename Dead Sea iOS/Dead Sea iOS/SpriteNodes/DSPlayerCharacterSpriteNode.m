@@ -22,6 +22,10 @@
 {
     if((self = [super init]))
     {
+        _bulletEmitter.bulletType = factoryBulletTypeLightshot;
+        _bulletEmitter.colliderType = DSColliderTypeEnemy;
+        _bulletEmitter.bulletSpeed = 30.0;
+        _bulletEmitter.zRotation = M_PI_2;
         self.fireRate = 10;
         _comboStartTime = 0;
         self.physicsBody.categoryBitMask = DSColliderTypePlayer;
@@ -78,19 +82,6 @@
 }
 
 #pragma mark - DSCharacterSpriteNode
--(void)fire
-{
-    [super fire];
-}
--(DSBulletSpriteNode*)nextBullet
-{
-    //TODO - Create DSBulletEmitter with a direction
-    DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];
-    bullet.physicsBody.contactTestBitMask = DSColliderTypeEnemy;
-    bullet.speedVector = CGVectorMake(0.0f, 30.0f);
-    return bullet;
-}
-
 -(void)damageAnimation
 {
     [super damageAnimation];

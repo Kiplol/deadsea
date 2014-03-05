@@ -9,6 +9,7 @@
 #import "DSSpriteNode.h"
 #import "BulletFactory.h"
 #import "DSDestroyerDestroyableDelegate.h"
+#import "DSBulletEmitter.h"
 
 @class DSBulletSpriteNode;
 @interface DSCharacterSpriteNode : DSSpriteNode <DSDestroyableDelegate>{
@@ -17,6 +18,7 @@
     int _shotsThisBurst;
     BOOL _angularFollowPlayer;
     double _angularFollowRestTime;
+    DSBulletEmitter * _bulletEmitter;
 }
 @property (nonatomic, readwrite) int health;
 @property (nonatomic, retain) DSSpriteNode * spriteNode;
@@ -34,17 +36,12 @@
 @property (nonatomic, readwrite) double timeBetweenBursts;
 
 /*!
- * @brief Retrieves a bullet from nextBullet, does any prep required, and fires it.
+ * @brief Tells the bulletEmitter to fire with the this character's zRotation
  */
 -(void)fire;
 -(void)startFiring;
 -(void)stopFiring;
 
-/*!
- * @brief returns the next DSBulletSpriteNode which will have fire called immediately
- * @return DSBulletSpriteNode about to be fired
- */
--(DSBulletSpriteNode*)nextBullet;
 
 /*!
  * @brief Begin rotating to face the player

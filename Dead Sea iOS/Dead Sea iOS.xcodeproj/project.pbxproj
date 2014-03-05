@@ -36,6 +36,7 @@
 		377575F218BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EC18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m */; };
 		377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EE18BE66C200F503F6 /* YMCSwizzler.m */; };
 		3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */; };
+		3784045618C6FB4800C8A12D /* SKSpriteNode+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3784045518C6FB4800C8A12D /* SKSpriteNode+Utilities.m */; };
 		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
 		37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayer.m */; };
 		37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93918BC6E8A005C5807 /* DSBulletSpriteNode.m */; };
@@ -113,6 +114,8 @@
 		377575ED18BE66C200F503F6 /* YMCSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCSwizzler.h; sourceTree = "<group>"; };
 		377575EE18BE66C200F503F6 /* YMCSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCSwizzler.m; sourceTree = "<group>"; };
 		3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerShipHover.atlas; sourceTree = "<group>"; };
+		3784045418C6FB4800C8A12D /* SKSpriteNode+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+Utilities.h"; sourceTree = "<group>"; };
+		3784045518C6FB4800C8A12D /* SKSpriteNode+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+Utilities.m"; sourceTree = "<group>"; };
 		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
 		37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSpriteNode.m; path = SpriteNodes/DSSpriteNode.m; sourceTree = "<group>"; };
 		37BDE93418BC6C0C005C5807 /* DSDestroyerDestroyableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSDestroyerDestroyableDelegate.h; path = Protocols/DSDestroyerDestroyableDelegate.h; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 		372D320218BC4DA0003E9068 /* Dead Sea iOS */ = {
 			isa = PBXGroup;
 			children = (
+				3784045418C6FB4800C8A12D /* SKSpriteNode+Utilities.h */,
+				3784045518C6FB4800C8A12D /* SKSpriteNode+Utilities.m */,
 				37BDE97118C2BD6A005C5807 /* 3rd Party */,
 				372D320B18BC4DA0003E9068 /* DSAppDelegate.h */,
 				372D320C18BC4DA0003E9068 /* DSAppDelegate.m */,
@@ -573,6 +578,7 @@
 				37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */,
 				37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
+				3784045618C6FB4800C8A12D /* SKSpriteNode+Utilities.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
 				37BDE96C18C2BD62005C5807 /* SKNode+SKTDebugDraw.m in Sources */,
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,

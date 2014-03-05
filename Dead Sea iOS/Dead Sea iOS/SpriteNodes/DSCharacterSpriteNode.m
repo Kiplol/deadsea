@@ -117,17 +117,27 @@
 #pragma mark - private
 -(void)followPlayerAngular
 {
-    SKAction * fart = [SKAction rotateTowardsPoint:[DSPlayer sharedPlayer].spriteNode.position
-                                         fromPoint:self.position
-                                          duration:0.2
-                                          waitTime:_angularFollowRestTime
-                                        completion:^{
-                                            if(_angularFollowPlayer)
-                                            {
-                                                [self followPlayerAngular];
-                                            }
-                                        }];
-    [self runAction:fart];
+    CGPoint diffPoint = CGPointSubtract(self.position, [DSPlayer sharedPlayer].spriteNode.position);
+    double angle = CGPointToAngle(diffPoint);
+    SKAction * shit = [SKAction rotateToAngle:angle duration:0.2];
+    [self runAction:shit completion:^{
+        if(_angularFollowPlayer)
+        {
+            [self followPlayerAngular];
+        }
+    }];
+    
+//    SKAction * fart = [SKAction rotateTowardsPoint:[DSPlayer sharedPlayer].spriteNode.position
+//                                         fromPoint:self.position
+//                                          duration:0.2
+//                                          waitTime:_angularFollowRestTime
+//                                        completion:^{
+//                                            if(_angularFollowPlayer)
+//                                            {
+//                                                [self followPlayerAngular];
+//                                            }
+//                                        }];
+//    [self runAction:fart];
 }
 -(void)stopAngularFollowPlayer
 {

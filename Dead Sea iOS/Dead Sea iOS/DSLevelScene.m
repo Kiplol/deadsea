@@ -71,20 +71,20 @@
     [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
     
     //TEST
-    [_testChar0 startAngularFollowPlayer];
+//    [_testChar0 startAngularFollowPlayer];
     [_testChar0 flyInFrom:CGPointMake(0.0f, self.size.height)
                       to:CGPointMake(CGRectGetMidX([self rectOfPlay]), CGRectGetMidY([self rectOfPlay]))
             overDuration:1.6
               completion:^{
-                [_testChar0 startFiring];
-                [_testChar0 startAngularFollowPlayerWithRestTimeEvery:1.0];
+//                [_testChar0 startFiring];
+//                [_testChar0 startAngularFollowPlayerWithRestTimeEvery:1.0];
     }];
     [_testChar1 startAngularFollowPlayer];
     [_testChar1 flyInFrom:CGPointMake(0.0f, self.size.height)
                        to:CGPointMake(CGRectGetMidX([self rectOfPlay]) - 75.0f, CGRectGetMidY([self rectOfPlay]))
              overDuration:1.8
                completion:^{
-                   [_testChar1 startFiring];
+//                   [_testChar1 startFiring];
                    [_testChar1 startAngularFollowPlayerWithRestTimeEvery:0.9];
                }];
     [_testChar2 startAngularFollowPlayer];

@@ -84,6 +84,7 @@
 }
 -(DSBulletSpriteNode*)nextBullet
 {
+    //TODO - Create DSBulletEmitter with a direction
     DSBulletSpriteNode * bullet = [[BulletFactory sharedFactory] bulletOfType:factoryBulletTypeLightshot];
     bullet.physicsBody.contactTestBitMask = DSColliderTypeEnemy;
     bullet.speedVector = CGVectorMake(0.0f, 30.0f);
@@ -93,7 +94,6 @@
 -(void)damageAnimation
 {
     [super damageAnimation];
-    [self runAction:[SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:2]];
 }
 #pragma mark - DSSpriteNode
 -(void)fillAtlasDictionary

@@ -55,6 +55,7 @@
 		37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96318C2BD62005C5807 /* SKTAudio.m */; };
 		37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96518C2BD62005C5807 /* SKTEffects.m */; };
 		37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */; };
+		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		37BDE96618C2BD62005C5807 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
 		37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
 		37BDE96818C2BD62005C5807 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
+		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,8 @@
 			children = (
 				37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */,
 				37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */,
+				37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */,
+				37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */,
 				377575B018BD1ACE00F503F6 /* DSCharacterSpriteNode.h */,
 				377575B118BD1ACE00F503F6 /* DSCharacterSpriteNode.m */,
 				372D323A18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.h */,
@@ -566,6 +571,7 @@
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */,
 				37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */,
+				37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				372D321618BC4DA0003E9068 /* DSViewController.m in Sources */,
 				37BDE96C18C2BD62005C5807 /* SKNode+SKTDebugDraw.m in Sources */,

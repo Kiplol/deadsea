@@ -110,7 +110,12 @@
 }
 -(void)damageAnimation
 {
-    //Empty
+    double totalTime = 1.0;
+    [self removeActionForKey:@"DamageColor"];
+    [self runAction:[SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:totalTime]];
+    SKAction * colorRedAction = [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
+    SKAction * colorClearAction = [SKAction colorizeWithColor:[UIColor whiteColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
+    [self runAction:[SKAction sequence:@[colorRedAction, colorClearAction]] withKey:@"DamageColor"];
 }
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character

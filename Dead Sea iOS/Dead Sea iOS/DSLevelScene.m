@@ -18,6 +18,7 @@
 -(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
+-(void)setUpScene;
 @end
 @implementation DSLevelScene
 
@@ -27,12 +28,14 @@
 #if DEBUG
         [YMCPhysicsDebugger init];
 #endif
+        
+        [self setUpScene];
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
-        [self addChild:_player.spriteNode];
+        [_worldLayer addChild:_player.spriteNode];
         
         //Combo Label
         _comboLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
@@ -48,9 +51,9 @@
         
         //TEST
         _testChar0 = [[DSSmallEnemySpriteNode alloc] init];
-        [self addChild:_testChar0];
+        [_worldLayer addChild:_testChar0];
         _testChar1 = [[DSSmallEnemySpriteNode alloc] init];
-        [self addChild:_testChar1];
+        [_worldLayer addChild:_testChar1];
         _testChar2 = [[DSSmallEnemySpriteNode alloc] init];
         _testChar1.fireRate = 1.5;
         _testChar1.shotsPerBurst = 0;
@@ -159,7 +162,6 @@
             [bullet removeFromPlay];
         }
     }];
-    
     [self updateComboDisplayForCurrenTime:currentTime];
 }
 
@@ -182,9 +184,21 @@
         _comboLabel.text = @"";
         _comboCountdownBar.size = CGSizeMake(0, _comboCountdownBar.size.height);
     }
-
 }
 
+#pragma mark - 
+-(void)shakeScene
+{
+    CGVector hitVector = CGVectorMake(50, 50);
+    [self shakeSceneWithVelocity:hitVector];
+    
+}
+-(void)shakeSceneWithVelocity:(CGVector)velocity
+{
+    CGPoint inverseVelocity = CGPointMake(-velocity.dx, -velocity.dy);
+    CGPoint hitVector = CGPointDivideScalar(inverseVelocity, 1.0);
+    [_worldLayer runAction:[SKAction skt_screenShakeWithNode:_worldLayer amount:hitVector oscillations:5 duration:0.3]];
+}
 #pragma mark - SKPhysicsContactDelegate
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
@@ -217,6 +231,19 @@
 }
 
 #pragma mark - private
+-(void)setUpScene
+{
+    // The origin of the pivot node must be the center of the screen.
+    _worldPivot = [SKNode node];
+    [self addChild:_worldPivot];
+    
+    // Create the world layer. This is the only node that is added directly
+    // to the pivot node. If you have a HUD layer you would add that directly
+    // to the scene and make it sit above the world layer.
+    _worldLayer = [SKNode node];
+    _worldLayer.position = self.frame.origin;
+    [_worldPivot addChild:_worldLayer];
+}
 -(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character
 {
     //shooter

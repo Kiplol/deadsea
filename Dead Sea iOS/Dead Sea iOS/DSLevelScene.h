@@ -19,7 +19,11 @@
     DSCharacterSpriteNode * _testChar2;
     UIPanGestureRecognizer * _oceanCurrentRecognizer;
     SKSpriteNode * _comboCountdownBar;
+    SKNode * _worldPivot;
+    SKNode * _worldLayer;
 }
 
 -(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
+-(void)shakeScene;
+-(void)shakeSceneWithVelocity:(CGVector)velocity;
 @end

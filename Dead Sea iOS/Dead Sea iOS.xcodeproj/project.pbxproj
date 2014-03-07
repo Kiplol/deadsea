@@ -159,6 +159,7 @@
 		37C4888018CA6F9B00042307 /* 9i67.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9i67.jpg; sourceTree = "<group>"; };
 		37C4888218CA6F9B00042307 /* explode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explode.gif; sourceTree = "<group>"; };
 		37C4888318CA6F9B00042307 /* SmallExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallExplosion.atlas; sourceTree = "<group>"; };
+		37C4888718CA913E00042307 /* DSDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDefines.h; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -222,21 +223,22 @@
 		372D320218BC4DA0003E9068 /* Dead Sea iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3784045418C6FB4800C8A12D /* SKNode+Utilities.h */,
-				3784045518C6FB4800C8A12D /* SKNode+Utilities.m */,
 				37BDE97118C2BD6A005C5807 /* 3rd Party */,
 				372D320B18BC4DA0003E9068 /* DSAppDelegate.h */,
 				372D320C18BC4DA0003E9068 /* DSAppDelegate.m */,
-				37BDE95418C043FC005C5807 /* SKAction+Utilities.h */,
-				37BDE95518C043FC005C5807 /* SKAction+Utilities.m */,
 				372D320E18BC4DA0003E9068 /* Main_iPhone.storyboard */,
 				372D321118BC4DA0003E9068 /* Main_iPad.storyboard */,
 				372D321418BC4DA0003E9068 /* DSViewController.h */,
 				372D321518BC4DA0003E9068 /* DSViewController.m */,
+				3784045418C6FB4800C8A12D /* SKNode+Utilities.h */,
+				3784045518C6FB4800C8A12D /* SKNode+Utilities.m */,
+				37BDE95418C043FC005C5807 /* SKAction+Utilities.h */,
+				37BDE95518C043FC005C5807 /* SKAction+Utilities.m */,
 				372D321718BC4DA0003E9068 /* DSLevelScene.h */,
 				372D321818BC4DA0003E9068 /* DSLevelScene.m */,
 				37BDE93518BC6C61005C5807 /* DSPlayer.h */,
 				37BDE93618BC6C61005C5807 /* DSPlayer.m */,
+				37C4888718CA913E00042307 /* DSDefines.h */,
 				377575B618BD237400F503F6 /* Factories */,
 				37BDE94018BC70B5005C5807 /* Controllers */,
 				37BDE93F18BC709E005C5807 /* Protocols */,

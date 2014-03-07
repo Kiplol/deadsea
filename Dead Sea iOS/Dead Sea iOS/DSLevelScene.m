@@ -287,6 +287,7 @@
     //shooter
     character.health--;
     BOOL didDestroy = (character.health <= 0);
+    BOOL shooteeIsAlive = (character.health >= 0);
     DSCharacterSpriteNode * shooter = nil;
     if(bullet.shooter)
     {
@@ -295,7 +296,7 @@
         {
             DSCharacterSpriteNode <DSDestroyerDelegate> * destroyer = (DSCharacterSpriteNode <DSDestroyerDelegate> *)shooter;
             shooter = (DSCharacterSpriteNode<DSDestroyerDelegate>*)bullet.shooter;
-            if([shooter respondsToSelector:@selector(didDamageCharacter:)])
+            if(shooteeIsAlive && [shooter respondsToSelector:@selector(didDamageCharacter:)])
             {
                 [destroyer didDamageCharacter:character];
             }
@@ -310,7 +311,7 @@
     {
         if([character conformsToProtocol:@protocol(DSDestroyableDelegate)])
         {
-            if([character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
+            if(shooteeIsAlive && [character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
             {
                 [character didTakeDamagefromCharacter:shooter];
             }

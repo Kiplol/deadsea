@@ -118,6 +118,7 @@
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
+#warning Player should not be able to move while dying or reviving
     UITouch * touch = [[touches allObjects] objectAtIndex:0];
     CGPoint point = [touch locationInNode:self];
     CGPoint lastPoint = [touch previousLocationInNode:self];
@@ -233,7 +234,11 @@
         [self bullet:bullet collidedWithCharacter:character];
     }
 
-    [bullet removeFromPlay];
+#warning This function shouldn't be checking the health.  Do that elsewhere.
+    if(character && character.health >= 0)
+    {
+        [bullet removeFromPlay];
+    }
 }
 
 #pragma mark - player life cycle

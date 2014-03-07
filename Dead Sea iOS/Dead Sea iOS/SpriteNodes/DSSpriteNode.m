@@ -36,7 +36,7 @@
 
 -(SKTexture*)initialTexture
 {
-    NSLog(@"Must override %s", __PRETTY_FUNCTION__);
+    //Must override
     return nil;
 }
 

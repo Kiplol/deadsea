@@ -29,13 +29,19 @@
         [YMCPhysicsDebugger init];
 #endif
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerWillDie) name:NOTIF_PLAYER_WILL_DIE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidDie) name:NOTIF_PLAYER_DID_DIE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerWillRevive) name:NOTIF_PLAYER_WILL_REVIVE object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidRevive) name:NOTIF_PLAYER_DID_REVIVE object:nil];
         [self setUpScene];
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_REVIVE object:_player.spriteNode];
         [_worldLayer addChild:_player.spriteNode];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_REVIVE object:_player.spriteNode];
         
         //Combo Label
         _comboLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
@@ -230,6 +236,33 @@
     [bullet removeFromPlay];
 }
 
+#pragma mark - player life cycle
+-(void)playerWillDie
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self enumerateChildNodesWithName:NAME_ENEMY usingBlock:^(SKNode *node, BOOL *stop) {
+        DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)node;
+        [enemy stopRotatingTowardsPlayer];
+        [enemy stopFiring];
+    }];
+    [_worldLayer enumerateChildNodesWithName:NAME_ENEMY usingBlock:^(SKNode *node, BOOL *stop) {
+        DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)node;
+        [enemy stopRotatingTowardsPlayer];
+        [enemy stopFiring];
+    }];
+}
+-(void)playerDidDie
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+-(void)playerWillRevive
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+-(void)playerDidRevive
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+}
 #pragma mark - private
 -(void)setUpScene
 {
@@ -268,15 +301,18 @@
         }
     }
     //shootee
-    if([character conformsToProtocol:@protocol(DSDestroyableDelegate)])
+    if(character.health >= 0)
     {
-        if([character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
+        if([character conformsToProtocol:@protocol(DSDestroyableDelegate)])
         {
-            [character didTakeDamagefromCharacter:shooter];
-        }
-        if(didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
-        {
-            [character didGetDestroyedByCharacter:shooter];
+            if([character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
+            {
+                [character didTakeDamagefromCharacter:shooter];
+            }
+            if(didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
+            {
+                [character didGetDestroyedByCharacter:shooter];
+            }
         }
     }
 }

@@ -18,6 +18,7 @@
         _bulletEmitter.bulletType = factoryBulletTypeBallshot;
         _bulletEmitter.colliderType = DSColliderTypePlayer;
         _bulletEmitter.bulletSpeed = 1.0;
+        self.name = NAME_ENEMY;
         self.fireRate = 2;
         self.physicsBody.categoryBitMask = DSColliderTypeEnemy;
         self.zRotation = M_PI;
@@ -63,6 +64,8 @@
 //}
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
+    [self stopFiring];
+    [self stopRotatingTowardsPlayer];
     [super didGetDestroyedByCharacter:character];
     [self flashPointsLabel];
 }

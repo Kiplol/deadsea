@@ -20,7 +20,7 @@
         if(defaultAtlas)
         {
             SKAction * animAction = [SKAction animateWithTextureAtlas:defaultAtlas timePerFrame:1.0/15.0 resize:NO restore:NO];
-            [self runAction:animAction];
+            [self runAction:[SKAction repeatActionForever:animAction] withKey:ACTION_NAME_CURRENT_KEYFRAME_ANIMATION];
         }
     }
     return self;

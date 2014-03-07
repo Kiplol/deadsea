@@ -26,4 +26,9 @@
 -(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
 -(void)shakeScene;
 -(void)shakeSceneWithVelocity:(CGVector)velocity;
+
+-(void)playerWillDie;
+-(void)playerDidDie;
+-(void)playerWillRevive;
+-(void)playerDidRevive;
 @end

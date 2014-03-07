@@ -18,7 +18,7 @@
         SKTexture * texture = [atlas textureNamed:[names objectAtIndex:i]];
         [textures addObject:texture];
     }
-    SKAction * animAction = [SKAction repeatActionForever:[SKAction animateWithTextures:textures timePerFrame:tpf resize:resize restore:restore]];
+    SKAction * animAction = [SKAction animateWithTextures:textures timePerFrame:tpf resize:resize restore:restore];
     return animAction;
 }
 @end

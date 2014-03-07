@@ -110,7 +110,9 @@
 }
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_DIE object:self];
     [super didGetDestroyedByCharacter:character];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_DIE object:self];
 }
 #pragma mark - private
 -(CGFloat)radiusForPhysicsBody

@@ -8,8 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-#define ATLAS_KEY_DEFAULT @"atlasKeyDefault"
-
 typedef enum {
     DSColliderTypeNone = 0,
     DSColliderTypePlayer = 1,

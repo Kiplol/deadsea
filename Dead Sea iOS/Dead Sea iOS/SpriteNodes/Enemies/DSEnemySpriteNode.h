@@ -7,6 +7,7 @@
 //
 
 #import "DSCharacterSpriteNode.h"
+#define NAME_ENEMY @"enemy"
 
 @interface DSEnemySpriteNode : DSCharacterSpriteNode {
     SKLabelNode * _pointsLabel;

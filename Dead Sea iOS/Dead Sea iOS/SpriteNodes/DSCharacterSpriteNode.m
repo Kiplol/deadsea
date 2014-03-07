@@ -21,6 +21,7 @@
 {
     if((self = [super init]))
     {
+        _health = 1;
         _bulletEmitter = [[DSBulletEmitter alloc] init];
         [self addChild:_bulletEmitter];
         self.fireRate = 5;
@@ -29,6 +30,13 @@
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
     }
     return self;
+}
+-(void)fillAtlasDictionary
+{
+    [super fillAtlasDictionary];
+    //Explosion
+    SKTextureAtlas * explosionAtlas = [SKTextureAtlas atlasNamed:@"SmallExplosion"];
+    [_dicAtlases setObject:explosionAtlas forKey:ATLAS_KEY_EXPLOSION];
 }
 -(void)fire
 {
@@ -124,12 +132,7 @@
 
 -(SKAction*)destroyAnimationAction
 {
-    double totalTime = 1.0;
-    SKAction * shakeAction = [SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:totalTime];
-    SKAction * colorRedAction = [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
-    SKAction * colorClearAction = [SKAction colorizeWithColor:[UIColor whiteColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
-    SKAction * sequence = [SKAction sequence:@[colorRedAction, colorClearAction]];
-    return [SKAction group:@[shakeAction, sequence]];
+    return [SKAction animateWithTextureAtlas:[_dicAtlases objectForKey:ATLAS_KEY_EXPLOSION] timePerFrame:1.0/15.0 resize:NO restore:NO];
 }
 -(void)destroyAnimation
 {

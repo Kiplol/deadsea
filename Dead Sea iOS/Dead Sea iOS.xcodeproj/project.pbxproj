@@ -56,6 +56,9 @@
 		37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96318C2BD62005C5807 /* SKTAudio.m */; };
 		37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96518C2BD62005C5807 /* SKTEffects.m */; };
 		37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */; };
+		37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888018CA6F9B00042307 /* 9i67.jpg */; };
+		37C4888518CA6F9B00042307 /* explode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888218CA6F9B00042307 /* explode.gif */; };
+		37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888318CA6F9B00042307 /* SmallExplosion.atlas */; };
 		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
 /* End PBXBuildFile section */
 
@@ -153,6 +156,9 @@
 		37BDE96618C2BD62005C5807 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
 		37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
 		37BDE96818C2BD62005C5807 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		37C4888018CA6F9B00042307 /* 9i67.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9i67.jpg; sourceTree = "<group>"; };
+		37C4888218CA6F9B00042307 /* explode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explode.gif; sourceTree = "<group>"; };
+		37C4888318CA6F9B00042307 /* SmallExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallExplosion.atlas; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -356,6 +362,8 @@
 		3776B1C418BC666F00DF5A68 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
+				37C4887F18CA6F9B00042307 /* Backgrounds */,
+				37C4888118CA6F9B00042307 /* Explosions */,
 				37BDE94118BDA2DE005C5807 /* Enemies */,
 				377575AA18BD10B700F503F6 /* Bullets */,
 				3776B1C518BC666F00DF5A68 /* PlayerShip */,
@@ -457,6 +465,23 @@
 			name = "3rd Party";
 			sourceTree = "<group>";
 		};
+		37C4887F18CA6F9B00042307 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				37C4888018CA6F9B00042307 /* 9i67.jpg */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		37C4888118CA6F9B00042307 /* Explosions */ = {
+			isa = PBXGroup;
+			children = (
+				37C4888218CA6F9B00042307 /* explode.gif */,
+				37C4888318CA6F9B00042307 /* SmallExplosion.atlas */,
+			);
+			path = Explosions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -538,15 +563,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
+				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
 				377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */,
 				37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */,
 				37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */,
 				372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */,
+				37C4888518CA6F9B00042307 /* explode.gif in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
 				377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */,
 				372D320718BC4DA0003E9068 /* InfoPlist.strings in Resources */,
+				37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

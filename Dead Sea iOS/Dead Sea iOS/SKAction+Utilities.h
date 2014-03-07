@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+@class SKTextureAtlas;
 @interface SKAction (Utilities)
++(SKAction*)animateWithTextureAtlas:(SKTextureAtlas*)atlas timePerFrame:(double)tpf resize:(BOOL)resize restore:(BOOL)restore;
 @end

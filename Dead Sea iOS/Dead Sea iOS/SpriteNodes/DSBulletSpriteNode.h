@@ -22,5 +22,4 @@
 
 -(id)initWithSpeedVector:(CGVector)speedVector;
 -(void)fire;
--(void)removeFromPlay;
 @end

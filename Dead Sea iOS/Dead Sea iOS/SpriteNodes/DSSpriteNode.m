@@ -16,6 +16,12 @@
         [self fillAtlasDictionary];
         self.texture = [self initialTexture];
         self.size = self.texture.size;
+        SKTextureAtlas * defaultAtlas = [_dicAtlases objectForKey:ATLAS_KEY_DEFAULT];
+        if(defaultAtlas)
+        {
+            SKAction * animAction = [SKAction animateWithTextureAtlas:defaultAtlas timePerFrame:1.0/15.0 resize:NO restore:NO];
+            [self runAction:animAction];
+        }
     }
     return self;
 }
@@ -32,5 +38,16 @@
 {
     NSLog(@"Must override %s", __PRETTY_FUNCTION__);
     return nil;
+}
+
+/*!
+ * @brief
+ * @note If you have any repeating actions, MAKE SURE TO STOP THEM
+ */
+-(void)removeFromPlay
+{
+    [self removeAllActions];
+    [self removeAllChildren];
+    [self removeFromParent];
 }
 @end

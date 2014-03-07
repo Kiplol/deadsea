@@ -11,6 +11,9 @@
 #import "DSDestroyerDestroyableDelegate.h"
 #import "DSBulletEmitter.h"
 
+#define ACTION_NAME_DAMAGE_ANIMATION @"actionNameDamageAnimation"
+#define ACTION_NAME_DESTROY_ANIMATION @"actionNameDestroyAnimation"
+
 @class DSBulletSpriteNode;
 @interface DSCharacterSpriteNode : DSSpriteNode <DSDestroyableDelegate>{
     int _health;
@@ -66,5 +69,9 @@
  */
 -(void)flyInFrom:(CGPoint)fromPoint to:(CGPoint)toPoint overDuration:(double)dur completion:(void (^)())completion;
 
+-(SKAction*)damageAnimationAction;
 -(void)damageAnimation;
+-(SKAction*)destroyAnimationAction;
+-(void)destroyAnimation;
+-(void)destroyAnimationAndRemove;
 @end

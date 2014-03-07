@@ -101,14 +101,49 @@
         }
     }];
 }
--(void)damageAnimation
+-(void)removeFromPlay
+{
+    [super removeFromPlay];
+    _bFiring = NO;
+    _rotateTowardsPlayer = NO;
+}
+-(SKAction*)damageAnimationAction
 {
     double totalTime = 1.0;
-    [self removeActionForKey:@"DamageColor"];
     [self runAction:[SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:totalTime]];
     SKAction * colorRedAction = [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
     SKAction * colorClearAction = [SKAction colorizeWithColor:[UIColor whiteColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
-    [self runAction:[SKAction sequence:@[colorRedAction, colorClearAction]] withKey:@"DamageColor"];
+    SKAction * sequence = [SKAction sequence:@[colorRedAction, colorClearAction]];
+    return sequence;
+}
+-(void)damageAnimation
+{
+    [self removeActionForKey:ACTION_NAME_DAMAGE_ANIMATION];
+    [self runAction:[self damageAnimationAction] withKey:ACTION_NAME_DAMAGE_ANIMATION];
+}
+
+-(SKAction*)destroyAnimationAction
+{
+    double totalTime = 1.0;
+    SKAction * shakeAction = [SKAction skt_screenShakeWithNode:self amount:CGPointMake(1, 2) oscillations:10 duration:totalTime];
+    SKAction * colorRedAction = [SKAction colorizeWithColor:[UIColor redColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
+    SKAction * colorClearAction = [SKAction colorizeWithColor:[UIColor whiteColor] colorBlendFactor:1.0 duration:totalTime * 0.25];
+    SKAction * sequence = [SKAction sequence:@[colorRedAction, colorClearAction]];
+    return [SKAction group:@[shakeAction, sequence]];
+}
+-(void)destroyAnimation
+{
+    [self removeActionForKey:ACTION_NAME_DAMAGE_ANIMATION];
+    [self removeActionForKey:ACTION_NAME_DESTROY_ANIMATION];
+    [self runAction:[self destroyAnimationAction] withKey:ACTION_NAME_DESTROY_ANIMATION];
+}
+-(void)destroyAnimationAndRemove
+{
+    [self removeActionForKey:ACTION_NAME_DAMAGE_ANIMATION];
+    [self removeActionForKey:ACTION_NAME_DESTROY_ANIMATION];
+    [self runAction:[self destroyAnimationAction] completion:^{
+        [self removeFromPlay];
+    }];
 }
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
@@ -117,7 +152,7 @@
 }
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
-    //Empty
+    [self destroyAnimationAndRemove];
 }
 #pragma mark - private
 -(void)rotateTowardsPlayer

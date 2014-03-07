@@ -41,7 +41,7 @@
 }
 -(void)removeFromPlay
 {
-    [self.scene removeChildrenInArray:@[self]];
+    [super removeFromPlay];
     self.shooter = nil;
     [self removeFromParent];
     [[OceanPhysicsController sharedController] removePhysicsObject:self];

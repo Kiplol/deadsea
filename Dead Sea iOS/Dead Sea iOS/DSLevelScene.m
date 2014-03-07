@@ -57,7 +57,7 @@
         _testChar2 = [[DSSmallEnemySpriteNode alloc] init];
         _testChar1.fireRate = 1.5;
         _testChar1.shotsPerBurst = 0;
-        [_testChar0 addChild:_testChar2];
+        [_worldLayer addChild:_testChar2];
 #if DEBUG
         [self drawPhysicsBodies];
 #endif
@@ -92,7 +92,7 @@
                }];
     [_testChar2 startRotatingTowardsPlayer];
     [_testChar2 flyInFrom:CGPointMake(0.0f, self.size.height)
-                       to:CGPointMake(-40,40)
+                       to:CGPointMake(CGRectGetMidX([self rectOfPlay]) + 75.0f, CGRectGetMidY([self rectOfPlay]))
              overDuration:1.5
                completion:^{
                    [_testChar2 startFiring];

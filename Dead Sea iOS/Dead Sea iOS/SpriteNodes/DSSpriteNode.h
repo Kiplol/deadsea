@@ -8,14 +8,14 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+#define ATLAS_KEY_DEFAULT @"atlasKeyDefault"
+
 typedef enum {
     DSColliderTypeNone = 0,
     DSColliderTypePlayer = 1,
     DSColliderTypeEnemy = 1 << 1,
     DSColliderTypeProjectile = 1 << 2
 } DSColliderType;
-
-#define ATLAS_KEY_DEFAULT @"atlasKeyDefault"
 
 @interface DSSpriteNode : SKSpriteNode {
     NSMutableDictionary * _dicAtlases;
@@ -33,4 +33,6 @@ typedef enum {
  * @note It is recommended that you override this method in any subclasses.
  */
 -(SKTexture*)initialTexture;
+
+-(void)removeFromPlay;
 @end

@@ -59,6 +59,7 @@
 		37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888018CA6F9B00042307 /* 9i67.jpg */; };
 		37C4888518CA6F9B00042307 /* explode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888218CA6F9B00042307 /* explode.gif */; };
 		37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888318CA6F9B00042307 /* SmallExplosion.atlas */; };
+		37D08B8118CAC5DA005495DF /* DSCharacterSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */; };
 		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,8 @@
 		37C4888218CA6F9B00042307 /* explode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explode.gif; sourceTree = "<group>"; };
 		37C4888318CA6F9B00042307 /* SmallExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallExplosion.atlas; sourceTree = "<group>"; };
 		37C4888718CA913E00042307 /* DSDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDefines.h; sourceTree = "<group>"; };
+		37D08B7F18CAC5DA005495DF /* DSCharacterSpawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCharacterSpawner.h; sourceTree = "<group>"; };
+		37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCharacterSpawner.m; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +239,8 @@
 				37BDE95518C043FC005C5807 /* SKAction+Utilities.m */,
 				372D321718BC4DA0003E9068 /* DSLevelScene.h */,
 				372D321818BC4DA0003E9068 /* DSLevelScene.m */,
+				37D08B7F18CAC5DA005495DF /* DSCharacterSpawner.h */,
+				37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */,
 				37BDE93518BC6C61005C5807 /* DSPlayer.h */,
 				37BDE93618BC6C61005C5807 /* DSPlayer.m */,
 				37C4888718CA913E00042307 /* DSDefines.h */,
@@ -614,6 +619,7 @@
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
 				37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */,
 				377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */,
+				37D08B8118CAC5DA005495DF /* DSCharacterSpawner.m in Sources */,
 				37BDE96918C2BD62005C5807 /* SKAction+SKTExtras.m in Sources */,
 				37BDE96B18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m in Sources */,
 				377575A818BD0FE000F503F6 /* DSLightshotBulletSpriteNode.m in Sources */,

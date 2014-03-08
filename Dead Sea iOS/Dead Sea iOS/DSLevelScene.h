@@ -13,19 +13,13 @@
 @interface DSLevelScene : SKScene <SKPhysicsContactDelegate> {
     DSPlayer * _player;
     SKLabelNode * _comboLabel;
+    SKLabelNode * _scoreLabel;
     
-    DSCharacterSpriteNode * _testChar0;
-    DSCharacterSpriteNode * _testChar1;
-    DSCharacterSpriteNode * _testChar2;
     UIPanGestureRecognizer * _oceanCurrentRecognizer;
     SKSpriteNode * _comboCountdownBar;
-    SKNode * _worldPivot;
-    SKNode * _worldLayer;
 }
 
 -(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
--(void)shakeScene;
--(void)shakeSceneWithVelocity:(CGVector)velocity;
 
 -(void)playerWillDie;
 -(void)playerDidDie;

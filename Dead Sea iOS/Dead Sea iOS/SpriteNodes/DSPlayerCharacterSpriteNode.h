@@ -12,13 +12,14 @@
 @interface DSPlayerCharacterSpriteNode : DSCharacterSpriteNode <DSDestroyerDelegate> {
     CFTimeInterval _comboCountDown;
     CFTimeInterval _comboStartTime;
+    BOOL _alive;
     int _combo;
 }
 /*!
  * Time until combo expires
  */
 @property (nonatomic, readonly) CFTimeInterval comboCountDown;
-
+@property (nonatomic, readonly) BOOL alive;
 @property (nonatomic, readonly) int combo;
 
 -(void)leanLeft;

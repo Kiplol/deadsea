@@ -155,11 +155,17 @@
 }
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
+    [self removeAllActions];
     [self destroyAnimationAndRemove];
 }
 #pragma mark - private
 -(void)rotateTowardsPlayer
 {
+    if(![DSPlayer sharedPlayer].spriteNode.alive || ![DSPlayer sharedPlayer].spriteNode.parent)
+    {
+        [self stopRotatingTowardsPlayer];
+        return;
+    }
     CGPoint myAbsolutePoint = [self.scene convertPoint:self.position fromNode:self.parent];
     CGPoint playAbsolutePoint = [self.scene convertPoint:[DSPlayer sharedPlayer].spriteNode.position fromNode:[DSPlayer sharedPlayer].spriteNode.parent];
     CGPoint diffPoint = CGPointSubtract(myAbsolutePoint, playAbsolutePoint);

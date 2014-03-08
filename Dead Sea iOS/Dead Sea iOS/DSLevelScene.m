@@ -13,12 +13,12 @@
 #import "DSSmallEnemySpriteNode.h"
 #import "YMCPhysicsDebugger.h"
 #import "SKAction+Utilities.h"
+#import "DSCharacterSpawner.h"
 
 @interface DSLevelScene (private)
 -(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
--(void)setUpScene;
 @end
 @implementation DSLevelScene
 
@@ -33,14 +33,13 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidDie) name:NOTIF_PLAYER_DID_DIE object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerWillRevive) name:NOTIF_PLAYER_WILL_REVIVE object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerDidRevive) name:NOTIF_PLAYER_DID_REVIVE object:nil];
-        [self setUpScene];
         self.physicsWorld.contactDelegate = self;
         self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
         [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_REVIVE object:_player.spriteNode];
-        [_worldLayer addChild:_player.spriteNode];
+        [self addChild:_player.spriteNode];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_REVIVE object:_player.spriteNode];
         
         //Combo Label
@@ -49,21 +48,18 @@
         _comboLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         [self addChild:_comboLabel];
         
+        //Score Label
+        _scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+        _scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeRight;
+        _scoreLabel.position = CGPointMake(self.size.width - (_scoreLabel.frame.size.width * 0.5f), self.frame.size.height - (_scoreLabel.frame.size.height) - 50);
+        [self addChild:_scoreLabel];
+        
         //Combo Countdown Bar
         _comboCountdownBar = [[SKSpriteNode alloc] initWithTexture:nil color:[UIColor yellowColor] size:CGSizeMake(1, 20)];
         _comboCountdownBar.position = CGPointMake(_comboLabel.position.x, CGRectGetMaxY(_comboLabel.frame) - 20);
         _comboCountdownBar.anchorPoint = CGPointZero;
         [self addChild:_comboCountdownBar];
         
-        //TEST
-        _testChar0 = [[DSSmallEnemySpriteNode alloc] init];
-        [_worldLayer addChild:_testChar0];
-        _testChar1 = [[DSSmallEnemySpriteNode alloc] init];
-        [_worldLayer addChild:_testChar1];
-        _testChar2 = [[DSSmallEnemySpriteNode alloc] init];
-        _testChar1.fireRate = 1.5;
-        _testChar1.shotsPerBurst = 0;
-        [_worldLayer addChild:_testChar2];
 #if DEBUG
         [self drawPhysicsBodies];
 #endif
@@ -79,31 +75,9 @@
     _oceanCurrentRecognizer.cancelsTouchesInView = YES;
     [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
     
-    //TEST
-    [_testChar0 startRotatingTowardsPlayer];
-    [_testChar0 flyInFrom:CGPointMake(0.0f, self.size.height)
-                      to:CGPointMake(CGRectGetMidX([self rectOfPlay]), CGRectGetMidY([self rectOfPlay]))
-            overDuration:1.6
-              completion:^{
-                [_testChar0 startFiring];
-                [_testChar0 startRotatingTowardsPlayerWithRestTimeEvery:1.0];
-    }];
-    [_testChar1 startRotatingTowardsPlayer];
-    [_testChar1 flyInFrom:CGPointMake(0.0f, self.size.height)
-                       to:CGPointMake(CGRectGetMidX([self rectOfPlay]) - 75.0f, CGRectGetMidY([self rectOfPlay]))
-             overDuration:1.8
-               completion:^{
-                   [_testChar1 startFiring];
-                   [_testChar1 startRotatingTowardsPlayerWithRestTimeEvery:0.9];
-               }];
-    [_testChar2 startRotatingTowardsPlayer];
-    [_testChar2 flyInFrom:CGPointMake(0.0f, self.size.height)
-                       to:CGPointMake(CGRectGetMidX([self rectOfPlay]) + 75.0f, CGRectGetMidY([self rectOfPlay]))
-             overDuration:1.5
-               completion:^{
-                   [_testChar2 startFiring];
-                   [_testChar2 startRotatingTowardsPlayerWithRestTimeEvery:0.7];
-               }];
+    DSCharacterSpawner * spawner = [[DSCharacterSpawner alloc] initWithPlistNamed:@"dickfart.plist"];
+    spawner.parentNode = self;
+    [spawner run];
 }
 
 #pragma mark - Touches
@@ -170,6 +144,7 @@
         }
     }];
     [self updateComboDisplayForCurrenTime:currentTime];
+    _scoreLabel.text = [NSString stringWithFormat:@"%d", [DSPlayer sharedPlayer].score];
 }
 
 -(void)didSimulatePhysics
@@ -191,20 +166,6 @@
         _comboLabel.text = @"";
         _comboCountdownBar.size = CGSizeMake(0, _comboCountdownBar.size.height);
     }
-}
-
-#pragma mark - 
--(void)shakeScene
-{
-    CGVector hitVector = CGVectorMake(50, 50);
-    [self shakeSceneWithVelocity:hitVector];
-    
-}
--(void)shakeSceneWithVelocity:(CGVector)velocity
-{
-    CGPoint inverseVelocity = CGPointMake(-velocity.dx, -velocity.dy);
-    CGPoint hitVector = CGPointDivideScalar(inverseVelocity, 1.0);
-    [_worldLayer runAction:[SKAction skt_screenShakeWithNode:_worldLayer amount:hitVector oscillations:5 duration:0.3]];
 }
 #pragma mark - SKPhysicsContactDelegate
 -(void)didBeginContact:(SKPhysicsContact *)contact
@@ -250,11 +211,6 @@
         [enemy stopRotatingTowardsPlayer];
         [enemy stopFiring];
     }];
-    [_worldLayer enumerateChildNodesWithName:NAME_ENEMY usingBlock:^(SKNode *node, BOOL *stop) {
-        DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)node;
-        [enemy stopRotatingTowardsPlayer];
-        [enemy stopFiring];
-    }];
 }
 -(void)playerDidDie
 {
@@ -269,19 +225,6 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 #pragma mark - private
--(void)setUpScene
-{
-    // The origin of the pivot node must be the center of the screen.
-    _worldPivot = [SKNode node];
-    [self addChild:_worldPivot];
-    
-    // Create the world layer. This is the only node that is added directly
-    // to the pivot node. If you have a HUD layer you would add that directly
-    // to the scene and make it sit above the world layer.
-    _worldLayer = [SKNode node];
-    _worldLayer.position = self.frame.origin;
-    [_worldPivot addChild:_worldLayer];
-}
 -(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character
 {
     //shooter
@@ -300,7 +243,7 @@
             {
                 [destroyer didDamageCharacter:character];
             }
-            if(didDestroy && [shooter respondsToSelector:@selector(didDestroyCharacter:)])
+            if(shooteeIsAlive && didDestroy && [shooter respondsToSelector:@selector(didDestroyCharacter:)])
             {
                 [destroyer didDestroyCharacter:character];
             }
@@ -315,7 +258,7 @@
             {
                 [character didTakeDamagefromCharacter:shooter];
             }
-            if(didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
+            if(shooteeIsAlive && didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
             {
                 [character didGetDestroyedByCharacter:shooter];
             }

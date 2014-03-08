@@ -8,6 +8,8 @@
 
 #import "DSPlayerCharacterSpriteNode.h"
 #import "DSLightshotBulletSpriteNode.h"
+#import "DSPlayer.h"
+#import "DSEnemySpriteNode.h"
 
 #define MAX_COMBO_TIME 1.2
 
@@ -18,6 +20,7 @@
 @implementation DSPlayerCharacterSpriteNode
 @synthesize comboCountDown = _comboCountDown;
 @synthesize combo = _combo;
+@synthesize alive = _alive;
 -(id)init
 {
     if((self = [super init]))
@@ -28,6 +31,7 @@
         _bulletEmitter.zRotation = M_PI_2;
         self.fireRate = 10;
         _comboStartTime = 0;
+        _alive = YES;
         self.physicsBody.categoryBitMask = DSColliderTypePlayer;
     }
     return self;
@@ -99,7 +103,11 @@
 }
 -(void)didDestroyCharacter:(DSCharacterSpriteNode*)character
 {
-    
+    if([character isKindOfClass:[DSEnemySpriteNode class]])
+    {
+        DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)character;
+        [DSPlayer sharedPlayer].score += enemy.pointsForDestroying;
+    }
 }
 
 #pragma mark - DSDestroyableDelegate
@@ -110,6 +118,7 @@
 }
 -(void)didGetDestroyedByCharacter:(DSCharacterSpriteNode*)character
 {
+    _alive = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_DIE object:self];
     [super didGetDestroyedByCharacter:character];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_DIE object:self];

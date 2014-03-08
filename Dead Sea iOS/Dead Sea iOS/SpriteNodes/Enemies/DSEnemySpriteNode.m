@@ -48,7 +48,7 @@
     CGPoint absolutePos = [scene convertPoint:self.position fromNode:self.parent];
     _pointsLabel.position = CGPointMake(absolutePos.x + self.size.width, absolutePos.y + self.size.height + 10.0f);
     _pointsLabel.hidden = NO;
-    SKAction * riseAction = [SKAction moveByX:0.0f y:10.0f duration:0.5];
+    SKAction * riseAction = [SKAction moveByX:5.0f y:0.0f duration:0.5];
     SKAction * fadeAction = [SKAction fadeAlphaTo:0.0f duration:0.3];
     SKAction * sequence = [SKAction sequence:@[riseAction, fadeAction, [SKAction runBlock:^{
         _pointsLabel.alpha = 1.0f;

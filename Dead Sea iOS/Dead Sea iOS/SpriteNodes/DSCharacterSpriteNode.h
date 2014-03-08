@@ -38,6 +38,8 @@
  */
 @property (nonatomic, readwrite) double timeBetweenBursts;
 
+@property (nonatomic, readwrite) BOOL invincible;
+
 /*!
  * @brief Tells the bulletEmitter to fire with the this character's zRotation
  */

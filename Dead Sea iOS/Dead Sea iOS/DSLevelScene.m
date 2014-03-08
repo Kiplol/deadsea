@@ -16,7 +16,7 @@
 #import "DSCharacterSpawner.h"
 
 @interface DSLevelScene (private)
--(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
+-(BOOL)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
 @end
@@ -27,6 +27,14 @@
         /* Setup your scene here */
 #if DEBUG
         [YMCPhysicsDebugger init];
+        
+        SKLabelNode * restartLevelBtn = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+        restartLevelBtn.fontSize = 15;
+        [self addChild:restartLevelBtn];
+        restartLevelBtn.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        restartLevelBtn.text = @"Respawn Enemies";
+        restartLevelBtn.name = @"respawnBtn";
+        restartLevelBtn.position = CGPointMake(0, size.height - 50);;
 #endif
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerWillDie) name:NOTIF_PLAYER_WILL_DIE object:nil];
@@ -75,9 +83,8 @@
     _oceanCurrentRecognizer.cancelsTouchesInView = YES;
     [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
     
-    DSCharacterSpawner * spawner = [[DSCharacterSpawner alloc] initWithPlistNamed:@"dickfart.plist"];
-    spawner.parentNode = self;
-    [spawner run];
+    _spawner = [[DSCharacterSpawner alloc] initWithPlistNamed:@"Level0" andParentNode:self];
+    [_spawner run];
 }
 
 #pragma mark - Touches
@@ -85,21 +92,30 @@
 {
     [super touchesBegan:touches withEvent:event];
     [_player.spriteNode startFiring];
-//    _oceanCurrentRecognizer.enabled = NO;
-//    _oceanCurrentRecognizer.enabled = YES;
+#if DEBUG
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    SKNode *node = [self nodeAtPoint:location];
+    if([node.name isEqualToString:@"respawnBtn"])
+    {
+        [_spawner run];
+    }
+#endif
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesMoved:touches withEvent:event];
-#warning Player should not be able to move while dying or reviving
-    UITouch * touch = [[touches allObjects] objectAtIndex:0];
-    CGPoint point = [touch locationInNode:self];
-    CGPoint lastPoint = [touch previousLocationInNode:self];
-    CGPoint deltaVector = CGPointMake(point.x - lastPoint.x, point.y - lastPoint.y);
-    CGPoint currentPos = _player.spriteNode.position;
-    CGPoint newPos = CGPointMake(currentPos.x + deltaVector.x, currentPos.y + deltaVector.y);
-    _player.spriteNode.position = [self nearestPoint:newPos inRect:[self rectOfPlay]];
+    if(_player.spriteNode.alive)
+    {
+        UITouch * touch = [[touches allObjects] objectAtIndex:0];
+        CGPoint point = [touch locationInNode:self];
+        CGPoint lastPoint = [touch previousLocationInNode:self];
+        CGPoint deltaVector = CGPointMake(point.x - lastPoint.x, point.y - lastPoint.y);
+        CGPoint currentPos = _player.spriteNode.position;
+        CGPoint newPos = CGPointMake(currentPos.x + deltaVector.x, currentPos.y + deltaVector.y);
+        _player.spriteNode.position = [self nearestPoint:newPos inRect:[self rectOfPlay]];
+    }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -192,13 +208,10 @@
     }
     if(bullet && character)
     {
-        [self bullet:bullet collidedWithCharacter:character];
-    }
-
-#warning This function shouldn't be checking the health.  Do that elsewhere.
-    if(character && character.health >= 0)
-    {
-        [bullet removeFromPlay];
+        if([self bullet:bullet collidedWithCharacter:character])
+        {
+            [bullet removeFromPlay];
+        }
     }
 }
 
@@ -225,9 +238,15 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 #pragma mark - private
--(void)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character
+-(BOOL)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character
 {
     //shooter
+    if(character.invincible)
+    {
+        //The collision counts, but no damage is done
+        return YES;
+    }
+    BOOL collisionCounts = NO;
     character.health--;
     BOOL didDestroy = (character.health <= 0);
     BOOL shooteeIsAlive = (character.health >= 0);
@@ -241,10 +260,12 @@
             shooter = (DSCharacterSpriteNode<DSDestroyerDelegate>*)bullet.shooter;
             if(shooteeIsAlive && [shooter respondsToSelector:@selector(didDamageCharacter:)])
             {
+                collisionCounts = YES;
                 [destroyer didDamageCharacter:character];
             }
             if(shooteeIsAlive && didDestroy && [shooter respondsToSelector:@selector(didDestroyCharacter:)])
             {
+                collisionCounts = YES;
                 [destroyer didDestroyCharacter:character];
             }
         }
@@ -256,14 +277,17 @@
         {
             if(shooteeIsAlive && [character respondsToSelector:@selector(didTakeDamagefromCharacter:)])
             {
+                collisionCounts = YES;
                 [character didTakeDamagefromCharacter:shooter];
             }
             if(shooteeIsAlive && didDestroy && [character respondsToSelector:@selector(didGetDestroyedByCharacter:)])
             {
+                collisionCounts = YES;
                 [character didGetDestroyedByCharacter:shooter];
             }
         }
     }
+    return collisionCounts;
 }
 -(CGRect)rectOfPlay
 {

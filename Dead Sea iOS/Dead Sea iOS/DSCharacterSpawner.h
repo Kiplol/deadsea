@@ -17,6 +17,8 @@ typedef enum {
     
 }
 @property (nonatomic, readwrite) DSCharacterType characterType;
+@property (nonatomic, readwrite) CGPoint spawnStartPoint;
+@property (nonatomic, readwrite) CGPoint spawnEndPoint;
 @property (nonatomic, readwrite) double timeAfterLastSpawnToSpawn;
 @property (nonatomic, readwrite) int wave;
 @property (nonatomic, readonly) NSMutableDictionary * info;
@@ -27,6 +29,6 @@ typedef enum {
 }
 @property (nonatomic, readonly) NSMutableArray * spawnInfos;
 @property (nonatomic, assign) SKNode * parentNode;
--(id)initWithPlistNamed:(NSString*)plistName;
+-(id)initWithPlistNamed:(NSString*)plistName andParentNode:(SKNode*)parentNode;
 -(void)run;
 @end

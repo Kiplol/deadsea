@@ -9,6 +9,9 @@
 #ifndef Dead_Sea_iOS_DSDefines_h
 #define Dead_Sea_iOS_DSDefines_h
 
+#pragma mark - typedefs
+typedef NSArray DSSpawnWaveArray;
+
 #pragma mark - Notifications
 #define NOTIF_PLAYER_WILL_DIE @"notifPlayerWillDie"
 #define NOTIF_PLAYER_DID_DIE @"notifPlayerDidDie"

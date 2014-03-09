@@ -22,12 +22,23 @@
 @end
 @implementation DSCharacterSpawner
 @synthesize spawnWaves = _spawnWaves;
+-(id)initWithSpawnWaves:(DSSpawnWaveArray*)spawnWaves andParentNode:(SKNode*)parentNode
+{
+    if((self = [super init]))
+    {
+        self.parentNode = parentNode;
+        _spawnWaves = spawnWaves;
+        _currentWave = -1;
+    }
+    return self;
+}
 -(id)initWithPlistNamed:(NSString*)plistName andParentNode:(SKNode *)parentNode
 {
     if((self = [super init]))
     {
         self.parentNode = parentNode;
-        _spawnWaves = [DSLevelParser levelFromPlist:plistName];
+        _spawnWaves = [DSLevelParser waveInfoFromPlist:plistName];
+        _currentWave = -1;
     }
     return self;
 }
@@ -61,8 +72,14 @@
         NSLog(@"Completed spawns");
         return;
     }
-    _currentWave = waveIdx;
     NSArray * wave = [_spawnWaves objectAtIndex:waveIdx];
+    if(_currentWave != waveIdx)
+    {
+        NSLog(@"Beginning wave %d", waveIdx);
+        _charactersRemainingInCurrentWave = wave.count;
+    }
+    _currentWave = waveIdx;
+    
 
     BOOL isFinalCharOfWave = [self characterAtIndex:idx isFinalCharacterOfWave:waveIdx];
     DSCharacterSpawnInfo * spawnInfo = [wave objectAtIndex:idx];
@@ -71,11 +88,8 @@
     {
         if(self.parentNode)
         {
-            if(isFinalCharOfWave)
-            {
-                //Observe the health of the last character of the wave
-                [sprite addObserver:self forKeyPath:KEY_PATH_HEALTH options:NSKeyValueObservingOptionNew context:NULL];
-            }
+            //Observe the health of the character
+            [sprite addObserver:self forKeyPath:KEY_PATH_HEALTH options:NSKeyValueObservingOptionNew context:NULL];
             [self.parentNode addChild:sprite];
             [sprite flyInFrom:spawnInfo.spawnStartPoint to:spawnInfo.spawnEndPoint overDuration:1.0 completion:^{
                 //Completion
@@ -96,8 +110,6 @@
         if(_spawnWaves.count > (waveIdx + 1))
         {
             //There is another wave
-#warning First wait until last enemy was killed
-//            [self runWithSpawnInfoAtIndex:0 ofWave:(waveIdx + 1)];
         }
         else
         {
@@ -143,16 +155,20 @@
         DSCharacterSpriteNode * character = (DSCharacterSpriteNode*)object;
         if(character.health <= 0)
         {
-            //The last character of the wave has been killed
+            //The character has been killed
+            _charactersRemainingInCurrentWave--;
             [character removeObserver:self forKeyPath:KEY_PATH_HEALTH];
-            NSLog(@"Wave %d complete", _currentWave);
-            if(_spawnWaves.count > (_currentWave + 1))
+            if(_charactersRemainingInCurrentWave  <= 0)
             {
-                [self runWithSpawnInfoAtIndex:0 ofWave:(_currentWave + 1)];
-            }
-            else
-            {
-                NSLog(@"Final wave complete");
+                NSLog(@"Wave %d complete", _currentWave);
+                if(_spawnWaves.count > (_currentWave + 1))
+                {
+                    [self runWithSpawnInfoAtIndex:0 ofWave:(_currentWave + 1)];
+                }
+                else
+                {
+                    NSLog(@"Final wave complete");
+                }
             }
         }
     }

@@ -40,8 +40,12 @@
 }
 -(void)fire
 {
+    [self fireFromEmitter:_bulletEmitter];
+}
+-(void)fireFromEmitter:(DSBulletEmitter *)emitter
+{
     //Fire now
-    [_bulletEmitter emitFromShooter:self];
+    [emitter emitFromShooter:self];
     _shotsThisBurst++;
     
     //Do it again
@@ -112,6 +116,7 @@
 -(void)removeFromPlay
 {
     [super removeFromPlay];
+    self.health = 0;
     _bFiring = NO;
     _rotateTowardsPlayer = NO;
 }

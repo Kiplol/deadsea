@@ -62,6 +62,7 @@
 		37D08B8118CAC5DA005495DF /* DSCharacterSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */; };
 		37D08B8418CBAAE5005495DF /* DSLevelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8318CBAAE5005495DF /* DSLevelParser.m */; };
 		37D08B8718CBAC76005495DF /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D08B8618CBAC76005495DF /* Level0.plist */; };
+		37D08B8A18CC0BDF005495DF /* DSLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8918CC0BDF005495DF /* DSLevel.m */; };
 		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +169,8 @@
 		37D08B8218CBAAE5005495DF /* DSLevelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLevelParser.h; sourceTree = "<group>"; };
 		37D08B8318CBAAE5005495DF /* DSLevelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLevelParser.m; sourceTree = "<group>"; };
 		37D08B8618CBAC76005495DF /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level0.plist; path = "Dead Sea iOS/Resources/Levels/Level0.plist"; sourceTree = SOURCE_ROOT; };
+		37D08B8818CC0BDF005495DF /* DSLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLevel.h; path = "Dead Sea iOS/DSLevel.h"; sourceTree = "<group>"; };
+		37D08B8918CC0BDF005495DF /* DSLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLevel.m; path = "Dead Sea iOS/DSLevel.m"; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,6 +203,8 @@
 		372D31EE18BC4DA0003E9068 = {
 			isa = PBXGroup;
 			children = (
+				37D08B8818CC0BDF005495DF /* DSLevel.h */,
+				37D08B8918CC0BDF005495DF /* DSLevel.m */,
 				372D320218BC4DA0003E9068 /* Dead Sea iOS */,
 				372D322918BC4DA0003E9068 /* Dead Sea iOSTests */,
 				372D31F918BC4DA0003E9068 /* Frameworks */,
@@ -637,6 +642,7 @@
 				372D320D18BC4DA0003E9068 /* DSAppDelegate.m in Sources */,
 				37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */,
 				377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */,
+				37D08B8A18CC0BDF005495DF /* DSLevel.m in Sources */,
 				37D08B8118CAC5DA005495DF /* DSCharacterSpawner.m in Sources */,
 				37BDE96918C2BD62005C5807 /* SKAction+SKTExtras.m in Sources */,
 				37BDE96B18C2BD62005C5807 /* SKEmitterNode+SKTExtras.m in Sources */,

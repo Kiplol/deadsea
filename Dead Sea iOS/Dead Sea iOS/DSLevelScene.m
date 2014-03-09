@@ -14,6 +14,8 @@
 #import "YMCPhysicsDebugger.h"
 #import "SKAction+Utilities.h"
 #import "DSCharacterSpawner.h"
+#import "DSLevelParser.h"
+#import "DSLevel.h"
 
 @interface DSLevelScene (private)
 -(BOOL)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
@@ -46,9 +48,7 @@
         [OceanPhysicsController sharedController].physicsWorld = self.physicsWorld;
         self.backgroundColor = [SKColor colorWithRed:0.0f green:0.15f blue:0.3f alpha:1.0];
         _player = [DSPlayer sharedPlayer];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_REVIVE object:_player.spriteNode];
-        [self addChild:_player.spriteNode];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_REVIVE object:_player.spriteNode];
+        [self revivePlayer];
         
         //Combo Label
         _comboLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
@@ -83,8 +83,12 @@
     _oceanCurrentRecognizer.cancelsTouchesInView = YES;
     [[self view] addGestureRecognizer:_oceanCurrentRecognizer];
     
-    _spawner = [[DSCharacterSpawner alloc] initWithPlistNamed:@"Level0" andParentNode:self];
-    [_spawner run];
+//    DSSpawnWaveArray * spawnWaves = [DSLevelParser waveInfoFromPlist:@"Level0"];
+//    _spawner = [[DSCharacterSpawner alloc] initWithSpawnWaves:spawnWaves andParentNode:self];
+//    [_spawner run];
+
+    _currentLevel = [[DSLevel alloc] initWithPlistName:@"Level0" andParentNode:self];
+    [_currentLevel beginLevel];
 }
 
 #pragma mark - Touches
@@ -98,7 +102,7 @@
     SKNode *node = [self nodeAtPoint:location];
     if([node.name isEqualToString:@"respawnBtn"])
     {
-        [_spawner run];
+        [_currentLevel beginLevel];
     }
 #endif
 }
@@ -243,6 +247,18 @@
 -(void)playerDidRevive
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+}
+#pragma mark - 
+-(void)revivePlayer
+{
+    [self revivePlayerAtPosition:CGPointMake(self.size.width * 0.5f, 40)];
+}
+-(void)revivePlayerAtPosition:(CGPoint)position
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_REVIVE object:_player.spriteNode];
+    [self addChild:_player.spriteNode];
+    _player.spriteNode.position = position;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_REVIVE object:_player.spriteNode];
 }
 #pragma mark - private
 -(BOOL)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character

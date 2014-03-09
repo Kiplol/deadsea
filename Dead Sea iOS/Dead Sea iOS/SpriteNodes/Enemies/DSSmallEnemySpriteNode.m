@@ -18,6 +18,7 @@
         self.shotsPerBurst = 3;
         self.timeBetweenBursts = 1;
         _pointsForDestroying = 20;
+        self.physicsBody.collisionBitMask = DSColliderTypeEnemy; //MAYBE
     }
     return self;
 }

@@ -8,6 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "DSCharacterSpriteNode.h"
+#import "DSLevel.h"
 
 @class DSPlayer;
 @class DSCharacterSpawner;
@@ -15,7 +16,8 @@
     DSPlayer * _player;
     SKLabelNode * _comboLabel;
     SKLabelNode * _scoreLabel;
-    DSCharacterSpawner * _spawner;
+//    DSCharacterSpawner * _spawner;
+    DSLevel * _currentLevel;
     
     UIPanGestureRecognizer * _oceanCurrentRecognizer;
     SKSpriteNode * _comboCountdownBar;
@@ -27,4 +29,7 @@
 -(void)playerDidDie;
 -(void)playerWillRevive;
 -(void)playerDidRevive;
+
+-(void)revivePlayer;
+-(void)revivePlayerAtPosition:(CGPoint)position;
 @end

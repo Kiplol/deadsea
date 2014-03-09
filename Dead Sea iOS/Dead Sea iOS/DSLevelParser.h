@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface DSLevelParser : NSObject
-+(NSMutableArray*)levelFromPlist:(NSString*)plistName;
-
++(DSSpawnWaveArray*)waveInfoFromPlist:(NSString*)plistName;
++(DSSpawnWaveArray*)waveInfoFromData:(NSArray*)waveData;
 @end

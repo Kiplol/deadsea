@@ -14,11 +14,23 @@
 @end
 
 @implementation DSLevelParser
-+(NSMutableArray*)levelFromPlist:(NSString*)plistName
++(NSArray*)levelFromPlist:(NSString*)plistName
 {
-    NSArray * dataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
-    NSMutableArray * waves = [NSMutableArray arrayWithCapacity:dataArray.count];
-    for(NSArray * thisWave in dataArray)
+    NSDictionary * dataDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
+    NSArray * waveDataArray = [dataDic objectForKey:@"Waves"];
+    return [DSLevelParser waveInfoFromData:waveDataArray];
+}
+
++(DSSpawnWaveArray*)waveInfoFromPlist:(NSString*)plistName
+{
+    NSDictionary * dataDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
+    NSArray * waveDataArray = [dataDic objectForKey:@"Waves"];
+    return [DSLevelParser waveInfoFromData:waveDataArray];
+}
++(NSArray*)waveInfoFromData:(NSArray*)waveData
+{
+    NSMutableArray * waves = [NSMutableArray arrayWithCapacity:waveData.count];
+    for(NSArray * thisWave in waveData)
     {
         NSMutableArray * spawnInfos = [NSMutableArray arrayWithCapacity:thisWave.count];
         for(NSDictionary * thisDic in thisWave)
@@ -29,7 +41,6 @@
     }
     return waves;
 }
-
 #pragma mark - private
 +(DSCharacterSpawnInfo*)spawnInfoFromDict:(NSDictionary *)dict
 {

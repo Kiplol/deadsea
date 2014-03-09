@@ -44,6 +44,7 @@
  * @brief Tells the bulletEmitter to fire with the this character's zRotation
  */
 -(void)fire;
+-(void)fireFromEmitter:(DSBulletEmitter*)emitter;
 -(void)startFiring;
 -(void)stopFiring;
 

@@ -25,9 +25,10 @@ typedef enum {
 @end
 
 @interface DSCharacterSpawner : NSObject {
-    NSMutableArray * _spawnInfos;
+    NSMutableArray * _spawnWaves;
+    int _currentWave;
 }
-@property (nonatomic, readonly) NSMutableArray * spawnInfos;
+@property (nonatomic, readonly) NSMutableArray * spawnWaves;
 @property (nonatomic, assign) SKNode * parentNode;
 -(id)initWithPlistNamed:(NSString*)plistName andParentNode:(SKNode*)parentNode;
 -(void)run;

@@ -174,7 +174,14 @@
     int combo = [DSPlayer sharedPlayer].spriteNode.combo;
     if(combo > 1)
     {
-        _comboLabel.text = [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo];
+        NSString * newText = [NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Combo", nil), combo];
+        if(![newText isEqualToString:_comboLabel.text])
+        {
+            _comboLabel.text = newText;
+            [_comboLabel runAction:[SKAction sequence:@[[SKAction scaleTo:1.1 duration:0.0], [SKAction scaleTo:1.0 duration:0.2]]] completion:^{
+                [_comboLabel setScale:1.0];
+            }];
+        }
         _comboCountdownBar.size = CGSizeMake([DSPlayer sharedPlayer].spriteNode.comboCountDown * 100.0f, _comboCountdownBar.size.height);
     }
     else

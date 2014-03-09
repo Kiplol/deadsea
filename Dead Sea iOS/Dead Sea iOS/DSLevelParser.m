@@ -16,13 +16,18 @@
 @implementation DSLevelParser
 +(NSMutableArray*)levelFromPlist:(NSString*)plistName
 {
-    NSArray * dics = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
-    NSMutableArray * spawnInfos = [NSMutableArray arrayWithCapacity:dics.count];
-    for(NSDictionary * thisDic in dics)
+    NSArray * dataArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
+    NSMutableArray * waves = [NSMutableArray arrayWithCapacity:dataArray.count];
+    for(NSArray * thisWave in dataArray)
     {
-        [spawnInfos addObject:[DSLevelParser spawnInfoFromDict:thisDic]];
+        NSMutableArray * spawnInfos = [NSMutableArray arrayWithCapacity:thisWave.count];
+        for(NSDictionary * thisDic in thisWave)
+        {
+            [spawnInfos addObject:[DSLevelParser spawnInfoFromDict:thisDic]];
+        }
+        [waves addObject:spawnInfos];
     }
-    return spawnInfos;
+    return waves;
 }
 
 #pragma mark - private

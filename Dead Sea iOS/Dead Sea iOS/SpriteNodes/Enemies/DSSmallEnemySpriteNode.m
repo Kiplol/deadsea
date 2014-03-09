@@ -13,6 +13,7 @@
 {
     if((self = [super init]))
     {
+        self.health = 3;
         self.fireRate = 3;
         self.shotsPerBurst = 3;
         self.timeBetweenBursts = 1;

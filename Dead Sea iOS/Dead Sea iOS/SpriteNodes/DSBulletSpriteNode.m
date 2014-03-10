@@ -25,7 +25,6 @@
         _bFired = NO;
         self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.size];
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
-//        self.physicsBody.affectedByGravity = NO;
         self.physicsBody.categoryBitMask = DSColliderTypeProjectile;
         self.physicsBody.friction = 0;
         self.physicsBody.linearDamping = 0;
@@ -38,6 +37,15 @@
     _bFired = YES;
     [[OceanPhysicsController sharedController] addPhysicsObject:self];
     [self.physicsBody applyImpulse:CGVectorMake(self.speedVector.dx, self.speedVector.dy)];
+    if([self fireSound])
+    {
+        [self runAction:[SKAction playSoundFileNamed:[self fireSound] waitForCompletion:NO]];
+    }
+}
+-(NSString*)fireSound
+{
+    //Must override
+    return nil;
 }
 -(void)removeFromPlay
 {

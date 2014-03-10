@@ -22,4 +22,5 @@
 
 -(id)initWithSpeedVector:(CGVector)speedVector;
 -(void)fire;
+-(NSString*)fireSound;
 @end

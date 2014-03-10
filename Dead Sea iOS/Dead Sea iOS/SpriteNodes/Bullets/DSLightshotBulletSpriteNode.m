@@ -27,4 +27,9 @@
     SKTexture * initialTexture = [atlas textureNamed:@"LightshotFiring_0"];
     return initialTexture;
 }
+
+-(NSString*)fireSound
+{
+    return @"laser_shooting_sfx.wav";
+}
 @end

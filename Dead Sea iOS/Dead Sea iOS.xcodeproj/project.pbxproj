@@ -59,6 +59,9 @@
 		37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888018CA6F9B00042307 /* 9i67.jpg */; };
 		37C4888518CA6F9B00042307 /* explode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888218CA6F9B00042307 /* explode.gif */; };
 		37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888318CA6F9B00042307 /* SmallExplosion.atlas */; };
+		37C4888C18CE23F200042307 /* laser_shooting_sfx.wav in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888918CE23F200042307 /* laser_shooting_sfx.wav */; };
+		37C4888D18CE23F200042307 /* Menu Selection Click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888A18CE23F200042307 /* Menu Selection Click.wav */; };
+		37C4888E18CE23F200042307 /* robot_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888B18CE23F200042307 /* robot_0.mp3 */; };
 		37D08B8118CAC5DA005495DF /* DSCharacterSpawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */; };
 		37D08B8418CBAAE5005495DF /* DSLevelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8318CBAAE5005495DF /* DSLevelParser.m */; };
 		37D08B8718CBAC76005495DF /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D08B8618CBAC76005495DF /* Level0.plist */; };
@@ -167,6 +170,9 @@
 		37C4888218CA6F9B00042307 /* explode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explode.gif; sourceTree = "<group>"; };
 		37C4888318CA6F9B00042307 /* SmallExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallExplosion.atlas; sourceTree = "<group>"; };
 		37C4888718CA913E00042307 /* DSDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSDefines.h; sourceTree = "<group>"; };
+		37C4888918CE23F200042307 /* laser_shooting_sfx.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser_shooting_sfx.wav; sourceTree = "<group>"; };
+		37C4888A18CE23F200042307 /* Menu Selection Click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Menu Selection Click.wav"; sourceTree = "<group>"; };
+		37C4888B18CE23F200042307 /* robot_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = robot_0.mp3; sourceTree = "<group>"; };
 		37D08B7F18CAC5DA005495DF /* DSCharacterSpawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCharacterSpawner.h; sourceTree = "<group>"; };
 		37D08B8018CAC5DA005495DF /* DSCharacterSpawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCharacterSpawner.m; sourceTree = "<group>"; };
 		37D08B8218CBAAE5005495DF /* DSLevelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLevelParser.h; sourceTree = "<group>"; };
@@ -383,6 +389,7 @@
 			isa = PBXGroup;
 			children = (
 				37E58DB818CD374500AD2F86 /* Localizable.strings */,
+				37C4888818CE23F200042307 /* Sounds */,
 				37D08B8518CBAC4B005495DF /* Levels */,
 				3776B1C418BC666F00DF5A68 /* Sprites */,
 			);
@@ -513,6 +520,16 @@
 			path = Explosions;
 			sourceTree = "<group>";
 		};
+		37C4888818CE23F200042307 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				37C4888918CE23F200042307 /* laser_shooting_sfx.wav */,
+				37C4888A18CE23F200042307 /* Menu Selection Click.wav */,
+				37C4888B18CE23F200042307 /* robot_0.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		37D08B8518CBAC4B005495DF /* Levels */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,9 +621,11 @@
 			files = (
 				37E58DB718CCDE0900AD2F86 /* bg0.png in Resources */,
 				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
+				37C4888E18CE23F200042307 /* robot_0.mp3 in Resources */,
 				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
+				37C4888C18CE23F200042307 /* laser_shooting_sfx.wav in Resources */,
 				377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */,
 				37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */,
 				37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */,
@@ -614,6 +633,7 @@
 				37C4888518CA6F9B00042307 /* explode.gif in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
 				377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */,
+				37C4888D18CE23F200042307 /* Menu Selection Click.wav in Resources */,
 				372D320718BC4DA0003E9068 /* InfoPlist.strings in Resources */,
 				37E58DBA18CD374500AD2F86 /* Localizable.strings in Resources */,
 				37D08B8718CBAC76005495DF /* Level0.plist in Resources */,

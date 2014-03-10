@@ -16,13 +16,14 @@
     DSPlayer * _player;
     SKLabelNode * _comboLabel;
     SKLabelNode * _scoreLabel;
+    SKLabelNode * _countdownLabel;
 //    DSCharacterSpawner * _spawner;
     DSLevel * _currentLevel;
     
     UIPanGestureRecognizer * _oceanCurrentRecognizer;
     SKSpriteNode * _comboCountdownBar;
 }
-
+-(void)beginLevelCountdownWithCompletion:(void(^)())completion;
 -(void)updateComboDisplayForCurrenTime:(CFTimeInterval)currentTime;
 
 -(void)playerWillDie;

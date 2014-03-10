@@ -21,6 +21,7 @@
 -(BOOL)bullet:(DSBulletSpriteNode*)bullet collidedWithCharacter:(DSCharacterSpriteNode*)character;
 -(CGPoint)nearestPoint:(CGPoint)point inRect:(CGRect)rect;
 -(CGRect)rectOfPlay;
+-(void)beginLevelCountdownWithCompletion:(void (^)())completion countdown:(int)countdown;
 @end
 @implementation DSLevelScene
 
@@ -34,8 +35,8 @@
         restartLevelBtn.fontSize = 15;
         [self addChild:restartLevelBtn];
         restartLevelBtn.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        restartLevelBtn.text = @"Respawn Enemies";
-        restartLevelBtn.name = @"respawnBtn";
+        restartLevelBtn.text = @"Restart Level";
+        restartLevelBtn.name = @"restartLvl";
         restartLevelBtn.position = CGPointMake(0, size.height - 50);;
 #endif
         
@@ -75,6 +76,48 @@
     return self;
 }
 
+-(void)beginLevelCountdownWithCompletion:(void (^)())completion
+{
+    [self beginLevelCountdownWithCompletion:completion countdown:3];
+}
+-(void)beginLevelCountdownWithCompletion:(void (^)())completion countdown:(int)countdown
+{
+    if(!_countdownLabel)
+    {
+        _countdownLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        _countdownLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeCenter;
+        _countdownLabel.position = CGPointMake(self.size.width * 0.5f, self.size.height * 0.5f);
+    }
+    if(!_countdownLabel.parent)
+    {
+        [self addChild:_countdownLabel];
+    }
+    _countdownLabel.text = [NSString stringWithFormat:@"%d", countdown];
+    [_countdownLabel setScale:1.3];
+    [_countdownLabel runAction:[SKAction scaleTo:1.0 duration:0.2]];
+    if(countdown > 0)
+    {
+        double delayInSeconds = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self beginLevelCountdownWithCompletion:completion countdown:(countdown - 1)];
+        });
+    }
+    else
+    {
+        if(completion)
+        {
+            completion();
+        }
+        _countdownLabel.text = NSLocalizedString(@"LevelSceneCountdownLabelBegin", nil);
+        SKAction * growAction = [SKAction scaleTo:3.0f duration:1.0];
+        SKAction * fadeAction = [SKAction fadeAlphaTo:0.0f duration:1.0];
+        SKAction * groupAction = [SKAction group:@[growAction, fadeAction]];
+        [_countdownLabel runAction:[SKAction sequence:@[groupAction, [SKAction runBlock:^{
+            [_countdownLabel removeFromParent];
+        }]]]];
+    }
+}
 -(void)didMoveToView:(SKView *)view
 {
     //Ocean current
@@ -88,7 +131,12 @@
 //    [_spawner run];
 
     _currentLevel = [[DSLevel alloc] initWithPlistName:@"Level0" andParentNode:self];
-    [_currentLevel beginLevel];
+    [self addChild:_currentLevel.background];
+    _currentLevel.background.zPosition = -1;
+    _currentLevel.background.anchorPoint = CGPointZero;
+    [self beginLevelCountdownWithCompletion:^{
+        [_currentLevel beginLevel];
+    }];
 }
 
 #pragma mark - Touches
@@ -100,7 +148,7 @@
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
-    if([node.name isEqualToString:@"respawnBtn"])
+    if([node.name isEqualToString:@"restartLvl"])
     {
         [_currentLevel beginLevel];
     }
@@ -165,6 +213,10 @@
     }];
     [self updateComboDisplayForCurrenTime:currentTime];
     _scoreLabel.text = [NSString stringWithFormat:@"%d", [DSPlayer sharedPlayer].score];
+    [_currentLevel.background update];
+    CGFloat bgVariance = 30.0f;
+    CGFloat playerPosT = _player.spriteNode.position.x / self.size.width;
+    _currentLevel.background.position = CGPointMake((playerPosT * bgVariance) - bgVariance, _currentLevel.background.position.y);
 }
 
 -(void)didSimulatePhysics

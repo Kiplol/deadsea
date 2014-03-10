@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "DSCharacterSpawner.h"
+#import "DSScrollingBackground.h"
 
 @interface DSLevel : NSObject  {
     DSSpawnWaveArray * _spawnWaves;
     SKNode * _parentNode;
     DSCharacterSpawner * _characterSpawner;
 }
+@property (nonatomic, retain) DSScrollingBackground * background;
 
 -(id)initWithPlistName:(NSString*)plist andParentNode:(SKNode*)parentNode;
 -(void)beginLevel;

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Dead Sea iOS
+
+  Created by Elliott Kipper on 3/9/14.
+  Copyright (c) 2014 Supernovacaine Interactive. All rights reserved.
+*/
+
+/**
+ * General
+ */
+"Combo" = "Combo";
+
+/**
+ * DSLevelScene
+ */
+"LevelSceneCountdownLabelBegin" = "Begin";

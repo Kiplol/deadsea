@@ -64,6 +64,9 @@
 		37D08B8718CBAC76005495DF /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D08B8618CBAC76005495DF /* Level0.plist */; };
 		37D08B8A18CC0BDF005495DF /* DSLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8918CC0BDF005495DF /* DSLevel.m */; };
 		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
+		37E58DB518CCDBAE00AD2F86 /* DSScrollingBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E58DB418CCDBAE00AD2F86 /* DSScrollingBackground.m */; };
+		37E58DB718CCDE0900AD2F86 /* bg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E58DB618CCDE0900AD2F86 /* bg0.png */; };
+		37E58DBA18CD374500AD2F86 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 37E58DB818CD374500AD2F86 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +176,10 @@
 		37D08B8918CC0BDF005495DF /* DSLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLevel.m; path = "Dead Sea iOS/DSLevel.m"; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
+		37E58DB318CCDBAE00AD2F86 /* DSScrollingBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScrollingBackground.h; path = SpriteNodes/DSScrollingBackground.h; sourceTree = "<group>"; };
+		37E58DB418CCDBAE00AD2F86 /* DSScrollingBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSScrollingBackground.m; path = SpriteNodes/DSScrollingBackground.m; sourceTree = "<group>"; };
+		37E58DB618CCDE0900AD2F86 /* bg0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg0.png; sourceTree = "<group>"; };
+		37E58DB918CD374500AD2F86 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Dead Sea iOS/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +306,8 @@
 		372D323918BC58BF003E9068 /* SpriteNodes */ = {
 			isa = PBXGroup;
 			children = (
+				37E58DB318CCDBAE00AD2F86 /* DSScrollingBackground.h */,
+				37E58DB418CCDBAE00AD2F86 /* DSScrollingBackground.m */,
 				37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */,
 				37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */,
 				37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */,
@@ -373,6 +382,7 @@
 		3776B1C318BC666F00DF5A68 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				37E58DB818CD374500AD2F86 /* Localizable.strings */,
 				37D08B8518CBAC4B005495DF /* Levels */,
 				3776B1C418BC666F00DF5A68 /* Sprites */,
 			);
@@ -489,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				37C4888018CA6F9B00042307 /* 9i67.jpg */,
+				37E58DB618CCDE0900AD2F86 /* bg0.png */,
 			);
 			path = Backgrounds;
 			sourceTree = "<group>";
@@ -591,6 +602,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37E58DB718CCDE0900AD2F86 /* bg0.png in Resources */,
 				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
 				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
@@ -603,6 +615,7 @@
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
 				377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */,
 				372D320718BC4DA0003E9068 /* InfoPlist.strings in Resources */,
+				37E58DBA18CD374500AD2F86 /* Localizable.strings in Resources */,
 				37D08B8718CBAC76005495DF /* Level0.plist in Resources */,
 				37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */,
 			);
@@ -634,6 +647,7 @@
 				37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */,
 				37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */,
 				37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */,
+				37E58DB518CCDBAE00AD2F86 /* DSScrollingBackground.m in Sources */,
 				37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */,
 				372D323C18BC58EE003E9068 /* DSPlayerCharacterSpriteNode.m in Sources */,
 				3784045618C6FB4800C8A12D /* SKNode+Utilities.m in Sources */,
@@ -709,6 +723,15 @@
 				372D322D18BC4DA0003E9068 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		37E58DB818CD374500AD2F86 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				37E58DB918CD374500AD2F86 /* en */,
+			);
+			name = Localizable.strings;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

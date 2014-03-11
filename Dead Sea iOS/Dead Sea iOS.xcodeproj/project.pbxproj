@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371F9BF318CEA5E50064AEA7 /* FX091.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BE918CEA5E50064AEA7 /* FX091.wav */; };
+		371F9BF418CEA5E50064AEA7 /* FX092.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BEA18CEA5E50064AEA7 /* FX092.wav */; };
+		371F9BF518CEA5E50064AEA7 /* FX093.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BEB18CEA5E50064AEA7 /* FX093.wav */; };
+		371F9BF618CEA5E50064AEA7 /* FX094.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BEC18CEA5E50064AEA7 /* FX094.wav */; };
+		371F9BF718CEA5E50064AEA7 /* FX095.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BED18CEA5E50064AEA7 /* FX095.wav */; };
+		371F9BF818CEA5E50064AEA7 /* FX096.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BEE18CEA5E50064AEA7 /* FX096.wav */; };
+		371F9BF918CEA5E50064AEA7 /* FX097.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BEF18CEA5E50064AEA7 /* FX097.wav */; };
+		371F9BFA18CEA5E50064AEA7 /* FX098.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BF018CEA5E50064AEA7 /* FX098.wav */; };
+		371F9BFB18CEA5E50064AEA7 /* FX099.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BF118CEA5E50064AEA7 /* FX099.wav */; };
+		371F9BFC18CEA5E50064AEA7 /* FX100.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BF218CEA5E50064AEA7 /* FX100.wav */; };
+		371F9C0018CEA73F0064AEA7 /* atari_boom.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BFD18CEA73F0064AEA7 /* atari_boom.wav */; };
+		371F9C0118CEA73F0064AEA7 /* atari_boom4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BFE18CEA73F0064AEA7 /* atari_boom4.wav */; };
+		371F9C0218CEA73F0064AEA7 /* atari_boom6.wav in Resources */ = {isa = PBXBuildFile; fileRef = 371F9BFF18CEA73F0064AEA7 /* atari_boom6.wav */; };
 		372D31FB18BC4DA0003E9068 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D31FA18BC4DA0003E9068 /* Foundation.framework */; };
 		372D31FD18BC4DA0003E9068 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D31FC18BC4DA0003E9068 /* CoreGraphics.framework */; };
 		372D31FF18BC4DA0003E9068 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372D31FE18BC4DA0003E9068 /* UIKit.framework */; };
@@ -83,6 +96,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		371F9BE918CEA5E50064AEA7 /* FX091.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX091.wav; sourceTree = "<group>"; };
+		371F9BEA18CEA5E50064AEA7 /* FX092.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX092.wav; sourceTree = "<group>"; };
+		371F9BEB18CEA5E50064AEA7 /* FX093.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX093.wav; sourceTree = "<group>"; };
+		371F9BEC18CEA5E50064AEA7 /* FX094.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX094.wav; sourceTree = "<group>"; };
+		371F9BED18CEA5E50064AEA7 /* FX095.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX095.wav; sourceTree = "<group>"; };
+		371F9BEE18CEA5E50064AEA7 /* FX096.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX096.wav; sourceTree = "<group>"; };
+		371F9BEF18CEA5E50064AEA7 /* FX097.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX097.wav; sourceTree = "<group>"; };
+		371F9BF018CEA5E50064AEA7 /* FX098.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX098.wav; sourceTree = "<group>"; };
+		371F9BF118CEA5E50064AEA7 /* FX099.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX099.wav; sourceTree = "<group>"; };
+		371F9BF218CEA5E50064AEA7 /* FX100.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = FX100.wav; sourceTree = "<group>"; };
+		371F9BFD18CEA73F0064AEA7 /* atari_boom.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = atari_boom.wav; sourceTree = "<group>"; };
+		371F9BFE18CEA73F0064AEA7 /* atari_boom4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = atari_boom4.wav; sourceTree = "<group>"; };
+		371F9BFF18CEA73F0064AEA7 /* atari_boom6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = atari_boom6.wav; sourceTree = "<group>"; };
 		372D31F718BC4DA0003E9068 /* Dead Sea iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dead Sea iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		372D31FA18BC4DA0003E9068 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		372D31FC18BC4DA0003E9068 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +239,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371F9BE818CEA5E50064AEA7 /* Sound Effects FX 010 */ = {
+			isa = PBXGroup;
+			children = (
+				371F9BE918CEA5E50064AEA7 /* FX091.wav */,
+				371F9BEA18CEA5E50064AEA7 /* FX092.wav */,
+				371F9BEB18CEA5E50064AEA7 /* FX093.wav */,
+				371F9BEC18CEA5E50064AEA7 /* FX094.wav */,
+				371F9BED18CEA5E50064AEA7 /* FX095.wav */,
+				371F9BEE18CEA5E50064AEA7 /* FX096.wav */,
+				371F9BEF18CEA5E50064AEA7 /* FX097.wav */,
+				371F9BF018CEA5E50064AEA7 /* FX098.wav */,
+				371F9BF118CEA5E50064AEA7 /* FX099.wav */,
+				371F9BF218CEA5E50064AEA7 /* FX100.wav */,
+			);
+			path = "Sound Effects FX 010";
+			sourceTree = "<group>";
+		};
 		372D31EE18BC4DA0003E9068 = {
 			isa = PBXGroup;
 			children = (
@@ -523,9 +566,13 @@
 		37C4888818CE23F200042307 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				371F9BFD18CEA73F0064AEA7 /* atari_boom.wav */,
+				371F9BFE18CEA73F0064AEA7 /* atari_boom4.wav */,
+				371F9BFF18CEA73F0064AEA7 /* atari_boom6.wav */,
 				37C4888918CE23F200042307 /* laser_shooting_sfx.wav */,
 				37C4888A18CE23F200042307 /* Menu Selection Click.wav */,
 				37C4888B18CE23F200042307 /* robot_0.mp3 */,
+				371F9BE818CEA5E50064AEA7 /* Sound Effects FX 010 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -620,24 +667,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				37E58DB718CCDE0900AD2F86 /* bg0.png in Resources */,
+				371F9BF818CEA5E50064AEA7 /* FX096.wav in Resources */,
+				371F9BF718CEA5E50064AEA7 /* FX095.wav in Resources */,
+				371F9BF318CEA5E50064AEA7 /* FX091.wav in Resources */,
 				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
+				371F9C0018CEA73F0064AEA7 /* atari_boom.wav in Resources */,
 				37C4888E18CE23F200042307 /* robot_0.mp3 in Resources */,
+				371F9BF418CEA5E50064AEA7 /* FX092.wav in Resources */,
 				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
+				371F9BFA18CEA5E50064AEA7 /* FX098.wav in Resources */,
 				37C4888C18CE23F200042307 /* laser_shooting_sfx.wav in Resources */,
 				377575AF18BD10B700F503F6 /* LightshotFiring.atlas in Resources */,
 				37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */,
 				37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */,
 				372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */,
+				371F9BF618CEA5E50064AEA7 /* FX094.wav in Resources */,
 				37C4888518CA6F9B00042307 /* explode.gif in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,
 				377575AE18BD10B700F503F6 /* LightshotDefault.atlas in Resources */,
+				371F9C0118CEA73F0064AEA7 /* atari_boom4.wav in Resources */,
 				37C4888D18CE23F200042307 /* Menu Selection Click.wav in Resources */,
 				372D320718BC4DA0003E9068 /* InfoPlist.strings in Resources */,
+				371F9BF918CEA5E50064AEA7 /* FX097.wav in Resources */,
 				37E58DBA18CD374500AD2F86 /* Localizable.strings in Resources */,
 				37D08B8718CBAC76005495DF /* Level0.plist in Resources */,
+				371F9BFB18CEA5E50064AEA7 /* FX099.wav in Resources */,
 				37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */,
+				371F9BF518CEA5E50064AEA7 /* FX093.wav in Resources */,
+				371F9C0218CEA73F0064AEA7 /* atari_boom6.wav in Resources */,
+				371F9BFC18CEA5E50064AEA7 /* FX100.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

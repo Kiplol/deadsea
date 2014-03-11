@@ -153,6 +153,10 @@
         [self removeFromPlay];
     }];
 }
+-(NSString*)destructionSound
+{
+    return nil;
+}
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
 {
@@ -162,6 +166,10 @@
 {
     [self removeAllActions];
     [self destroyAnimationAndRemove];
+    if([self destructionSound])
+    {
+        [self runAction:[SKAction playSoundFileNamed:[self destructionSound] waitForCompletion:NO]];
+    }
 }
 #pragma mark - private
 -(void)rotateTowardsPlayer

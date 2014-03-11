@@ -56,7 +56,10 @@
     }]]];
     [_pointsLabel runAction:sequence withKey:actionKey];
 }
-
+-(NSString*)destructionSound
+{
+    return @"atari_boom.wav";
+}
 #pragma mark - DSDestroyableDelegate
 //-(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character
 //{

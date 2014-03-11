@@ -76,7 +76,7 @@
     if(_currentWave != waveIdx)
     {
         NSLog(@"Beginning wave %d", waveIdx);
-        _charactersRemainingInCurrentWave = wave.count;
+        _charactersRemainingInCurrentWave = (int)wave.count;
     }
     _currentWave = waveIdx;
     

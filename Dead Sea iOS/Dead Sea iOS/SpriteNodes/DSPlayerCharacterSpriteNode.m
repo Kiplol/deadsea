@@ -79,6 +79,10 @@
 {
     [super damageAnimation];
 }
+-(NSString*)destructionSound
+{
+    return @"FX097.wav";
+}
 #pragma mark - DSSpriteNode
 -(void)fillAtlasDictionary
 {

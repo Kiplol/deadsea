@@ -77,4 +77,5 @@
 -(SKAction*)destroyAnimationAction;
 -(void)destroyAnimation;
 -(void)destroyAnimationAndRemove;
+-(NSString*)destructionSound;
 @end

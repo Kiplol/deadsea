@@ -25,10 +25,6 @@
 {
     if((self = [super init]))
     {
-        _bulletEmitter.bulletType = factoryBulletTypeLightshot;
-        _bulletEmitter.colliderType = DSColliderTypeEnemy;
-        _bulletEmitter.bulletSpeed = 30.0;
-        _bulletEmitter.zRotation = M_PI_2;
         self.fireRate = 10;
         _comboStartTime = 0;
         _alive = YES;
@@ -37,6 +33,20 @@
     return self;
 }
 
+-(void)reset
+{
+    [super reset];
+    _alive = YES;
+}
+
+-(void)addBulletEmitter:(DSBulletEmitter *)emitter
+{
+    [super addBulletEmitter:emitter];
+    emitter.bulletType = factoryBulletTypeLightshot;
+    emitter.colliderType = DSColliderTypeEnemy;
+    emitter.bulletSpeed = 30.0;
+    emitter.zRotation = M_PI_2;
+}
 #pragma mark - Combo
 -(void)rechargeComboCountdown
 {
@@ -111,6 +121,7 @@
     {
         DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)character;
         [DSPlayer sharedPlayer].score += enemy.pointsForDestroying;
+        [self addBulletEmitter];
     }
 }
 
@@ -126,6 +137,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_DIE object:self];
     [super didGetDestroyedByCharacter:character];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_DIE object:self];
+
 }
 #pragma mark - private
 -(CGFloat)radiusForPhysicsBody

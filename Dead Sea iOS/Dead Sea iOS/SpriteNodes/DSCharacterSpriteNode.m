@@ -17,19 +17,28 @@
 @end
 
 @implementation DSCharacterSpriteNode
--(id)init
+@synthesize health = _health;
+@synthesize maxHealth = _maxHealth;
+
+-(id)initWithMaxHealth:(int)maxHealth
 {
     if((self = [super init]))
     {
-        _health = 1;
-        _bulletEmitter = [[DSBulletEmitter alloc] init];
-        [self addChild:_bulletEmitter];
+        _health = maxHealth;
+        _maxHealth = maxHealth;
+        _bulletEmitters = [[NSMutableArray alloc] init];
+        DSBulletEmitter * firstEmitter = [[DSBulletEmitter alloc] init];
+        [self addBulletEmitter:firstEmitter];
         self.fireRate = 5;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:[self radiusForPhysicsBody]];
         self.physicsBody.affectedByGravity = NO;
         self.physicsBody.collisionBitMask = DSColliderTypeNone;
     }
     return self;
+}
+-(id)init
+{
+    return [self initWithMaxHealth:1];
 }
 -(void)fillAtlasDictionary
 {
@@ -40,7 +49,13 @@
 }
 -(void)fire
 {
-    [self fireFromEmitter:_bulletEmitter];
+    if(_bulletEmitters.count)
+    {
+        int idx = arc4random_uniform((unsigned int)_bulletEmitters.count);
+        DSBulletEmitter * emitter = [_bulletEmitters objectAtIndex:idx];
+        [self fireFromEmitter:emitter];
+        _indexOfLastFiredEmitter = idx;
+    }
 }
 -(void)fireFromEmitter:(DSBulletEmitter *)emitter
 {
@@ -51,7 +66,7 @@
     //Do it again
     if(_bFiring && self.fireRate > 0)
     {
-        double delayInSeconds = 1.0/self.fireRate;
+        double delayInSeconds = 1.0/(self.fireRate * _bulletEmitters.count);
         if(_shotsThisBurst >= self.shotsPerBurst && (self.shotsPerBurst > 0))
         {
             delayInSeconds += self.timeBetweenBursts;
@@ -84,7 +99,39 @@
     _bFiring = NO;
     _shotsThisBurst = 0;
 }
+-(void)addBulletEmitter
+{
+    [self addBulletEmitter:[[DSBulletEmitter alloc] init]];
+}
+-(void)addBulletEmitter:(DSBulletEmitter*)emitter
+{
+    [_bulletEmitters addObject:emitter];
+    [self addChild:emitter];
+    [self positionBulletEmitters];
+}
+-(void)resetBulletEmitters
+{
+    if(_bulletEmitters.count)
+    {
+        DSBulletEmitter * firstEmitter = [_bulletEmitters objectAtIndex:0];
+        [_bulletEmitters removeAllObjects];
+        [_bulletEmitters addObject:firstEmitter];
+    }
+    [self positionBulletEmitters];
+}
 
+-(void)positionBulletEmitters
+{
+    CGFloat spaceBetweenEmitters = 5.0f;
+    CGFloat totalSpace = (spaceBetweenEmitters * (_bulletEmitters.count - 1));
+    CGFloat xOffset = (_bulletEmitters.count % 2 ? 0.0f : spaceBetweenEmitters);
+    CGFloat currentX = 0 - (totalSpace * 0.5f) - xOffset;
+    for (int i = 0; i < _bulletEmitters.count; i++) {
+        DSBulletEmitter * currentEmitter = [_bulletEmitters objectAtIndex:i];
+        currentEmitter.position = CGPointMake(currentX, currentEmitter.position.y);
+        currentX += spaceBetweenEmitters;
+    }
+}
 -(void)startRotatingTowardsPlayer
 {
     [self startRotatingTowardsPlayerWithRestTimeEvery:0.0];
@@ -116,6 +163,8 @@
 -(void)removeFromPlay
 {
     [super removeFromPlay];
+    [self stopFiring];
+    [self stopRotatingTowardsPlayer];
     self.health = 0;
     _bFiring = NO;
     _rotateTowardsPlayer = NO;
@@ -156,6 +205,13 @@
 -(NSString*)destructionSound
 {
     return nil;
+}
+
+-(void)reset
+{
+    [super reset];
+    [self resetBulletEmitters];
+    _health = _maxHealth;
 }
 #pragma mark - DSDestroyableDelegate
 -(void)didTakeDamagefromCharacter:(DSCharacterSpriteNode*)character

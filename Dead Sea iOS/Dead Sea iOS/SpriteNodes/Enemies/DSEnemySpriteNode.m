@@ -14,10 +14,6 @@
 {
     if((self = [super init]))
     {
-        _bulletEmitter.zRotation = M_PI_2;
-        _bulletEmitter.bulletType = factoryBulletTypeBallshot;
-        _bulletEmitter.colliderType = DSColliderTypePlayer;
-        _bulletEmitter.bulletSpeed = 1.0;
         self.name = NAME_ENEMY;
         self.fireRate = 2;
         self.physicsBody.categoryBitMask = DSColliderTypeEnemy;
@@ -28,6 +24,14 @@
     return self;
 }
 
+-(void)addBulletEmitter:(DSBulletEmitter *)emitter
+{
+    [super addBulletEmitter:emitter];
+    emitter.zRotation = M_PI_2;
+    emitter.bulletType = factoryBulletTypeBallshot;
+    emitter.colliderType = DSColliderTypePlayer;
+    emitter.bulletSpeed = 1.0;
+}
 -(void)flashPointsLabel
 {
     [self flashPointsLabelInScene:self.scene];

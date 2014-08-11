@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>bgImage</key>
+	<string>bg0-copy</string>
 	<key>Waves</key>
 	<array>
 		<array>
@@ -606,6 +608,8 @@
 				<integer>0</integer>
 				<key>wave</key>
 				<integer>2</integer>
+				<key>maxHealth</key>
+				<integer>15</integer>
 				<key>info</key>
 				<dict/>
 			</dict>

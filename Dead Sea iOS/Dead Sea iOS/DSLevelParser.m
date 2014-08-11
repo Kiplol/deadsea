@@ -41,6 +41,12 @@
     }
     return waves;
 }
++(NSString*)backgroundNameFromPlist:(NSString*)plistName;
+{
+    NSDictionary * dataDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
+    NSString * bgName = [dataDic objectForKey:@"bgImage"];
+    return bgName;
+}
 #pragma mark - private
 +(DSCharacterSpawnInfo*)spawnInfoFromDict:(NSDictionary *)dict
 {
@@ -56,6 +62,14 @@
         NSDictionary * endPointDict = [dict objectForKey:@"spawnEndPoint"];
         result.spawnStartPoint = CGPointMake([[startPointDict objectForKey:@"x"] floatValue], [[startPointDict objectForKey:@"y"] floatValue]);
         result.spawnEndPoint = CGPointMake([[endPointDict objectForKey:@"x"] floatValue], [[endPointDict objectForKey:@"y"] floatValue]);
+        if([dict objectForKey:@"maxHealth"])
+        {
+            result.maxHealth = [[dict objectForKey:@"maxHealth"] intValue];
+        }
+        else
+        {
+            result.maxHealth = 1;
+        }
     }
     return result;
 }

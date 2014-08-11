@@ -21,6 +21,7 @@ typedef enum {
 @property (nonatomic, readwrite) CGPoint spawnEndPoint;
 @property (nonatomic, readwrite) double timeAfterLastSpawnToSpawn;
 @property (nonatomic, readwrite) int wave;
+@property (nonatomic, readwrite) int maxHealth;
 @property (nonatomic, readonly) NSMutableDictionary * info;
 @end
 

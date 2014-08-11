@@ -27,6 +27,7 @@
         _bg2.position = CGPointMake(0, _bg1.size.height);
         [self addChild:_bg1];
         [self addChild:_bg2];
+        self.size = CGSizeMake(_bg1.size.width, (_bg1.size.height * 2));
         _scrolling = NO;
     }
     return self;

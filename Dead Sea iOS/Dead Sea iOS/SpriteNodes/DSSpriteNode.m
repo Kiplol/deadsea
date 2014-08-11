@@ -47,7 +47,17 @@
 -(void)removeFromPlay
 {
     [self removeAllActions];
-    [self removeAllChildren];
+//    [self removeAllChildren];
     [self removeFromParent];
+}
+
+-(void)reset
+{
+    SKTextureAtlas * defaultAtlas = [_dicAtlases objectForKey:ATLAS_KEY_DEFAULT];
+    if(defaultAtlas)
+    {
+        SKAction * animAction = [SKAction animateWithTextureAtlas:defaultAtlas timePerFrame:1.0/15.0 resize:NO restore:NO];
+        [self runAction:[SKAction repeatActionForever:animAction] withKey:ACTION_NAME_CURRENT_KEYFRAME_ANIMATION];
+    }
 }
 @end

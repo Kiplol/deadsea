@@ -18,7 +18,7 @@
         _spawnWaves = [DSLevelParser waveInfoFromPlist:plist];
         _parentNode = parentNode;
         _characterSpawner = [[DSCharacterSpawner alloc] initWithSpawnWaves:_spawnWaves andParentNode:parentNode];
-        self.background = [[DSScrollingBackground alloc] initWithImageNamed:@"bg0"];
+        self.background = [[DSScrollingBackground alloc] initWithImageNamed:[DSLevelParser backgroundNameFromPlist:plist]];
     }
     return self;
 }

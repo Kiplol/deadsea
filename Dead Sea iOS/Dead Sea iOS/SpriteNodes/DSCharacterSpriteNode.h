@@ -17,13 +17,16 @@
 @class DSBulletSpriteNode;
 @interface DSCharacterSpriteNode : DSSpriteNode <DSDestroyableDelegate>{
     int _health;
+    int _maxHealth;
     BOOL _bFiring;
     int _shotsThisBurst;
     BOOL _rotateTowardsPlayer;
     double _rotateTowardsPlayerRestTime;
-    DSBulletEmitter * _bulletEmitter;
+    NSMutableArray * _bulletEmitters;
+    int _indexOfLastFiredEmitter;
 }
 @property (nonatomic, readwrite) int health;
+@property (nonatomic, readwrite) int maxHealth;
 @property (nonatomic, retain) DSSpriteNode * spriteNode;
 /*!
  * @brief Number of shots fired per second
@@ -40,6 +43,8 @@
 
 @property (nonatomic, readwrite) BOOL invincible;
 
+-(id)initWithMaxHealth:(int)maxHealth;
+
 /*!
  * @brief Tells the bulletEmitter to fire with the this character's zRotation
  */
@@ -47,7 +52,10 @@
 -(void)fireFromEmitter:(DSBulletEmitter*)emitter;
 -(void)startFiring;
 -(void)stopFiring;
-
+-(void)addBulletEmitter;
+-(void)addBulletEmitter:(DSBulletEmitter*)emitter;
+-(void)resetBulletEmitters;
+-(void)positionBulletEmitters;
 
 /*!
  * @brief Begin rotating to face the player

@@ -49,6 +49,7 @@
 		377575F218BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EC18BE66C200F503F6 /* YMCSKPhysicsBody+Swizzle.m */; };
 		377575F318BE66C200F503F6 /* YMCSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 377575EE18BE66C200F503F6 /* YMCSwizzler.m */; };
 		3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */; };
+		37836B891998429500656833 /* bg0-copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 37836B881998429500656833 /* bg0-copy.png */; };
 		3784045618C6FB4800C8A12D /* SKNode+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3784045518C6FB4800C8A12D /* SKNode+Utilities.m */; };
 		37BDE93318BC6AFD005C5807 /* DSSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93218BC6AFD005C5807 /* DSSpriteNode.m */; };
 		37BDE93718BC6C61005C5807 /* DSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE93618BC6C61005C5807 /* DSPlayer.m */; };
@@ -153,6 +154,7 @@
 		377575ED18BE66C200F503F6 /* YMCSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCSwizzler.h; sourceTree = "<group>"; };
 		377575EE18BE66C200F503F6 /* YMCSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCSwizzler.m; sourceTree = "<group>"; };
 		3776B1C618BC666F00DF5A68 /* PlayerShipHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerShipHover.atlas; sourceTree = "<group>"; };
+		37836B881998429500656833 /* bg0-copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg0-copy.png"; sourceTree = "<group>"; };
 		3784045418C6FB4800C8A12D /* SKNode+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+Utilities.h"; sourceTree = "<group>"; };
 		3784045518C6FB4800C8A12D /* SKNode+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+Utilities.m"; sourceTree = "<group>"; };
 		37BDE93118BC6AFD005C5807 /* DSSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSpriteNode.h; path = SpriteNodes/DSSpriteNode.h; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				37C4888018CA6F9B00042307 /* 9i67.jpg */,
+				37836B881998429500656833 /* bg0-copy.png */,
 				37E58DB618CCDE0900AD2F86 /* bg0.png */,
 			);
 			path = Backgrounds;
@@ -676,6 +679,7 @@
 				371F9BF418CEA5E50064AEA7 /* FX092.wav in Resources */,
 				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
+				37836B891998429500656833 /* bg0-copy.png in Resources */,
 				372D321D18BC4DA0003E9068 /* Images.xcassets in Resources */,
 				371F9BFA18CEA5E50064AEA7 /* FX098.wav in Resources */,
 				37C4888C18CE23F200042307 /* laser_shooting_sfx.wav in Resources */,

@@ -25,7 +25,14 @@
     if((self = [super init]))
     {
         self.spriteNode = [[DSPlayerCharacterSpriteNode alloc] init];
+        self.lives = 3;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerWillDie) name:NOTIF_PLAYER_WILL_DIE object:nil];
     }
     return self;
+}
+
+-(void)playerWillDie
+{
+    _lives--;
 }
 @end

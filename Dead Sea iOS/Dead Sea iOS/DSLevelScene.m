@@ -214,9 +214,14 @@
     [self updateComboDisplayForCurrenTime:currentTime];
     _scoreLabel.text = [NSString stringWithFormat:@"%d", [DSPlayer sharedPlayer].score];
     [_currentLevel.background update];
-    CGFloat bgVariance = 30.0f;
+    
+    //Side-scrolling background
+    CGFloat bgWidth = _currentLevel.background.size.width;
+    CGFloat minX = 0.0f;
     CGFloat playerPosT = _player.spriteNode.position.x / self.size.width;
-    _currentLevel.background.position = CGPointMake((playerPosT * bgVariance) - bgVariance, _currentLevel.background.position.y);
+    CGFloat variance = fmaxf(0, bgWidth - self.size.width);
+    CGFloat bgX = minX - (playerPosT * variance);
+    _currentLevel.background.position = CGPointMake(bgX, _currentLevel.background.position.y);
 }
 
 -(void)didSimulatePhysics
@@ -291,6 +296,12 @@
 -(void)playerDidDie
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    if([DSPlayer sharedPlayer].lives > 0)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self revivePlayer];
+        });
+    }
 }
 -(void)playerWillRevive
 {
@@ -299,6 +310,11 @@
 -(void)playerDidRevive
 {
     NSLog(@"%s", __PRETTY_FUNCTION__);
+    [self enumerateChildNodesWithName:NAME_ENEMY usingBlock:^(SKNode *node, BOOL *stop) {
+        DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)node;
+        [enemy startRotatingTowardsPlayer];
+        [enemy startFiring];
+    }];
 }
 #pragma mark - 
 -(void)revivePlayer
@@ -308,6 +324,7 @@
 -(void)revivePlayerAtPosition:(CGPoint)position
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_WILL_REVIVE object:_player.spriteNode];
+    [_player.spriteNode reset];
     [self addChild:_player.spriteNode];
     _player.spriteNode.position = position;
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIF_PLAYER_DID_REVIVE object:_player.spriteNode];

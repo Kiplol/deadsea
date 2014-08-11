@@ -10,4 +10,5 @@
 @interface DSLevelParser : NSObject
 +(DSSpawnWaveArray*)waveInfoFromPlist:(NSString*)plistName;
 +(DSSpawnWaveArray*)waveInfoFromData:(NSArray*)waveData;
++(NSString*)backgroundNameFromPlist:(NSString*)plistName;
 @end

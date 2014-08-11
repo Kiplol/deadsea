@@ -33,4 +33,6 @@ typedef enum {
 -(SKTexture*)initialTexture;
 
 -(void)removeFromPlay;
+
+-(void)reset;
 @end

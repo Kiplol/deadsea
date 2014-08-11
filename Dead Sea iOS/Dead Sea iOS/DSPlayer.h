@@ -14,6 +14,7 @@
 }
 @property (nonatomic, retain) DSPlayerCharacterSpriteNode * spriteNode;
 @property (nonatomic, readwrite) int score;
+@property (nonatomic, readwrite) int lives;
 
 +(DSPlayer*)sharedPlayer;
 @end

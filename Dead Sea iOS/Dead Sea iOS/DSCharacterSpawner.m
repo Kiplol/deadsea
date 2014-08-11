@@ -48,6 +48,13 @@
     [self runWithSpawnInfoAtIndex:0 ofWave:0];
 }
 #pragma mark - private
+-(DSCharacterSpriteNode*)spawnChataverWithSpawnInfo:(DSCharacterSpawnInfo*)spawnInfo
+{
+    DSCharacterSpriteNode * character = [self spawnCharacterOfType:spawnInfo.characterType];
+    character.maxHealth = spawnInfo.maxHealth;
+    character.health = spawnInfo.maxHealth;
+    return character;
+}
 -(DSCharacterSpriteNode*)spawnCharacterOfType:(DSCharacterType)type
 {
     DSCharacterSpriteNode* character = nil;
@@ -83,7 +90,7 @@
 
     BOOL isFinalCharOfWave = [self characterAtIndex:idx isFinalCharacterOfWave:waveIdx];
     DSCharacterSpawnInfo * spawnInfo = [wave objectAtIndex:idx];
-    DSCharacterSpriteNode * sprite = [self spawnCharacterOfType:spawnInfo.characterType];
+    DSCharacterSpriteNode * sprite = [self spawnChataverWithSpawnInfo:spawnInfo];
     if(sprite)
     {
         if(self.parentNode)

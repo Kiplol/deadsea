@@ -19,6 +19,7 @@
         _parentNode = parentNode;
         _characterSpawner = [[DSCharacterSpawner alloc] initWithSpawnWaves:_spawnWaves andParentNode:parentNode];
         self.background = [[DSScrollingBackground alloc] initWithImageNamed:[DSLevelParser backgroundNameFromPlist:plist]];
+        self.musicFilename = [DSLevelParser musicNameFromPlist:plist];
     }
     return self;
 }

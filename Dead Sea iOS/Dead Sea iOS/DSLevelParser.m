@@ -47,6 +47,13 @@
     NSString * bgName = [dataDic objectForKey:@"bgImage"];
     return bgName;
 }
+
++(NSString*)musicNameFromPlist:(NSString*)plistName
+{
+  NSDictionary * dataDic = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:plistName ofType:@"plist"]];
+  NSString * bgName = [dataDic objectForKey:@"bgMusic"];
+  return bgName;
+}
 #pragma mark - private
 +(DSCharacterSpawnInfo*)spawnInfoFromDict:(NSDictionary *)dict
 {

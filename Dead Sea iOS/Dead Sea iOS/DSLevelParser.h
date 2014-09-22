@@ -11,4 +11,5 @@
 +(DSSpawnWaveArray*)waveInfoFromPlist:(NSString*)plistName;
 +(DSSpawnWaveArray*)waveInfoFromData:(NSArray*)waveData;
 +(NSString*)backgroundNameFromPlist:(NSString*)plistName;
++(NSString*)musicNameFromPlist:(NSString*)plistName;
 @end

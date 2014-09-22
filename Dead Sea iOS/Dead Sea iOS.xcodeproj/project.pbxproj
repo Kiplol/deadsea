@@ -80,6 +80,7 @@
 		37D08B8418CBAAE5005495DF /* DSLevelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8318CBAAE5005495DF /* DSLevelParser.m */; };
 		37D08B8718CBAC76005495DF /* Level0.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D08B8618CBAC76005495DF /* Level0.plist */; };
 		37D08B8A18CC0BDF005495DF /* DSLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D08B8918CC0BDF005495DF /* DSLevel.m */; };
+		37D69811199926BD002C6A49 /* level0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 37D69810199926BD002C6A49 /* level0.mp3 */; };
 		37E3130218C6AA9100CD0141 /* DSBulletEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */; };
 		37E58DB518CCDBAE00AD2F86 /* DSScrollingBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E58DB418CCDBAE00AD2F86 /* DSScrollingBackground.m */; };
 		37E58DB718CCDE0900AD2F86 /* bg0.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E58DB618CCDE0900AD2F86 /* bg0.png */; };
@@ -208,6 +209,7 @@
 		37D08B8618CBAC76005495DF /* Level0.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level0.plist; path = "Dead Sea iOS/Resources/Levels/Level0.plist"; sourceTree = SOURCE_ROOT; };
 		37D08B8818CC0BDF005495DF /* DSLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSLevel.h; path = "Dead Sea iOS/DSLevel.h"; sourceTree = "<group>"; };
 		37D08B8918CC0BDF005495DF /* DSLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSLevel.m; path = "Dead Sea iOS/DSLevel.m"; sourceTree = "<group>"; };
+		37D69810199926BD002C6A49 /* level0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = level0.mp3; sourceTree = "<group>"; };
 		37E3130018C6AA9100CD0141 /* DSBulletEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBulletEmitter.h; path = SpriteNodes/DSBulletEmitter.h; sourceTree = "<group>"; };
 		37E3130118C6AA9100CD0141 /* DSBulletEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBulletEmitter.m; path = SpriteNodes/DSBulletEmitter.m; sourceTree = "<group>"; };
 		37E58DB318CCDBAE00AD2F86 /* DSScrollingBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSScrollingBackground.h; path = SpriteNodes/DSScrollingBackground.h; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				37C4888918CE23F200042307 /* laser_shooting_sfx.wav */,
 				37C4888A18CE23F200042307 /* Menu Selection Click.wav */,
 				37C4888B18CE23F200042307 /* robot_0.mp3 */,
+				37D6980F199926BD002C6A49 /* music */,
 				371F9BE818CEA5E50064AEA7 /* Sound Effects FX 010 */,
 			);
 			path = Sounds;
@@ -587,6 +590,14 @@
 			);
 			name = Levels;
 			path = Sprites;
+			sourceTree = "<group>";
+		};
+		37D6980F199926BD002C6A49 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				37D69810199926BD002C6A49 /* level0.mp3 */,
+			);
+			path = music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -687,6 +698,7 @@
 				37BDE94418BDA2DE005C5807 /* SmallEnemyHover.atlas in Resources */,
 				37BDE95318BDB124005C5807 /* BallshotFiring.atlas in Resources */,
 				372D321318BC4DA0003E9068 /* Main_iPad.storyboard in Resources */,
+				37D69811199926BD002C6A49 /* level0.mp3 in Resources */,
 				371F9BF618CEA5E50064AEA7 /* FX094.wav in Resources */,
 				37C4888518CA6F9B00042307 /* explode.gif in Resources */,
 				372D321018BC4DA0003E9068 /* Main_iPhone.storyboard in Resources */,

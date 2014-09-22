@@ -15,7 +15,8 @@
     SKNode * _parentNode;
     DSCharacterSpawner * _characterSpawner;
 }
-@property (nonatomic, retain) DSScrollingBackground * background;
+@property (nonatomic, strong) DSScrollingBackground * background;
+@property (nonatomic, strong) NSString * musicFilename;
 
 -(id)initWithPlistName:(NSString*)plist andParentNode:(SKNode*)parentNode;
 -(void)beginLevel;

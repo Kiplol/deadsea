@@ -4,6 +4,8 @@
 <dict>
 	<key>bgImage</key>
 	<string>bg0-copy</string>
+	<key>bgMusic</key>
+	<string>level0.mp3</string>
 	<key>Waves</key>
 	<array>
 		<array>
@@ -609,7 +611,7 @@
 				<key>wave</key>
 				<integer>2</integer>
 				<key>maxHealth</key>
-				<integer>15</integer>
+				<integer>100</integer>
 				<key>info</key>
 				<dict/>
 			</dict>

@@ -136,6 +136,11 @@
     _currentLevel.background.anchorPoint = CGPointZero;
     [self beginLevelCountdownWithCompletion:^{
         [_currentLevel beginLevel];
+        if(_currentLevel.musicFilename)
+        {
+          //TODO - Shared Audio Player using AVAudioPlayer``
+          [self runAction:[SKAction playSoundFileNamed:_currentLevel.musicFilename waitForCompletion:NO]];
+        }
     }];
 }
 

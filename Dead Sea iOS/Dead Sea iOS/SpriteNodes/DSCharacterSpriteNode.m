@@ -40,12 +40,21 @@
 {
     return [self initWithMaxHealth:1];
 }
+-(void)updateWithInfo:(NSDictionary*)info
+{
+    //Subclass
+}
 -(void)fillAtlasDictionary
 {
     [super fillAtlasDictionary];
     //Explosion
     SKTextureAtlas * explosionAtlas = [SKTextureAtlas atlasNamed:@"SmallExplosion"];
     [_dicAtlases setObject:explosionAtlas forKey:ATLAS_KEY_EXPLOSION];
+}
+
+-(void)enterPlay
+{
+    //Subclass
 }
 -(void)fire
 {
@@ -132,6 +141,7 @@
         currentX += spaceBetweenEmitters;
     }
 }
+
 -(void)startRotatingTowardsPlayer
 {
     [self startRotatingTowardsPlayerWithRestTimeEvery:0.0];

@@ -9,6 +9,7 @@
 #import "DSCharacterSpawner.h"
 #import "DSCharacterSpriteNode.h"
 #import "DSSmallEnemySpriteNode.h"
+#import "DSSubBossSpriteNode.h"
 #import "DSPlayer.h"
 #import "DSPlayerCharacterSpriteNode.h"
 #import "DSLevelParser.h"
@@ -48,7 +49,7 @@
     [self runWithSpawnInfoAtIndex:0 ofWave:0];
 }
 #pragma mark - private
--(DSCharacterSpriteNode*)spawnChataverWithSpawnInfo:(DSCharacterSpawnInfo*)spawnInfo
+-(DSCharacterSpriteNode*)spawnCharacterWithSpawnInfo:(DSCharacterSpawnInfo*)spawnInfo
 {
     DSCharacterSpriteNode * character = [self spawnCharacterOfType:spawnInfo.characterType];
     character.maxHealth = spawnInfo.maxHealth;
@@ -65,6 +66,12 @@
             character = smallEnemy;
         }
             break;
+            
+        case CharacterTypeSubBoss:
+        {
+            DSSubBossSpriteNode * subBossEnemy = [[DSSubBossSpriteNode alloc] init];
+            character = subBossEnemy;
+        }
         case CharacterTypeNone:
         default:
             break;
@@ -90,7 +97,7 @@
 
     BOOL isFinalCharOfWave = [self characterAtIndex:idx isFinalCharacterOfWave:waveIdx];
     DSCharacterSpawnInfo * spawnInfo = [wave objectAtIndex:idx];
-    DSCharacterSpriteNode * sprite = [self spawnChataverWithSpawnInfo:spawnInfo];
+    DSCharacterSpriteNode * sprite = [self spawnCharacterWithSpawnInfo:spawnInfo];
     if(sprite)
     {
         if(self.parentNode)
@@ -102,8 +109,7 @@
                 //Completion
                 if([DSPlayer sharedPlayer].spriteNode.alive)
                 {
-                    [sprite startRotatingTowardsPlayerWithRestTimeEvery:2.0];
-                    [sprite startFiring];
+                    [sprite enterPlay];
                 }
             }];
         }

@@ -121,7 +121,10 @@
     {
         DSEnemySpriteNode * enemy = (DSEnemySpriteNode*)character;
         [DSPlayer sharedPlayer].score += enemy.pointsForDestroying;
-        [self addBulletEmitter];
+        if(arc4random() % 4 == 0)
+        {
+            [self addBulletEmitter];
+        }
     }
 }
 

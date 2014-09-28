@@ -39,7 +39,7 @@
     [self.physicsBody applyImpulse:CGVectorMake(self.speedVector.dx, self.speedVector.dy)];
     if([self fireSound])
     {
-        [self runAction:[SKAction playSoundFileNamed:[self fireSound] waitForCompletion:NO]];
+        [self runAction:[SKAction playSoundFileNamed:[self fireSound] waitForCompletion:YES]];
     }
 }
 -(NSString*)fireSound

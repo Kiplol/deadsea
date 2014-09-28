@@ -70,6 +70,11 @@
 		37BDE96E18C2BD62005C5807 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96318C2BD62005C5807 /* SKTAudio.m */; };
 		37BDE96F18C2BD62005C5807 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96518C2BD62005C5807 /* SKTEffects.m */; };
 		37BDE97018C2BD62005C5807 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */; };
+		37C3877B19D888CF0012276D /* DSSubBossSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C3877A19D888CF0012276D /* DSSubBossSpriteNode.m */; };
+		37C3877E19D889D10012276D /* SubBossHover.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C3877D19D889D10012276D /* SubBossHover.atlas */; };
+		37C3878119D88CFD0012276D /* SubBossCloseMouth.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C3877F19D88CFD0012276D /* SubBossCloseMouth.atlas */; };
+		37C3878219D88CFD0012276D /* SubBossOpenMouth.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C3878019D88CFD0012276D /* SubBossOpenMouth.atlas */; };
+		37C3878419D88D980012276D /* LevelTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37C3878319D88D980012276D /* LevelTest.plist */; };
 		37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888018CA6F9B00042307 /* 9i67.jpg */; };
 		37C4888518CA6F9B00042307 /* explode.gif in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888218CA6F9B00042307 /* explode.gif */; };
 		37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37C4888318CA6F9B00042307 /* SmallExplosion.atlas */; };
@@ -195,6 +200,12 @@
 		37BDE96618C2BD62005C5807 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
 		37BDE96718C2BD62005C5807 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
 		37BDE96818C2BD62005C5807 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		37C3877919D888CF0012276D /* DSSubBossSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSSubBossSpriteNode.h; path = SpriteNodes/Enemies/DSSubBossSpriteNode.h; sourceTree = "<group>"; };
+		37C3877A19D888CF0012276D /* DSSubBossSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSubBossSpriteNode.m; path = SpriteNodes/Enemies/DSSubBossSpriteNode.m; sourceTree = "<group>"; };
+		37C3877D19D889D10012276D /* SubBossHover.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SubBossHover.atlas; sourceTree = "<group>"; };
+		37C3877F19D88CFD0012276D /* SubBossCloseMouth.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SubBossCloseMouth.atlas; sourceTree = "<group>"; };
+		37C3878019D88CFD0012276D /* SubBossOpenMouth.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SubBossOpenMouth.atlas; sourceTree = "<group>"; };
+		37C3878319D88D980012276D /* LevelTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LevelTest.plist; path = "Dead Sea iOS/Resources/Levels/LevelTest.plist"; sourceTree = SOURCE_ROOT; };
 		37C4888018CA6F9B00042307 /* 9i67.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9i67.jpg; sourceTree = "<group>"; };
 		37C4888218CA6F9B00042307 /* explode.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = explode.gif; sourceTree = "<group>"; };
 		37C4888318CA6F9B00042307 /* SmallExplosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = SmallExplosion.atlas; sourceTree = "<group>"; };
@@ -483,6 +494,7 @@
 		37BDE94118BDA2DE005C5807 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				37C3877C19D889D10012276D /* SubBoss */,
 				37BDE94218BDA2DE005C5807 /* SmallEnemy */,
 			);
 			path = Enemies;
@@ -503,6 +515,8 @@
 				37BDE94618BDA46C005C5807 /* DSEnemySpriteNode.m */,
 				37BDE94918BDA685005C5807 /* DSSmallEnemySpriteNode.h */,
 				37BDE94A18BDA685005C5807 /* DSSmallEnemySpriteNode.m */,
+				37C3877919D888CF0012276D /* DSSubBossSpriteNode.h */,
+				37C3877A19D888CF0012276D /* DSSubBossSpriteNode.m */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -549,6 +563,16 @@
 			name = "3rd Party";
 			sourceTree = "<group>";
 		};
+		37C3877C19D889D10012276D /* SubBoss */ = {
+			isa = PBXGroup;
+			children = (
+				37C3877F19D88CFD0012276D /* SubBossCloseMouth.atlas */,
+				37C3878019D88CFD0012276D /* SubBossOpenMouth.atlas */,
+				37C3877D19D889D10012276D /* SubBossHover.atlas */,
+			);
+			path = SubBoss;
+			sourceTree = "<group>";
+		};
 		37C4887F18CA6F9B00042307 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +611,7 @@
 			isa = PBXGroup;
 			children = (
 				37D08B8618CBAC76005495DF /* Level0.plist */,
+				37C3878319D88D980012276D /* LevelTest.plist */,
 			);
 			name = Levels;
 			path = Sprites;
@@ -649,7 +674,7 @@
 				ORGANIZATIONNAME = "Supernovacaine Interactive";
 				TargetAttributes = {
 					372D31F618BC4DA0003E9068 = {
-						DevelopmentTeam = WEMRB8F83Q;
+						DevelopmentTeam = LSB86U552U;
 					};
 					372D322118BC4DA0003E9068 = {
 						TestTargetID = 372D31F618BC4DA0003E9068;
@@ -686,7 +711,9 @@
 				371F9BF318CEA5E50064AEA7 /* FX091.wav in Resources */,
 				37BDE95218BDB124005C5807 /* BallshotDefault.atlas in Resources */,
 				371F9C0018CEA73F0064AEA7 /* atari_boom.wav in Resources */,
+				37C3878119D88CFD0012276D /* SubBossCloseMouth.atlas in Resources */,
 				37C4888E18CE23F200042307 /* robot_0.mp3 in Resources */,
+				37C3878219D88CFD0012276D /* SubBossOpenMouth.atlas in Resources */,
 				371F9BF418CEA5E50064AEA7 /* FX092.wav in Resources */,
 				37C4888418CA6F9B00042307 /* 9i67.jpg in Resources */,
 				3776B1C718BC666F00DF5A68 /* PlayerShipHover.atlas in Resources */,
@@ -709,7 +736,9 @@
 				371F9BF918CEA5E50064AEA7 /* FX097.wav in Resources */,
 				37E58DBA18CD374500AD2F86 /* Localizable.strings in Resources */,
 				37D08B8718CBAC76005495DF /* Level0.plist in Resources */,
+				37C3878419D88D980012276D /* LevelTest.plist in Resources */,
 				371F9BFB18CEA5E50064AEA7 /* FX099.wav in Resources */,
+				37C3877E19D889D10012276D /* SubBossHover.atlas in Resources */,
 				37C4888618CA6F9B00042307 /* SmallExplosion.atlas in Resources */,
 				371F9BF518CEA5E50064AEA7 /* FX093.wav in Resources */,
 				371F9C0218CEA73F0064AEA7 /* atari_boom6.wav in Resources */,
@@ -733,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				377575EF18BE66C200F503F6 /* YMCPhysicsDebugger.m in Sources */,
+				37C3877B19D888CF0012276D /* DSSubBossSpriteNode.m in Sources */,
 				377575B518BD237000F503F6 /* BulletFactory.m in Sources */,
 				37BDE93A18BC6E8A005C5807 /* DSBulletSpriteNode.m in Sources */,
 				372D320918BC4DA0003E9068 /* main.m in Sources */,

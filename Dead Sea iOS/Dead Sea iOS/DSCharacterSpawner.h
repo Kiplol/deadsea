@@ -11,6 +11,7 @@
 typedef enum {
     CharacterTypeNone = 0,
     CharacterTypeSmallEnemy,
+    CharacterTypeSubBoss
 } DSCharacterType;
 
 @interface DSCharacterSpawnInfo : NSObject {

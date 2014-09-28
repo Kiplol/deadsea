@@ -45,6 +45,8 @@
 
 -(id)initWithMaxHealth:(int)maxHealth;
 
+-(void)updateWithInfo:(NSDictionary*)info;
+
 /*!
  * @brief Tells the bulletEmitter to fire with the this character's zRotation
  */
@@ -70,6 +72,8 @@
  * @brief Stop rotating to face the player
  */
 -(void)stopRotatingTowardsPlayer;
+
+-(void)enterPlay;
 
 /*!
  * @brief Translate from one point to another and ease out over a given duration

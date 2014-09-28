@@ -24,6 +24,12 @@
     return self;
 }
 
+-(void)enterPlay
+{
+    [self startRotatingTowardsPlayer];
+    [self startFiring];
+}
+
 -(void)addBulletEmitter:(DSBulletEmitter *)emitter
 {
     [super addBulletEmitter:emitter];

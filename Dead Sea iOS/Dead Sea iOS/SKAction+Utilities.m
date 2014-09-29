@@ -11,7 +11,7 @@
 @implementation SKAction (Utilities)
 +(SKAction*)animateWithTextureAtlas:(SKTextureAtlas*)atlas timePerFrame:(double)tpf resize:(BOOL)resize restore:(BOOL)restore
 {
-    NSArray * names = atlas.textureNames;
+    NSArray * names = [atlas.textureNames sortedArrayUsingSelector:@selector(compare:)];
     NSMutableArray * textures = [NSMutableArray arrayWithCapacity:names.count];
     for(int i = 0; i < names.count; i++)
     {

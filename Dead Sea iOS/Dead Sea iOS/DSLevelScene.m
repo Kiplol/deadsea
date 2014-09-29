@@ -130,7 +130,7 @@
 //    _spawner = [[DSCharacterSpawner alloc] initWithSpawnWaves:spawnWaves andParentNode:self];
 //    [_spawner run];
 
-    _currentLevel = [[DSLevel alloc] initWithPlistName:@"LevelTest" andParentNode:self];
+    _currentLevel = [[DSLevel alloc] initWithPlistName:@"Level0" andParentNode:self];
     [self addChild:_currentLevel.background];
     _currentLevel.background.zPosition = -1;
     _currentLevel.background.anchorPoint = CGPointZero;

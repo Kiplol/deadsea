@@ -9,5 +9,9 @@
 #import "DSEnemySpriteNode.h"
 
 @interface DSSubBossSpriteNode : DSEnemySpriteNode
+@property (nonatomic, strong) NSMutableArray * mainCannonEmitters;
+@property (nonatomic, readonly) BOOL firingMainCannon;
+
+-(void)fireMainCannon;
 
 @end

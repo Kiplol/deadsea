@@ -105,6 +105,7 @@
             //Observe the health of the character
             [sprite addObserver:self forKeyPath:KEY_PATH_HEALTH options:NSKeyValueObservingOptionNew context:NULL];
             [self.parentNode addChild:sprite];
+            [sprite runAction:[SKAction rotateToAngle:M_PI duration:0]];//Yessss
             [sprite flyInFrom:spawnInfo.spawnStartPoint to:spawnInfo.spawnEndPoint overDuration:1.0 completion:^{
                 //Completion
                 if([DSPlayer sharedPlayer].spriteNode.alive)
